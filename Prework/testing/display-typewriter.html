@@ -47,8 +47,9 @@
 
         $(function () {
             $("button").on("click", function () {
-                //hides the button when its clicked until the text is done rendering
-                $("#button").hide();
+                //disables the button when its clicked until the text is done rendering
+                // $("#button").hide();
+                $("#button").attr("disabled", true);
 
                 var i = 0;
                 var txt = 'Lorem ipsum dummy text blabla.';
@@ -65,10 +66,11 @@
                     }
                 }
 
-                //waits until the text is done typing to display the button.
+                //waits until the text is done typing to re-enable the button.
                 typeWriter();
                 setTimeout(function () {
-                    $("#button").show();
+                    // $("#button").show();
+                    $("#button").attr("disabled", false);
                     $("#demo").append("<br>")
                 }, speed2);
 

@@ -20,7 +20,8 @@
         $(function () {
             $("button").on("click", function () {
                 //hides the button when its clicked until the text is done rendering
-                $("#button").hide();
+                // $("#button").hide();
+                $("#button").attr("disabled", true);
 
                 var i = 0;
                 var txt = 'Lorem ipsum dummy text blabla.';
@@ -42,7 +43,8 @@
 
                 //waits until the text is done typing to display the button.
                 setTimeout(function () {
-                        $("#button").show();
+                        // $("#button").show();
+                        $("#button").attr("disabled", false);
                         $("#demo").append("<br>")
                     }, speed2);
             });
