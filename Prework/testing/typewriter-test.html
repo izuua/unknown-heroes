@@ -1,0 +1,51 @@
+<!-- This file shows typewriting text. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Typewriter</h1>
+
+    <button id='button'>Click me</button>
+
+    <p id="demo"></p>
+
+    <script>
+
+        $(function () {
+            $("button").on("click", function () {
+                $("#button").hide();
+
+                var i = 0;
+                var txt = 'Lorem ipsum dummy text blabla.';
+                var speed = 50;
+                var speed2 = 50 * txt.length
+
+                function typeWriter() {
+                    if (i < txt.length) {
+                        $("#demo").append(txt.charAt(i));
+                        // document.getElementById("demo").innerHTML += txt.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, speed);
+                    }
+                    setTimeout(function () {
+                        $("#button").show();
+                    }, speed2);
+                }
+
+                typeWriter();
+            });
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>
