@@ -52,7 +52,7 @@
                 var i = 0;
                 var txt = 'Lorem ipsum dummy text blabla.';
                 var speed = 50;
-                var speed2 = 50*txt.length;
+                var speed2 = 50 * txt.length;
 
                 function typeWriter() {
                     if (i < txt.length) {
@@ -60,13 +60,17 @@
                         // document.getElementById("demo").innerHTML += txt.charAt(i);
                         i++;
                         setTimeout(typeWriter, speed);
+                        // if ($(".container").height() > $(".inner").height()) {
+                        //     $(".container").css("bottom", "auto");
+                        // }
+                        // $('.inner').scrollTop($('.container')[0].scrollHeight);
                     }
-                    setTimeout(function () {
-                        $("#button").show();
-                    }, speed2);
                 }
 
                 typeWriter();
+                setTimeout(function () {
+                        $("#button").show();
+                    }, speed2);
 
             });
         });

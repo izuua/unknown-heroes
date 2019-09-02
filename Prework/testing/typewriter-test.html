@@ -33,12 +33,13 @@
                         i++;
                         setTimeout(typeWriter, speed);
                     }
-                    setTimeout(function () {
-                        $("#button").show();
-                    }, speed2);
                 }
 
                 typeWriter();
+                
+                setTimeout(function () {
+                        $("#button").show();
+                    }, speed2);
             });
         });
 
