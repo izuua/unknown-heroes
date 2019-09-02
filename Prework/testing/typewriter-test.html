@@ -11,7 +11,7 @@
 
     <h1>Typewriter</h1>
 
-    <button>Click me</button>
+    <button id='button'>Click me</button>
 
     <p id="demo"></p>
 
@@ -19,10 +19,12 @@
 
         $(function () {
             $("button").on("click", function () {
+                $("#button").hide();
 
                 var i = 0;
                 var txt = 'Lorem ipsum dummy text blabla.';
                 var speed = 50;
+                var speed2 = 50 * txt.length
 
                 function typeWriter() {
                     if (i < txt.length) {
@@ -31,6 +33,9 @@
                         i++;
                         setTimeout(typeWriter, speed);
                     }
+                    setTimeout(function () {
+                        $("#button").show();
+                    }, speed2);
                 }
 
                 typeWriter();
