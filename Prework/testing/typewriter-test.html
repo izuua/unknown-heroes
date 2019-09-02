@@ -19,13 +19,17 @@
 
         $(function () {
             $("button").on("click", function () {
-                $("#button").hide();
+                //disables the button when its clicked until the text is done rendering
+                // $("#button").hide();
+                $("#button").attr("disabled", true);
 
                 var i = 0;
                 var txt = 'Lorem ipsum dummy text blabla.';
+                //change the speed of the text by changing the speed variable
                 var speed = 50;
                 var speed2 = 50 * txt.length
 
+                //runs through each of the letters in the text one by one
                 function typeWriter() {
                     if (i < txt.length) {
                         $("#demo").append(txt.charAt(i));
@@ -36,9 +40,12 @@
                 }
 
                 typeWriter();
-                
+
+                //waits until the text is done typing to re-enable the button.
                 setTimeout(function () {
-                        $("#button").show();
+                        // $("#button").show();
+                        $("#button").attr("disabled", false);
+                        $("#demo").append("<br>")
                     }, speed2);
             });
         });
