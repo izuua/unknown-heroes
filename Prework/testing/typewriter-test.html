@@ -19,7 +19,7 @@
 
         $(function () {
             $("button").on("click", function () {
-                //hides the button when its clicked until the text is done rendering
+                //disables the button when its clicked until the text is done rendering
                 // $("#button").hide();
                 $("#button").attr("disabled", true);
 
@@ -41,7 +41,7 @@
 
                 typeWriter();
 
-                //waits until the text is done typing to display the button.
+                //waits until the text is done typing to re-enable the button.
                 setTimeout(function () {
                         // $("#button").show();
                         $("#button").attr("disabled", false);
