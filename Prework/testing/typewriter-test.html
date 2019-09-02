@@ -23,9 +23,11 @@
 
                 var i = 0;
                 var txt = 'Lorem ipsum dummy text blabla.';
+                //change the speed of the text by changing the speed variable
                 var speed = 50;
                 var speed2 = 50 * txt.length
 
+                //runs through each of the letters in the text one by one
                 function typeWriter() {
                     if (i < txt.length) {
                         $("#demo").append(txt.charAt(i));
@@ -37,6 +39,7 @@
 
                 typeWriter();
 
+                //waits until the text is done typing to display the button.
                 setTimeout(function () {
                         $("#button").show();
                         $("#demo").append("<br>")

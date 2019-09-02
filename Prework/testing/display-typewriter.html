@@ -14,7 +14,7 @@
     <style>
         .wrapper {
             width: 300px;
-            height: 200px;
+            height: 100px;
             overflow: hidden;
         }
 
@@ -51,27 +51,32 @@
 
                 var i = 0;
                 var txt = 'Lorem ipsum dummy text blabla.';
+                //change the speed of the text by changing the speed variable
                 var speed = 50;
                 var speed2 = 50 * txt.length;
 
+                //runs through each of the letters in the text one by one
                 function typeWriter() {
                     if (i < txt.length) {
                         $("#demo").append(txt.charAt(i));
-                        // document.getElementById("demo").innerHTML += txt.charAt(i);
                         i++;
                         setTimeout(typeWriter, speed);
-                        // if ($(".container").height() > $(".inner").height()) {
-                        //     $(".container").css("bottom", "auto");
-                        // }
-                        // $('.inner').scrollTop($('.container')[0].scrollHeight);
                     }
                 }
 
+                //waits until the text is done typing to display the button.
                 typeWriter();
                 setTimeout(function () {
-                        $("#button").show();
-                        $("#demo").append("<br>")
-                    }, speed2);
+                    $("#button").show();
+                    $("#demo").append("<br>")
+                }, speed2);
+
+                //adds a scrollbar if amount of text in the container is longer than the height
+                if ($(".container").height() > $(".inner").height()) {
+                    $(".container").css("bottom", "auto");
+                }
+
+                $('.inner').scrollTop($('.container')[0].scrollHeight);
 
             });
         });
