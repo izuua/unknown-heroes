@@ -3,6 +3,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var HeroesSchema = new Schema({
+    name: {
+        type: String,
+    },
     maxHp: {
         type: Number,
     },
@@ -45,6 +48,9 @@ var HeroesSchema = new Schema({
     spdMod: {
         type: Number,
     },
+    specialAbility: {
+        type: String,
+    }
 })
 
 var Heroes = mongoose.model('Heroes', HeroesSchema);
