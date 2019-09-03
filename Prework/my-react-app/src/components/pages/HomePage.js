@@ -3,7 +3,7 @@ import React from "react";
 function HomePage() {
     return (
         <div>
-            <h1><strong>Unknown Quest</strong></h1>
+            <h1><strong>Unknown Heros</strong></h1>
             
             <button id="login">Log In</button>
     
