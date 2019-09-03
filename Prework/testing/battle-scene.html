@@ -113,9 +113,10 @@
         var txt = 'Lorem ipsum dummy text blabla.';
         //change the speed of the text by changing the speed variable
         var speed = 50;
-        var speed2 = 50 * txt.length;
+        var speed2 = speed * txt.length;
 
         //runs through each of the letters in the text one by one
+        //this function needs to be refactored to take in arguments
         function typeWriter() {
           if (i < txt.length) {
             $("#demo").append(txt.charAt(i));
@@ -141,6 +142,54 @@
 
       });
     });
+
+    class Hero {
+      constructor(maxHp, hpMod, maxMp, mpMod, atk, atkMod, def, defMod, acc, accMod, eva, evaMod, spd, spdMod) {
+        this.maxHp = maxHp;
+        this.hp = maxHp;
+        this.maxMp = maxMp;
+        this.mp = maxMp;
+        this.atk = atk;
+        this.def = def;
+        this.acc = acc;
+        this.eva = eva;
+        this.spd = spd;
+        this.level = 1;
+        this.exp = 0;
+      }
+
+      attack(enemy) {
+
+      }
+
+      levelUp() {
+        this.level++
+      }
+    }
+
+    class Monster {
+      constructor(maxHp, maxMp, atk, def, acc, eva, spd, exp, gold) {
+        this.maxHp = maxHp;
+        this.hp = maxHp;
+        this.maxMp = maxMp;
+        this.mp = maxMp;
+        this.atk = atk;
+        this.def = def;
+        this.acc = acc;
+        this.eva = eva;
+        this.spd = spd;
+        this.exp = exp;
+        this.gold = gold;
+      }
+
+      attack(enemy) {
+
+      }
+
+    }
+
+
+
   </script>
 </body>
 

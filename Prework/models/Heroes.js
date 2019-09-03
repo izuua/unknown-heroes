@@ -45,6 +45,9 @@ var HeroesSchema = new Schema({
     spdMod: {
         type: Number,
     },
+    specialAbility: {
+        type: String,
+    }
 })
 
 var Heroes = mongoose.model('Heroes', HeroesSchema);
