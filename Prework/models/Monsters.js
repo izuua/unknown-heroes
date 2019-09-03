@@ -3,6 +3,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var MonstersSchema = new Schema({
+    name: {
+        type: String,
+    },
     maxHp: {
         type: Number,
     },

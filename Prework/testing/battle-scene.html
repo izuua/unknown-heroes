@@ -144,7 +144,8 @@
     });
 
     class Hero {
-      constructor(maxHp, hpMod, maxMp, mpMod, atk, atkMod, def, defMod, acc, accMod, eva, evaMod, spd, spdMod) {
+      constructor(name, maxHp, hpMod, maxMp, mpMod, atk, atkMod, def, defMod, acc, accMod, eva, evaMod, spd, spdMod) {
+        this.name = name;
         this.maxHp = maxHp;
         this.hp = maxHp;
         this.maxMp = maxMp;
@@ -168,7 +169,8 @@
     }
 
     class Monster {
-      constructor(maxHp, maxMp, atk, def, acc, eva, spd, exp, gold) {
+      constructor(name, maxHp, maxMp, atk, def, acc, eva, spd, exp, gold) {
+        this.name = name;
         this.maxHp = maxHp;
         this.hp = maxHp;
         this.maxMp = maxMp;
