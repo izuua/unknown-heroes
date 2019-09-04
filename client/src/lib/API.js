@@ -27,5 +27,15 @@ export default {
         }
       });
     }
-  }
+  },
+  Monster: {
+    getOne: function (name){
+      return axios.get(`/api/monster${name}`)
+    }
+  },
+  Hero: {
+    getOne: function (name){
+      return axios.get(`/api/hero${name}`)
+    }
+  } 
 }
