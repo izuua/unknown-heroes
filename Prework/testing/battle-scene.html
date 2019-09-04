@@ -103,7 +103,8 @@
   </div>
 
   <script>
-    let speed = 50;
+    let speed = 25;
+    let gameOver = false;
 
     $("#btn-attack").on("click", function () {
       player.attack(enemy);
@@ -139,7 +140,7 @@
         // $("#button").show();
         $("button").attr("disabled", false);
         $("#demo").append("<br>")
-      }, (speed * txt.length));
+      }, ((speed * txt.length))+200);
 
       //adds a scrollbar if amount of text in the container is longer than the height
       if ($(".container").height() > $(".inner").height()) {
@@ -150,14 +151,17 @@
 
     }
 
-    //need to make a base class called character that stores similar methods like attack
-    // class Character {
+    function checkGameOver() {
+      if (gameOver === true) {
+        alert("GAME OVER!")
+      }
+      
+    }
 
-    // }
 
 
     class Hero {
-      constructor(name, maxHp, hpMod, maxMp, mpMod, atk, atkMod, def, defMod, acc, accMod, eva, evaMod, spd, spdMod) {
+      constructor(name, maxHp, hpMod, maxMp, mpMod, atk, atkMod, def, defMod, acc, accMod, eva, evaMod, spd, spdMod, level, exp) {
         this.name = name;
         this.maxHp = maxHp;
         this.hp = maxHp;
@@ -168,19 +172,37 @@
         this.acc = acc;
         this.eva = eva;
         this.spd = spd;
-        this.level = 1;
-        this.exp = 0;
+        this.level = level;
+        this.exp = exp;
       }
 
       attack(object) {
-        let damage = (random(1, 5) + (this.atk - object.def));
-        object.hp = object.hp - damage;
-        console.log(object.hp);
-        let message = `${this.name} attacks ${object.name} for ${damage} damage.`;
-        displayText(message)
+        let message;
+        let hitRate = 75 + ((this.acc - object.eva)*3)
+        let accCheck = random(1, 100)
+        if (accCheck <= hitRate) {
+          let damage = (random(1, 5) + (this.atk - object.def));
+          object.hp = object.hp - damage;
+          console.log(object.hp);
+          message = `The ${this.name} attacks ${object.name} for ${damage} damage.`;
+          displayText(message)
+        } else {
+          message = `The ${this.name} misses the ${object.name}.`;
+          displayText(message)
+        }
+        
         setTimeout(() =>
           object.attack(this),
-          (speed * message.length))
+          ((speed * message.length))+400)
+        object.killedBy(this);
+        checkGameOver();
+      }
+
+      killedBy(object) {
+        if (this.hp <= 0) {
+          object.exp = object.exp + this.exp;
+          gameOver = true;
+        }
       }
 
       levelUp() {
@@ -205,17 +227,32 @@
       }
 
       attack(object) {
-        console.log(object);
-        let damage = (random(1, 5) + (this.atk - object.def));
-        object.hp = object.hp - damage;
-        console.log(object.hp);
-        let message = `${this.name} attacks ${object.name} for ${damage} damage.`;
-        displayText(message);
+        let hitRate = 75 + ((this.acc - object.eva)*3)
+        let accCheck = random(1, 100)
+        if (accCheck <= hitRate) {
+          let damage = (random(1, 5) + (this.atk - object.def));
+          object.hp = object.hp - damage;
+          console.log(object.hp);
+          let message = `The ${this.name} attacks ${object.name} for ${damage} damage.`;
+          displayText(message)
+        } else {
+          let message = `The ${this.name} misses the ${object.name}.`;
+          displayText(message)
+        }
+        object.killedBy(this);
+        checkGameOver();
+      }
+
+      killedBy(object) {
+        if (this.hp <= 0) {
+          object.exp = object.exp + this.exp;
+          gameOver = true;
+        }
       }
 
     }
 
-    const player = new Hero("Warrior", 20, 1, 20, 1, 3, 1, 3, 1, 3, 1, 3, 1, 5, 1)
+    const player = new Hero("Warrior", 20, 1, 20, 1, 3, 1, 3, 1, 3, 1, 3, 1, 5, 1, 1, 0)
     console.log(player);
     const enemy = new Monster("Goblin", 20, 20, 2, 2, 2, 2, 2, 100, 100);
     console.log(enemy);
