@@ -18,6 +18,18 @@ const UserSchema = new Schema({
       'Password should be four characters or longer'
     ]
   },
+  knightLevel: {
+    type: Number,
+    default: 1
+  },
+  mageLevel: {
+    type: Number,
+    default: 1
+  },
+  thiefLevel: {
+    type: Number,
+    default: 1
+  }
 })
 
 class newUser {

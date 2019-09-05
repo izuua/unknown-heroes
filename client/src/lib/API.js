@@ -16,6 +16,18 @@ export default {
           'Authorization': `Bearer ${authToken}`
         }
       });
+    },
+    getHeroes: function (id) {
+      return axios.get(`/api/users/${id}`)
+    }
+  },
+  
+  Characters: {
+    getCharacters: function() {
+      return axios.get('/api/character')
+    },
+    getEnemies: function() {
+      return axios.get('/api/character/enemies')
     }
   },
 
