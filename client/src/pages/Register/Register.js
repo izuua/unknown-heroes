@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import "./register.css";
 
 import API from '../../lib/API';
 import AuthContext from '../../contexts/AuthContext';
@@ -34,7 +35,7 @@ class Register extends Component {
     }
 
     return (
-      <div className='Login'>
+      <div className='Login' id="registerbackground">
         <div className='row'>
           <div className='col'>
             <h1>Register Account</h1>

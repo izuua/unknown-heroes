@@ -1,0 +1,20 @@
+#loginbackground {
+    background: url("./requestboard.png");
+    background-size: 100%;
+    height: 100vh;
+    font-family: 'Indie Flower', cursive;
+}
+
+.card-body {
+    background-color:rgb(46, 46, 46);
+}
+
+.LoginForm {
+    margin-right: 50px;
+    margin-left: 50px;
+    padding-top: 20px;
+}
+
+#logintext {
+    font-size: 100px;
+}

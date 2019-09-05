@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import "./login.css";
 
 import API from '../../lib/API';
 import AuthContext from '../../contexts/AuthContext';
@@ -51,10 +52,10 @@ class Login extends Component {
     }
 
     return (
-      <div className='Login'>
+      <div className='Login' id="loginbackground">
         <div className='row'>
           <div className='col'>
-            <h1>Login</h1>
+            <h1 id="logintext">Login</h1>
           </div>
         </div>
         {this.state.error &&
