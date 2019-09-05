@@ -4,6 +4,7 @@
   "license": "MIT",
   "main": "server/server.js",
   "scripts": {
+    "seed": "node scripts/seedDB.js",
     "install": "yarn run install:client && yarn run install:server",
     "install:client": "cd client && yarn",
     "install:server": "cd server && yarn",
