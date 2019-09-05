@@ -140,7 +140,8 @@
         // $("#button").show();
         $("button").attr("disabled", false);
         $("#demo").append("<br>")
-      }, ((speed * txt.length))+200);
+      }, ((speed * txt.length))+50);
+
 
       //adds a scrollbar if amount of text in the container is longer than the height
       if ($(".container").height() > $(".inner").height()) {
@@ -153,6 +154,7 @@
 
     function checkGameOver() {
       if (gameOver === true) {
+        // $("button").attr("disabled", true);
         alert("GAME OVER!")
       }
       
@@ -193,7 +195,7 @@
         
         setTimeout(() =>
           object.attack(this),
-          ((speed * message.length))+400)
+          ((speed * message.length))+50)
         object.killedBy(this);
         checkGameOver();
       }
