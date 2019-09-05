@@ -55,7 +55,7 @@ class Login extends Component {
       <div className='Login' id="loginbackground">
         <div className='row'>
           <div className='col'>
-            <h1>Login</h1>
+            <h1 id="logintext">Login</h1>
           </div>
         </div>
         {this.state.error &&

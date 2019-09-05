@@ -25,7 +25,7 @@ class Navigation extends Component {
 
     return (
       <div className='Navigation'>
-        <nav className='navbar navbar-expand-lg navbar-light mb-3'>
+        <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
           <Link className='navbar-brand' to='/'>Unknown Heroes</Link>
           <button className={togglerClass} onClick={this.toggleCollapse} data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
             <span className='navbar-toggler-icon'></span>
