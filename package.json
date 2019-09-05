@@ -4,7 +4,6 @@
   "license": "MIT",
   "main": "server/server.js",
   "scripts": {
-    "seed": "node scripts/seedDB.js",
     "install": "yarn run install:client && yarn run install:server",
     "install:client": "cd client && yarn",
     "install:server": "cd server && yarn",
@@ -18,13 +17,5 @@
   "devDependencies": {
     "concurrently": "^4.1.0",
     "nodemon": "^1.18.10"
-  },
-  "dependencies": {
-    "dotenv": "^8.1.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.6.12",
-    "morgan": "^1.9.1",
-    "passport": "^0.4.0",
-    "passport-jwt": "^4.0.0"
   }
 }

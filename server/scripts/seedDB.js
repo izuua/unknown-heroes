@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const db = require("../server/models");
+const db = require("../models");
 
 mongoose.connect(
     process.env.MONGODB_URI || "mongodb://localhost/unknownheroes"
@@ -86,9 +86,14 @@ const characterSeed = [
     }
 ]
 
+console.log(db);
+
 db.Characters
 .remove({})
-.then(() => db.Characters.collection.insertMany(characterSeed))
+.then(() => {
+    console.log("Removed");
+    return db.Characters.collection.insertMany(characterSeed)
+})
 .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
