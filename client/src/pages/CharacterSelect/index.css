@@ -1,0 +1,15 @@
+a, a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+#game-stage {
+  position: relative;
+  background-color: #EFDFA9;
+  height: 60vh;
+}
+
+#bottom-row {
+  position: absolute;
+  bottom: 5%;
+}
