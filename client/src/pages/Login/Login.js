@@ -23,15 +23,19 @@ class Login extends Component {
       .catch(err => {
         let message;
 
-        switch (err.response.status) {
-          case 401:
-            message = 'Sorry, that email/password combination is not valid. Please try again.';
-            break;
-          case 500:
-            message = 'Server error. Please try again later.';
-            break;
-          default:
-            message = 'Unknown error.';
+        if (err.response) {
+          switch (err.response.status) {
+            case 401:
+              message = 'Sorry, that email/password combination is not valid. Please try again.';
+              break;
+            case 500:
+              message = 'Server error. Please try again later.';
+              break;
+            default:
+              message = 'Unknown error.';
+          }
+        } else {
+          console.log(err)
         }
 
         this.setState({ error: message });
