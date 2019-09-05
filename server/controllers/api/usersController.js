@@ -16,6 +16,12 @@ usersController.get('/me', JWTVerifier, (req, res) => {
   res.json(req.user);
 });
 
+usersController.get("/:id", (req, res) => {
+  db.Users.findById(req.params.id, "knightLevel mageLevel thiefLevel")
+    .then(stats => res.json(stats))
+    .catch(err => console.log(err))
+})
+
 usersController.post('/login', (req, res) => {
   const { email, password } = req.body;
 

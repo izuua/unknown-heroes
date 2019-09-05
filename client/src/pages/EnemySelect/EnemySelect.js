@@ -55,7 +55,7 @@ class EnemySelect extends Component {
                 <div className="col">
                   <input onClick={this.changeEnemy} className="btn btn-info mx-3" type="button" value="<" />
                   <button className="btn btn-success mx-3" type="button">
-                    <Link to={{
+                    <Link className="btn-choice" to={{
                       pathname: "/battle",
                       state: {
                         hero: this.state.hero,

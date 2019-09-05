@@ -1,24 +1,72 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 
 import "./index.css"
 import AuthContext from '../../contexts/AuthContext';
+import API from "../../lib/API"
 
 class CharacterSelect extends Component {
   static contextType = AuthContext
 
   state = {
-    heroes: [
-      { name: "Warrior", hp: 200, mp: 100 },
-      { name: "Wizard", hp: 100, mp: 200 },
-      { name: "Thief", hp: 150, mp: 150 }
-    ],
-    heroClass: 0
+    heroes: [],
+    heroClass: 0,
+    redirectToReferrer: false,
+    isLoaded: false
   }
 
   componentDidMount() {
-    // Load user's hero stats
-    // Set hero stats in state.heroes
+    let id
+    if (!this.context.user) {
+      this.setState({ redirectToReferrer: true })
+    } else {
+      id = this.context.user._id
+
+      API.Users.getHeroes(id)
+        .then(res => {
+          let { knightLevel, thiefLevel, mageLevel } = res.data
+          let userHeroes = []
+
+          userHeroes[0] = {
+            name: "Knight",
+            level: knightLevel
+          }
+          userHeroes[1] = {
+            name: "Thief",
+            level: thiefLevel
+          }
+          userHeroes[2] = {
+            name: "Mage",
+            level: mageLevel
+          }
+
+          API.Characters.getCharacters()
+            .then(res => {
+              userHeroes[0] = {
+                ...userHeroes[0],
+                ...res.data[0]
+              }
+              userHeroes[1] = {
+                ...userHeroes[1],
+                ...res.data[1]
+              }
+              userHeroes[2] = {
+                ...userHeroes[2],
+                ...res.data[2]
+              }
+
+              this.setState({
+                heroes: [
+                  userHeroes[0],
+                  userHeroes[1],
+                  userHeroes[2]
+                ]
+              })
+            })
+            .catch(err => console.log(err))
+            .finally(() => this.setState({ isLoaded: true }))
+        })
+    }
   }
 
   changeCharacter = event => {
@@ -36,36 +84,53 @@ class CharacterSelect extends Component {
   }
 
   render() {
+    const { redirectToReferrer } = this.state
+
+    if (redirectToReferrer) {
+      return <Redirect to="/" />
+    }
+
     return (
       <div className="CharacterSelect">
-        <h1>Character Select</h1>
-        <div id="game-stage">
-          <div className="row no-gutters">
-            <div className="col-6">
-              {/* Scroll image goes here with
+        {this.state.isLoaded ? (
+          <div>
+            <h1>Character Select</h1>
+            <div id="game-stage">
+              <div className="row no-gutters">
+                <div className="col-6">
+                  {/* Scroll image goes here with
                 active user's stats displayed */}
-              <h1>HP: {this.state.heroes[this.state.heroClass].hp}</h1>
-              <h1>MP: {this.state.heroes[this.state.heroClass].mp}</h1>
-            </div>
-            <div className="col-6">
-              {/* Character model goes here */}
-              <h1>Char Model</h1>
-              <h1>Hero Class: {this.state.heroes[this.state.heroClass].name}</h1>
+                  <h1>HP: {this.state.heroes[this.state.heroClass].maxHp}</h1>
+                  <h4>Attack: {this.state.heroes[this.state.heroClass].atk}</h4>
+                  <h4>Defense: {this.state.heroes[this.state.heroClass].def}</h4>
+                  <h4>Accuracy: {this.state.heroes[this.state.heroClass].acc}</h4>
+                  <h4>Evasion: {this.state.heroes[this.state.heroClass].eva}</h4>
+                  <h4>Speed: {this.state.heroes[this.state.heroClass].spd}</h4>
+                </div>
+                <div className="col-6">
+                  {/* Character model goes here */}
+                  <h1>Char Model</h1>
+                  <h1>Hero Class: {this.state.heroes[this.state.heroClass].name}</h1>
+                </div>
+              </div>
+              <div className="row no-gutters w-100" id="bottom-row">
+                <div className="col">
+                  <input onClick={this.changeCharacter} className="btn btn-info mx-3" type="button" value="<" />
+                  <button className="btn btn-success mx-3" type="button">
+                    <Link className="btn-choice" to={{
+                      pathname: "/enemy",
+                      state: this.state.heroes[this.state.heroClass]
+                    }} >Choose Hero</Link>
+                  </button>
+                  <input onClick={this.changeCharacter} className="btn btn-info mx-3" type="button" value=">" />
+                </div>
+              </div>
             </div>
           </div>
-          <div className="row no-gutters w-100" id="bottom-row">
-            <div className="col">
-              <input onClick={this.changeCharacter} className="btn btn-info mx-3" type="button" value="<" />
-              <button className="btn btn-success mx-3" type="button">
-                <Link to={{
-                  pathname: "/enemy",
-                  state: this.state.heroes[this.state.heroClass]
-                }} >Choose Hero</Link>
-              </button>
-              <input onClick={this.changeCharacter} className="btn btn-info mx-3" type="button" value=">" />
-            </div>
-          </div>
-        </div>
+        ) : (
+            <div></div>
+          )
+        }
       </div>
     )
   }

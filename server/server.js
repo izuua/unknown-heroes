@@ -28,7 +28,7 @@ const app = express();
 //-- Mongoose Setup ----------------------------------------------------------
 mongoose.connect(
   process.env.MONGODB_URI ||
-  'mongodb://localhost/ProjectThree'
+  'mongodb://localhost/unknownheroes'
 )
 mongoose.connection.on('error', err => {
   console.log(`Mongoose connection err:\n${err}`)
