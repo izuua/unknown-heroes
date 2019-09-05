@@ -8,7 +8,6 @@ characterController.get('/', (req, res) => {
     ]}
   }, function (err, character) {
     if (err) throw err
-    console.log(character)
       res.json(character);
     });
 });
@@ -20,7 +19,6 @@ characterController.get('/enemies', (req, res) => {
     ]}
   }, function (err, enemy) {
     if (err) throw err
-    console.log(enemy)
       res.json(enemy);
     });
 });

@@ -11,7 +11,8 @@ class Battle extends Component {
   }
 
   render() {
-    console.log(this.props.location.state)
+    if (!this.context.user) return <Redirect to="/" />
+
     return (
       <div className="Battle">
         {this.props.location.state ? (

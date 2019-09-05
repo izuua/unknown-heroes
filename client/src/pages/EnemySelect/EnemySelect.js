@@ -2,18 +2,35 @@ import React, { Component } from 'react';
 import { Link, Redirect } from "react-router-dom"
 
 import AuthContext from '../../contexts/AuthContext';
+import API from '../../lib/API';
 
 class EnemySelect extends Component {
   static contextType = AuthContext
 
   state = {
     hero: this.props.location.state,
-    enemies: [
-      { name: "Bat", hp: 100, mp: 100 },
-      { name: "Goblin", hp: 150, mp: 100 },
-      { name: "Dragon", hp: 300, mp: 150 }
-    ],
+    enemies: [],
     enemy: 0,
+    redirectToReferrer: false,
+    isLoaded: false
+  }
+
+  componentDidMount() {
+    if (!this.context.user || !this.props.location.state) {
+      this.setState({ redirectToReferrer: true })
+    } else {
+      API.Characters.getEnemies()
+        .then(res => {
+          let enemies = []
+          res.data.forEach(enemy => {
+            enemies.push(enemy)
+          });
+
+          this.setState({ enemies })
+        })
+        .catch(err => console.log(err))
+        .finally(() => this.setState({ isLoaded: true }))
+    }
   }
 
   changeEnemy = event => {
@@ -31,9 +48,12 @@ class EnemySelect extends Component {
   }
 
   render() {
+    const { redirectToReferrer } = this.state
+    if (redirectToReferrer) return <Redirect to="/" />
+
     return (
       <div className="EnemySelect">
-        {this.props.location.state ? (
+        {this.state.isLoaded ? (
           <div>
             <h1>Enemy Select</h1>
             <h2>You chose: {this.state.hero.name}</h2>
@@ -41,13 +61,17 @@ class EnemySelect extends Component {
               <div className="row no-gutters">
                 <div className="col-6">
                   {/* Scroll image goes here with
-                enemy stats displayed */}
-                  <h1>HP: {this.state.enemies[this.state.enemy].hp}</h1>
-                  <h1>MP: {this.state.enemies[this.state.enemy].mp}</h1>
+                  enemy stats displayed */}
+                  <h1>HP: {this.state.enemies[this.state.enemy].maxHp}</h1>
+                  <h4>Attack: {this.state.enemies[this.state.enemy].atk}</h4>
+                  <h4>Defense: {this.state.enemies[this.state.enemy].def}</h4>
+                  <h4>Accuracy: {this.state.enemies[this.state.enemy].acc}</h4>
+                  <h4>Evasion: {this.state.enemies[this.state.enemy].eva}</h4>
+                  <h4>Speed: {this.state.enemies[this.state.enemy].spd}</h4>
                 </div>
                 <div className="col-6">
-                  <h1>Enemy Model</h1>
                   {/* Enemy model goes here */}
+                  <h1>Enemy Model</h1>
                   <h1>Enemy: {this.state.enemies[this.state.enemy].name}</h1>
                 </div>
               </div>
@@ -69,7 +93,7 @@ class EnemySelect extends Component {
             </div>
           </div>
         ) : (
-            <Redirect to="/character" />
+            <div></div>
           )}
       </div>
     )
