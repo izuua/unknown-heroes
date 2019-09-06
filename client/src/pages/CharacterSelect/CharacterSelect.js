@@ -29,7 +29,7 @@ class CharacterSelect extends Component {
 
           userHeroes[0] = {
             name: "Knight",
-            level: knightLevel
+            level: knightLevel 
           }
           userHeroes[1] = {
             name: "Thief",
@@ -91,16 +91,16 @@ class CharacterSelect extends Component {
     }
 
     return (
-      <div className="CharacterSelect">
+      <div className="CharacterSelect" id="characterbackground">
         {this.state.isLoaded ? (
           <div>
             <h1>Character Select</h1>
-            <div id="game-stage">
+            
               <div className="row no-gutters">
-                <div className="col-6">
+                <div className="col-6" id="characterstats">
                   {/* Scroll image goes here with
                 active user's stats displayed */}
-                  <h1>HP: {this.state.heroes[this.state.heroClass].maxHp}</h1>
+                  <h4>HP: {this.state.heroes[this.state.heroClass].maxHp}</h4>
                   <h4>Attack: {this.state.heroes[this.state.heroClass].atk}</h4>
                   <h4>Defense: {this.state.heroes[this.state.heroClass].def}</h4>
                   <h4>Accuracy: {this.state.heroes[this.state.heroClass].acc}</h4>
@@ -125,7 +125,7 @@ class CharacterSelect extends Component {
                   <input onClick={this.changeCharacter} className="btn btn-info mx-3" type="button" value=">" />
                 </div>
               </div>
-            </div>
+            
           </div>
         ) : (
             <div></div>
