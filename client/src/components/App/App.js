@@ -13,6 +13,8 @@ import CharacterSelect from '../../pages/CharacterSelect/CharacterSelect';
 import EnemySelect from '../../pages/EnemySelect/EnemySelect';
 import Battle from '../../pages/Battle/Battle';
 import NotFound from '../../pages/NotFound/NotFound';
+import Results from '../../pages/Results/Results';
+
 
 import './App.css';
 
@@ -65,6 +67,7 @@ class App extends Component {
               <PrivateRoute path='/character' component={CharacterSelect} />
               <PrivateRoute path='/enemy' component={EnemySelect} />
               <PrivateRoute path='/battle' component={Battle} />
+              <PrivateRoute path='/results' component={Results} />
               <Route component={NotFound} />
             </Switch>
           </div>

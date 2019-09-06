@@ -1,0 +1,30 @@
+.results-bg {
+    background: #383838;
+    color: white;
+}
+
+.col-md-4 {
+    background: #3f455a;
+    padding: 20px;
+    width: 20px
+}
+
+.col-md-8 {
+    background:  #383838;
+    padding: 40px;
+    width: 20px
+}
+
+.col-md-6 {
+    background:  #033b4d;
+    padding: 60px;
+    width: 40px
+    
+}
+
+
+.col-md-12 {
+    background:  #5a3102;
+    padding: 40px;
+    width: 20px
+}
