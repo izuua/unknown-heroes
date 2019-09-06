@@ -16,7 +16,9 @@ class Battle extends Component {
   }
 
   componentDidMount() {
-    API.Battle.battleStart(this.state.match.hero, this.state.match.enemy);
+    console.log(this.context.user);
+    const heroClass = (this.state.match.hero.name).toLowerCase();
+    API.Battle.battleStart(this.state.match.hero, this.state.match.enemy, this.context.user[`${heroClass}Level`]);
   }
 
 
@@ -58,6 +60,7 @@ class Battle extends Component {
     // if (!this.context.user) return <Redirect to="/" />
     const { hero, enemy } = this.state.match
     const { combatText } = this.state
+    console.log(this.context.user);
 
     return (
       <div className="Battle bg-scroll">

@@ -4,6 +4,8 @@ const battlefunctions = require('../../logic/battlefunctions');
 battleController.post("/start", (req, res) => {
     player = req.body.hero;
     enemy = req.body.enemy;
+    plvl = req.body.level;
+    console.log(`Level = ${plvl}`)
     player.hp = player.maxHp;
     enemy.hp = enemy.maxHp;
     console.log(player);
@@ -11,25 +13,38 @@ battleController.post("/start", (req, res) => {
 })
 
 
-battleController.post("/attack", (req, res) => {
-    console.log(req.body);
+// battleController.post("/attack", (req, res) => {
+//     console.log(req.body);
 
-    let messageP = battlefunctions.attack(player, enemy);
-    let messageE = battlefunctions.attack(player, enemy);
-    let gameOver = false;
+//     playerAccCheck = accuracy(player, enemy);
+//     enemyAccCheck = accuracy(player, enemy);
+//     if (playerAccCheck) {
+//         damage = attack(player, enemy);
+//         enemy.hp = enemy.hp-damage;
+//         playerMessage = 
+//     } else {
 
-    // console.log(req.body.hero);
-    // console.log(req.body.monster);
-    console.log(req.body.num);
-    received = true;
+//     }
 
-    res.send({ 
-        messageP: messageP,
-        messageE: messageE,
-        gameOver: gameOver,
-        received: received
-    })
-})
+//     if (enemyAccCheck) {
+//         damage = attack(enemy, player);
+//         player.hp = player.hp-damage;
+//     } else {
+
+//     }
+
+
+//     let gameOver = false;
+
+//     received = true;
+
+//     res.send({ 
+//         playerMessage: playerMessage,
+//         enemyMessage: enemyMessage,
+//         gameOver: gameOver,
+//         received: received
+//     })
+// })
 
 
 
