@@ -12,13 +12,20 @@ class Battle extends Component {
     match: this.props.location.state,
     roundActive: false,
     combatText: "",
-    textCounter: 0
+    textCounter: 0,
+    gameOver: false,
+    heroHp: 0,
+    enemyHp: 0
   }
 
   componentDidMount() {
     console.log(this.context.user);
     const heroClass = (this.state.match.hero.name).toLowerCase();
     API.Battle.battleStart(this.state.match.hero, this.state.match.enemy, this.context.user[`${heroClass}Level`]);
+    this.setState({
+      heroHp: this.state.match.hero.maxHp,
+      enemyHp: this.state.match.enemy.maxHp
+    })
   }
 
 
@@ -60,7 +67,6 @@ class Battle extends Component {
     // if (!this.context.user) return <Redirect to="/" />
     const { hero, enemy } = this.state.match
     const { combatText } = this.state
-    console.log(this.context.user);
 
     return (
       <div className="Battle bg-scroll">
@@ -73,11 +79,11 @@ class Battle extends Component {
               <div className="col position-relative">
                 <div className="border border-dark bg-tan rounded" id="hero-stats">
                   <div className="h4">{hero.name}</div>
-                  <div className="lead">HP: {hero.maxHp}</div>
+                  <div className="lead">HP: {this.state.heroHp}/{this.state.match.hero.maxHp}</div>
                 </div>
                 <div className="border border-dark bg-tan rounded" id="enemy-stats">
                   <div className="h4">{enemy.name}</div>
-                  <div className="lead">HP: {enemy.maxHp}</div>
+                  <div className="lead">HP: {this.state.enemyHp}/{this.state.match.enemy.maxHp}</div>
                 </div>
                 <div className="border border-dark bg-tan rounded" id="action-menu">
                   <div id="action-btns">
