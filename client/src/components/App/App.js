@@ -51,11 +51,13 @@ class App extends Component {
   }
 
   render() {
+    const isLoggedIn = this.state.auth.user ? "logged-in" : "logged-out"
+
     return (
       <AuthContext.Provider value={this.state.auth}>
         <div className='App'>
           <Navigation />
-          
+          <div className={isLoggedIn}>
             <Switch>
               <Route exact path='/' component={Home} />
               <Route path='/login' component={Login} />
@@ -65,7 +67,7 @@ class App extends Component {
               <PrivateRoute path='/battle' component={Battle} />
               <Route component={NotFound} />
             </Switch>
-          
+          </div>
         </div>
       </AuthContext.Provider>
     );

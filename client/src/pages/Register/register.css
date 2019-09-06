@@ -1,6 +1,6 @@
 #registerbackground {
     background: url("./requestboard.png");
     background-size: 100%;
-    height: 100vh;
+    height: 100%;
     font-family: 'Indie Flower', cursive;
 }
