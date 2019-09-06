@@ -4,6 +4,9 @@ import { Link, Redirect } from "react-router-dom"
 import "./index.css"
 import AuthContext from '../../contexts/AuthContext';
 import API from "../../lib/API"
+import Knight from "../../img/knight_idle.png"
+import Mage from "../../img/mage_idle.png"
+import Thief from "../../img/thief_idle.png"
 
 class CharacterSelect extends Component {
   static contextType = AuthContext
@@ -12,7 +15,8 @@ class CharacterSelect extends Component {
     heroes: [],
     heroClass: 0,
     redirectToReferrer: false,
-    isLoaded: false
+    isLoaded: false,
+    images: [Knight, Thief, Mage]
   }
 
   componentDidMount() {
@@ -97,7 +101,8 @@ class CharacterSelect extends Component {
             <h1>Character Select</h1>
             
               <div className="row no-gutters">
-                <div className="col-6" id="characterstats">
+                <div className="col-6" id="statsbackground">
+                  <div className="mx-auto" id="characterstats">
                   {/* Scroll image goes here with
                 active user's stats displayed */}
                   <h4>HP: {this.state.heroes[this.state.heroClass].maxHp}</h4>
@@ -106,10 +111,11 @@ class CharacterSelect extends Component {
                   <h4>Accuracy: {this.state.heroes[this.state.heroClass].acc}</h4>
                   <h4>Evasion: {this.state.heroes[this.state.heroClass].eva}</h4>
                   <h4>Speed: {this.state.heroes[this.state.heroClass].spd}</h4>
+                  </div>
                 </div>
                 <div className="col-6">
                   {/* Character model goes here */}
-                  <h1>Char Model</h1>
+                  <img src={this.state.images[this.state.heroClass]} alt={this.state.heroes[this.state.heroClass].name} id="heromodel"></img>
                   <h1>Hero Class: {this.state.heroes[this.state.heroClass].name}</h1>
                 </div>
               </div>
