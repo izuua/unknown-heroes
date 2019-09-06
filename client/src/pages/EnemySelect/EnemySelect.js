@@ -15,6 +15,7 @@ class EnemySelect extends Component {
     isLoaded: false
   }
 
+
   componentDidMount() {
     if (!this.context.user || !this.props.location.state) {
       this.setState({ redirectToReferrer: true })
@@ -82,7 +83,8 @@ class EnemySelect extends Component {
                     pathname: "/battle",
                     state: {
                       hero: this.state.hero,
-                      enemy: this.state.enemies[this.state.enemy]
+                      enemy: this.state.enemies[this.state.enemy],
+                      herolv: this.context.user[`${this.state.hero.name.toLowerCase()}Level`]
                     }
                   }} ><button className="btn btn-success mx-3" type="button">Choose Enemy</button></Link>
                   <input onClick={this.changeEnemy} className="btn btn-info mx-3" type="button" value=">" />
