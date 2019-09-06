@@ -13,38 +13,43 @@ battleController.post("/start", (req, res) => {
 })
 
 
-// battleController.post("/attack", (req, res) => {
-//     console.log(req.body);
+battleController.get("/attack", (req, res) => {
+    console.log(req.body);
 
-//     playerAccCheck = accuracy(player, enemy);
-//     enemyAccCheck = accuracy(player, enemy);
-//     if (playerAccCheck) {
-//         damage = attack(player, enemy);
-//         enemy.hp = enemy.hp-damage;
-//         playerMessage = 
-//     } else {
+    playerAccCheck = battlefunctions.accuracy(player, enemy);
+    enemyAccCheck = battlefunctions.accuracy(player, enemy);
+    if (playerAccCheck) {
+        damage =battlefunctions.attack(player, enemy);
+        enemy.hp = enemy.hp-damage;
+        playerMessage = `${player.name} hit target for ${damage}`
+    } else {
 
-//     }
+        playerMessage = `${player.name} misses ${enemy.name}`
+    }
 
-//     if (enemyAccCheck) {
-//         damage = attack(enemy, player);
-//         player.hp = player.hp-damage;
-//     } else {
+    if (enemyAccCheck) {
+        damage = battlefunctions.attack(enemy, player);
+        player.hp = player.hp-damage;
+        enemyMessage = `${enemy.name} hit taget for ${damage}`
+    } else {
+enemyMessage = `${enemy.name} misses ${player.name}`
+    }
 
-//     }
 
+    let gameOver = false;
 
-//     let gameOver = false;
+    received = true;
 
-//     received = true;
+    res.send({ 
+        playerMessage: playerMessage,
+        enemyMessage: enemyMessage,
+        gameOver: gameOver,
+        received: received,
+        playerHp: player.hp,
+        enemyHp: enemy.hp 
 
-//     res.send({ 
-//         playerMessage: playerMessage,
-//         enemyMessage: enemyMessage,
-//         gameOver: gameOver,
-//         received: received
-//     })
-// })
+    })
+})
 
 
 

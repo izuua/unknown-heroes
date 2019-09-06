@@ -35,8 +35,11 @@ class Battle extends Component {
     // Attack logic goes here 
 
     // Sample response text for typewriter
-    let attackText = 'You attacked for 10 damage! ';
-    this.typeWriter(attackText);
+    API.Battle.attack().then((res)=>{
+      console.log(res.data)
+      this.typeWriter(` ${res.data.playerMessage} ${res.data.enemyMessage}`)
+      
+    });
   }
   
   typeWriter = newText => {
