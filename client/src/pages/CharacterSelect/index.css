@@ -5,8 +5,7 @@
 
 #game-stage {
   position: relative;
-  background-color: #EFDFA9;
-  height: 60vh;
+  height: 65vh;
 }
 
 #bottom-row {
@@ -18,7 +17,7 @@
   background: url("./scroll.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
-  height: 100vh;
+  height: 100%;
   font-family: 'Indie Flower', cursive;
 }
 

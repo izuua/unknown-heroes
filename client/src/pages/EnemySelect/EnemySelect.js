@@ -52,7 +52,7 @@ class EnemySelect extends Component {
     if (redirectToReferrer) return <Redirect to="/" />
 
     return (
-      <div className="EnemySelect">
+      <div className="EnemySelect bg-scroll">
         {this.state.isLoaded ? (
           <div>
             <h1>Enemy Select</h1>

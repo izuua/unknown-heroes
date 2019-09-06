@@ -31,3 +31,22 @@
     transform: rotate(360deg);
   }
 }
+
+.logged-in {
+  height: calc(100vh - 60px);
+}
+
+.logged-out {
+  height: calc(100vh - 56px);
+}
+
+.bg-tan {
+  background-color: #EFDFA9
+}
+
+.bg-scroll {
+  background: url("../../pages/CharacterSelect/scroll.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100%;
+}
