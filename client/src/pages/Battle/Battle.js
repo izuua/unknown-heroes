@@ -20,8 +20,7 @@ class Battle extends Component {
 
   componentDidMount() {
     console.log(this.context.user);
-    const heroClass = (this.state.match.hero.name).toLowerCase();
-    API.Battle.battleStart(this.state.match.hero, this.state.match.enemy, this.context.user[`${heroClass}Level`]);
+    API.Battle.battleStart(this.state.match.hero, this.state.match.enemy, this.props.location.state.herolv);
     this.setState({
       heroHp: this.state.match.hero.maxHp,
       enemyHp: this.state.match.enemy.maxHp

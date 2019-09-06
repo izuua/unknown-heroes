@@ -29,7 +29,7 @@ const UserSchema = new Schema({
   thiefLevel: {
     type: Number,
     default: 1
-  }
+  },
 })
 
 class newUser {
