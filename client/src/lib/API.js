@@ -54,6 +54,9 @@ export default {
   Battle: {
     battleStart: function(hero, enemy, level) {
       return axios.post('/api/battle/start', {hero, enemy, level})
+    },
+    attack: function(){
+      return axios.get('/api/battle/attack')
     }
   }
   
