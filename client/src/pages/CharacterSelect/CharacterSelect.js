@@ -33,7 +33,7 @@ class CharacterSelect extends Component {
 
           userHeroes[0] = {
             name: "Knight",
-            level: knightLevel 
+            level: knightLevel
           }
           userHeroes[1] = {
             name: "Thief",
@@ -99,10 +99,10 @@ class CharacterSelect extends Component {
         {this.state.isLoaded ? (
           <div>
             <h1>Character Select</h1>
-            
-              <div className="row no-gutters">
-                <div className="col-6" id="statsbackground">
-                  <div className="mx-auto" id="characterstats">
+
+            <div className="row no-gutters">
+              <div className="col-6" id="statsbackground">
+                <div className="mx-auto" id="characterstats">
                   {/* Scroll image goes here with
                 active user's stats displayed */}
                   <h4>HP: {this.state.heroes[this.state.heroClass].maxHp}</h4>
@@ -111,27 +111,25 @@ class CharacterSelect extends Component {
                   <h4>Accuracy: {this.state.heroes[this.state.heroClass].acc}</h4>
                   <h4>Evasion: {this.state.heroes[this.state.heroClass].eva}</h4>
                   <h4>Speed: {this.state.heroes[this.state.heroClass].spd}</h4>
-                  </div>
-                </div>
-                <div className="col-6">
-                  {/* Character model goes here */}
-                  <img src={this.state.images[this.state.heroClass]} alt={this.state.heroes[this.state.heroClass].name} id="heromodel"></img>
-                  <h1>Hero Class: {this.state.heroes[this.state.heroClass].name}</h1>
                 </div>
               </div>
-              <div className="row no-gutters w-100" id="bottom-row">
-                <div className="col">
-                  <input onClick={this.changeCharacter} className="btn btn-info mx-3" type="button" value="<" />
-                  <button className="btn btn-success mx-3" type="button">
-                    <Link className="btn-choice" to={{
-                      pathname: "/enemy",
-                      state: this.state.heroes[this.state.heroClass]
-                    }} >Choose Hero</Link>
-                  </button>
-                  <input onClick={this.changeCharacter} className="btn btn-info mx-3" type="button" value=">" />
-                </div>
+              <div className="col-6">
+                {/* Character model goes here */}
+                <img src={this.state.images[this.state.heroClass]} alt={this.state.heroes[this.state.heroClass].name} id="heromodel"></img>
+                <h1>Hero Class: {this.state.heroes[this.state.heroClass].name}</h1>
               </div>
-            
+            </div>
+            <div className="row no-gutters w-100" id="bottom-row">
+              <div className="col">
+                <input onClick={this.changeCharacter} className="btn btn-info mx-3" type="button" value="<" />
+                <Link className="btn-choice" to={{
+                  pathname: "/enemy",
+                  state: this.state.heroes[this.state.heroClass]
+                }} ><button className="btn btn-success mx-3" type="button">Choose Hero</button></Link>
+                <input onClick={this.changeCharacter} className="btn btn-info mx-3" type="button" value=">" />
+              </div>
+            </div>
+
           </div>
         ) : (
             <div></div>
