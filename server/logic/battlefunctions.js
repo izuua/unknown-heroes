@@ -17,7 +17,7 @@ battlefunctions = {
         accCheck = battlefunctions.accuracy(attacker, defender)
         if (accCheck === true) {
             damage = (battlefunctions.random(1,5) + (attacker.atk - defender.def));
-            return `The ${attacker.name} hits the ${req.body.defender.name} for ${damage} damage.`
+            return `The ${attacker.name} hits the ${defender.name} for ${damage} damage.`
         } else {
             return `The ${attacker.name} misses the ${defender.name}.`
         }

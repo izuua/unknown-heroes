@@ -1,17 +1,21 @@
 const battleController = require('express').Router();
 const battlefunctions = require('../../logic/battlefunctions');
-// const app = require('../../server.js')
 
 battleController.post("/start", (req, res) => {
-    
+    player = req.body.hero;
+    enemy = req.body.enemy;
+    player.hp = player.maxHp;
+    enemy.hp = enemy.maxHp;
+    console.log(player);
+    console.log(enemy);
 })
 
 
 battleController.post("/attack", (req, res) => {
     console.log(req.body);
 
-    let messageP = battlefunctions.attack(req.body.hero, req.body.monster);
-    let messageE = battlefunctions.attack(req.body.monster, req.body.hero);
+    let messageP = battlefunctions.attack(player, enemy);
+    let messageE = battlefunctions.attack(player, enemy);
     let gameOver = false;
 
     // console.log(req.body.hero);

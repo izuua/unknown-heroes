@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom"
 
 import "./battle.css"
 import AuthContext from '../../contexts/AuthContext';
+import API from '../../lib/API';
 
 class Battle extends Component {
   static contextType = AuthContext
@@ -13,6 +14,11 @@ class Battle extends Component {
     combatText: "",
     textCounter: 0
   }
+
+  componentDidMount() {
+    API.Battle.battleStart(this.state.match.hero, this.state.match.enemy);
+  }
+
 
   attack = () => {
     // Return if round is active
@@ -95,4 +101,4 @@ class Battle extends Component {
   }
 }
 
-export default Battle
+export default Battle;
