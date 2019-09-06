@@ -47,13 +47,13 @@ class Battle extends Component {
       let text = this.state.combatText
       this.setState({ 
         combatText: text + newText.charAt(i),
-        textCounter: i + 1
+        textCounter: i + 1,
       })
+      setTimeout(() => this.typeWriter(newText), speed);
     } else {
       this.setState({ roundActive: false })
     }
 
-    setTimeout(() => this.typeWriter(newText), speed);
   }
 
   render() {
