@@ -2,6 +2,10 @@ const battleController = require('express').Router();
 const battlefunctions = require('../../logic/battlefunctions');
 // const app = require('../../server.js')
 
+battleController.post("/start", (req, res) => {
+    
+})
+
 
 battleController.post("/attack", (req, res) => {
     console.log(req.body);
