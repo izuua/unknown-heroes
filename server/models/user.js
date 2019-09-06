@@ -30,6 +30,18 @@ const UserSchema = new Schema({
     type: Number,
     default: 1
   },
+  knightExp: {
+    type: Number,
+    default: 0
+  },
+  mageExp: {
+    type: Number,
+    default: 0
+  },
+  thiefExp: {
+    type: Number,
+    default: 0
+  }
 })
 
 class newUser {
