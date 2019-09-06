@@ -25,3 +25,13 @@
   background: url("./scrollforstats.png") center;
   background-repeat: no-repeat;
 }
+
+#heromodel {
+  height: 300px;
+  width: 300px;
+}
+
+#statsbackground {
+  height: 500px;
+  width: 300px;
+}
