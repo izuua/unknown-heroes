@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import "./register.css";
 
 import API from '../../lib/API';
 import AuthContext from '../../contexts/AuthContext';
@@ -34,21 +35,21 @@ class Register extends Component {
     }
 
     return (
-      <div className='Login'>
-        <div className='row'>
+      <div className='Login' id="registerbackground">
+        <div className='row no-gutters'>
           <div className='col'>
             <h1>Register Account</h1>
           </div>
         </div>
         {this.state.error &&
-          <div className='row'>
+          <div className='row no-gutters'>
             <div className='col'>
               <div className='alert alert-danger mb-3' role='alert'>
                 {this.state.error}
               </div>
             </div>
           </div>}
-        <div className='row'>
+        <div className='row no-gutters'>
           <div className='col'>
             <RegistrationForm onSubmit={this.handleSubmit} />
           </div>

@@ -1,6 +1,25 @@
-body {
-    background: url("https://static.gosunoob.com/img/1/2017/10/ac-origins-thick-skin-side-quest.jpg");
-    background-repeat: no-repeat;
-    background-size: 500px;
-    background-size: cover;
-  }
+#homepage {
+  background: url("https://static.gosunoob.com/img/1/2017/10/ac-origins-thick-skin-side-quest.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100%;
+  font-family: 'Indie Flower', cursive;
+}
+
+#gametitle {
+  font-size: 200px;
+}
+
+#login {
+  padding: 10px 20px;
+  text-align: center;
+  margin: 15px;
+  border-radius: 25px;
+}
+
+#createaccount {
+  padding: 10px;
+  text-align: center;
+  margin: 15px;
+  border-radius: 25px;
+}
