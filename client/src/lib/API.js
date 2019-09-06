@@ -49,5 +49,12 @@ export default {
     getOne: function (name){
       return axios.get(`/api/hero${name}`)
     }
-  } 
+  },
+
+  Battle: {
+    battleStart: function(hero, enemy, level) {
+      return axios.post('/api/battle/start', {hero, enemy, level})
+    }
+  }
+  
 }

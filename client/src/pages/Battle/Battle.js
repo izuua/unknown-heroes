@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom"
 
 import "./battle.css"
 import AuthContext from '../../contexts/AuthContext';
+import API from '../../lib/API';
 
 class Battle extends Component {
   static contextType = AuthContext
@@ -13,6 +14,13 @@ class Battle extends Component {
     combatText: "",
     textCounter: 0
   }
+
+  componentDidMount() {
+    console.log(this.context.user);
+    const heroClass = (this.state.match.hero.name).toLowerCase();
+    API.Battle.battleStart(this.state.match.hero, this.state.match.enemy, this.context.user[`${heroClass}Level`]);
+  }
+
 
   attack = () => {
     // Return if round is active
@@ -39,19 +47,20 @@ class Battle extends Component {
       let text = this.state.combatText
       this.setState({ 
         combatText: text + newText.charAt(i),
-        textCounter: i + 1
+        textCounter: i + 1,
       })
+      setTimeout(() => this.typeWriter(newText), speed);
     } else {
       this.setState({ roundActive: false })
     }
 
-    setTimeout(() => this.typeWriter(newText), speed);
   }
 
   render() {
     // if (!this.context.user) return <Redirect to="/" />
     const { hero, enemy } = this.state.match
     const { combatText } = this.state
+    console.log(this.context.user);
 
     return (
       <div className="Battle bg-scroll">
@@ -95,4 +104,4 @@ class Battle extends Component {
   }
 }
 
-export default Battle
+export default Battle;
