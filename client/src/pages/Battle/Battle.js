@@ -42,8 +42,12 @@ class Battle extends Component {
 
     // Sample response text for typewriter
     API.Battle.attack().then((res)=>{
-      // console.log(res.data)
-      this.typeWriter(` ${res.data.playerMessage} ${res.data.enemyMessage}`)
+      console.log(res.data)
+      this.typeWriter(` ${res.data.playerMessage} ${res.data.enemyMessage}`);
+      this.setState({
+        heroHp: res.data.playerHp,
+        enemyHp: res.data.enemyHp
+      })
       if (res.data.gameOver === true) {
         this.setState({
           gameOver: true
