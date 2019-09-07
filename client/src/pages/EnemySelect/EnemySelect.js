@@ -19,6 +19,7 @@ class EnemySelect extends Component {
     images: [Bat, Goblin, Dragon]
   }
 
+
   componentDidMount() {
     if (!this.context.user || !this.props.location.state) {
       this.setState({ redirectToReferrer: true })
@@ -84,15 +85,14 @@ class EnemySelect extends Component {
               <div className="row no-gutters w-100" id="bottom-row">
                 <div className="col">
                   <input onClick={this.changeEnemy} className="btn btn-info mx-3" type="button" value="<" />
-                  <button className="btn btn-success mx-3" type="button">
-                    <Link className="btn-choice" to={{
-                      pathname: "/battle",
-                      state: {
-                        hero: this.state.hero,
-                        enemy: this.state.enemies[this.state.enemy]
-                      }
-                    }} >Choose Enemy</Link>
-                  </button>
+                  <Link className="btn-choice" to={{
+                    pathname: "/battle",
+                    state: {
+                      hero: this.state.hero,
+                      enemy: this.state.enemies[this.state.enemy],
+                      herolv: this.context.user[`${this.state.hero.name.toLowerCase()}Level`]
+                    }
+                  }} ><button className="btn btn-success mx-3" type="button">Choose Enemy</button></Link>
                   <input onClick={this.changeEnemy} className="btn btn-info mx-3" type="button" value=">" />
                 </div>
               </div>

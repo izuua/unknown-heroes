@@ -117,6 +117,7 @@ class CharacterSelect extends Component {
                 {/* Character model goes here */}
                 <img src={this.state.images[this.state.heroClass]} alt={this.state.heroes[this.state.heroClass].name} id="heromodel"></img>
                 <h1>Hero Class: {this.state.heroes[this.state.heroClass].name}</h1>
+
               </div>
             </div>
             <div className="row no-gutters w-100" id="bottom-row">
@@ -131,6 +132,7 @@ class CharacterSelect extends Component {
                 <input onClick={this.changeCharacter} className="btn btn-info mx-3" type="button" value=">" />
               </div>
             </div>
+
 
           </div>
         ) : (

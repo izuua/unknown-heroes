@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom"
 
 import "./battle.css"
 import AuthContext from '../../contexts/AuthContext';
+import API from '../../lib/API';
 
 class Battle extends Component {
   static contextType = AuthContext
@@ -11,8 +12,21 @@ class Battle extends Component {
     match: this.props.location.state,
     roundActive: false,
     combatText: "",
-    textCounter: 0
+    textCounter: 0,
+    gameOver: false,
+    heroHp: 0,
+    enemyHp: 0
   }
+
+  componentDidMount() {
+    console.log(this.context.user);
+    API.Battle.battleStart(this.state.match.hero, this.state.match.enemy, this.props.location.state.herolv);
+    this.setState({
+      heroHp: this.state.match.hero.maxHp,
+      enemyHp: this.state.match.enemy.maxHp
+    })
+  }
+
 
   attack = () => {
     // Return if round is active
@@ -27,8 +41,19 @@ class Battle extends Component {
     // Attack logic goes here 
 
     // Sample response text for typewriter
-    let attackText = 'You attacked for 10 damage! ';
-    this.typeWriter(attackText);
+    API.Battle.attack().then((res)=>{
+      console.log(res.data)
+      this.typeWriter(` ${res.data.playerMessage} ${res.data.enemyMessage}`);
+      this.setState({
+        heroHp: res.data.playerHp,
+        enemyHp: res.data.enemyHp
+      })
+      if (res.data.gameOver === true) {
+        this.setState({
+          gameOver: true
+        })
+      }
+    });
   }
   
   typeWriter = newText => {
@@ -39,13 +64,13 @@ class Battle extends Component {
       let text = this.state.combatText
       this.setState({ 
         combatText: text + newText.charAt(i),
-        textCounter: i + 1
+        textCounter: i + 1,
       })
+      setTimeout(() => this.typeWriter(newText), speed);
     } else {
       this.setState({ roundActive: false })
     }
 
-    setTimeout(() => this.typeWriter(newText), speed);
   }
 
   render() {
@@ -64,11 +89,11 @@ class Battle extends Component {
               <div className="col position-relative">
                 <div className="border border-dark bg-tan rounded" id="hero-stats">
                   <div className="h4">{hero.name}</div>
-                  <div className="lead">HP: {hero.maxHp}</div>
+                  <div className="lead">HP: {this.state.heroHp}/{this.state.match.hero.maxHp}</div>
                 </div>
                 <div className="border border-dark bg-tan rounded" id="enemy-stats">
                   <div className="h4">{enemy.name}</div>
-                  <div className="lead">HP: {enemy.maxHp}</div>
+                  <div className="lead">HP: {this.state.enemyHp}/{this.state.match.enemy.maxHp}</div>
                 </div>
                 <div className="border border-dark bg-tan rounded" id="action-menu">
                   <div id="action-btns">
@@ -95,4 +120,4 @@ class Battle extends Component {
   }
 }
 
-export default Battle
+export default Battle;
