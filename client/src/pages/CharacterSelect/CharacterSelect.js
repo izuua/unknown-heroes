@@ -6,7 +6,9 @@ import AuthContext from '../../contexts/AuthContext';
 import API from "../../lib/API"
 import Knight from "../../img/knight_idle.png"
 import Mage from "../../img/mage_idle.png"
-import Thief from "../../img/thief_idle.png"
+// import Thief from "../../img/thief_idle.png"
+import ThiefSm from "../../img/thief_sm.png"
+import Scroll from "../../img/stats-scroll.png"
 
 class CharacterSelect extends Component {
   static contextType = AuthContext
@@ -16,7 +18,7 @@ class CharacterSelect extends Component {
     heroClass: 0,
     redirectToReferrer: false,
     isLoaded: false,
-    images: [Knight, Thief, Mage]
+    images: [Knight, ThiefSm, Mage]
   }
 
   componentDidMount() {
@@ -98,42 +100,38 @@ class CharacterSelect extends Component {
       <div className="CharacterSelect" id="characterbackground">
         {this.state.isLoaded ? (
           <div>
-            <h1>Character Select</h1>
-
-            <div className="row no-gutters">
-              <div className="col-6" id="statsbackground">
-                <div className="mx-auto" id="characterstats">
-                  {/* Scroll image goes here with
-                active user's stats displayed */}
-                  <h4>HP: {this.state.heroes[this.state.heroClass].maxHp}</h4>
-                  <h4>Attack: {this.state.heroes[this.state.heroClass].atk}</h4>
-                  <h4>Defense: {this.state.heroes[this.state.heroClass].def}</h4>
-                  <h4>Accuracy: {this.state.heroes[this.state.heroClass].acc}</h4>
-                  <h4>Evasion: {this.state.heroes[this.state.heroClass].eva}</h4>
-                  <h4>Speed: {this.state.heroes[this.state.heroClass].spd}</h4>
+            <div className="display-4">Character Select</div>
+            <div className="row vh-75 no-gutters">
+              <div className="col-6">
+                <div className="scroll-container">
+                  <img src={Scroll} alt="Scroll with stats" />
+                  <div id="stats-text">
+                    <div className="h1">Hero Class: <strong>{this.state.heroes[this.state.heroClass].name}</strong></div>
+                    <div>HP: {this.state.heroes[this.state.heroClass].maxHp}</div>
+                    <div>Attack: {this.state.heroes[this.state.heroClass].atk}</div>
+                    <div>Defense: {this.state.heroes[this.state.heroClass].def}</div>
+                    <div>Accuracy: {this.state.heroes[this.state.heroClass].acc}</div>
+                    <div>Evasion: {this.state.heroes[this.state.heroClass].eva}</div>
+                    <div>Speed: {this.state.heroes[this.state.heroClass].spd}</div>
+                  </div>
                 </div>
               </div>
               <div className="col-6">
-                {/* Character model goes here */}
-                <img src={this.state.images[this.state.heroClass]} alt={this.state.heroes[this.state.heroClass].name} id="heromodel"></img>
-                <h1>Hero Class: {this.state.heroes[this.state.heroClass].name}</h1>
-
+                <div className="model-container">
+                  <img src={this.state.images[this.state.heroClass]} alt={this.state.heroes[this.state.heroClass].name} id="heromodel" />
+                </div>
               </div>
             </div>
             <div className="row no-gutters w-100" id="bottom-row">
               <div className="col">
                 <input onClick={this.changeCharacter} className="btn btn-info mx-3" type="button" value="<" />
-                <button className="btn btn-success mx-3" type="button">
-                  <Link className="btn-choice" to={{
-                    pathname: "/enemy",
-                    state: this.state.heroes[this.state.heroClass]
-                  }} >Choose Hero</Link>
-                </button>
+                <Link className="btn-choice" to={{
+                  pathname: "/enemy",
+                  state: this.state.heroes[this.state.heroClass]
+                }} ><button className="btn btn-success mx-3" type="button">Choose Hero</button></Link>
                 <input onClick={this.changeCharacter} className="btn btn-info mx-3" type="button" value=">" />
               </div>
             </div>
-
-
           </div>
         ) : (
             <div></div>

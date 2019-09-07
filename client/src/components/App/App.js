@@ -15,7 +15,6 @@ import Battle from '../../pages/Battle/Battle';
 import NotFound from '../../pages/NotFound/NotFound';
 import Results from '../../pages/Results/Results';
 
-
 import './App.css';
 
 class App extends Component {
@@ -53,13 +52,13 @@ class App extends Component {
   }
 
   render() {
-    const isLoggedIn = this.state.auth.user ? "logged-in" : "logged-out"
-
+    const navSize = (this.state.auth.user && window.innerWidth > 992)  ? "nav-lg" : "nav-sm"
+    console.log(navSize)
     return (
       <AuthContext.Provider value={this.state.auth}>
         <div className='App'>
           <Navigation />
-          <div className={isLoggedIn}>
+          <div className={navSize}>
             <Switch>
               <Route exact path='/' component={Home} />
               <Route path='/login' component={Login} />

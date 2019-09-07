@@ -1,25 +1,92 @@
 #characterbackground {
-    background: url("./scroll.jpg");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    height: 100%;
-    font-family: 'Indie Flower', cursive;
+  background: url("./scroll.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100%;
+  font-family: 'Indie Flower', cursive;
 }
 
+.CharacterSelect {
+  font-size: calc(20px + (30 - 20) * ((100vw - 300px) / (1600 - 300)));
+}
+  
+.btn-choice, .btn-choice:hover {
+  text-decoration: none;
+  color: white;
+}
+  
+#game-stage {
+  position: relative;
+  height: 65vh;
+}
+  
+#bottom-row {
+  position: absolute;
+  bottom: 5%;
+}
+  
+#characterbackground {
+  background: url("./scroll.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100%;
+}
+  
+.indie-flower {
+  font-family: 'Indie Flower', cursive;
+}
+  
 #characterstats {
-    background: url("./scrollforstats.png") 40px center;
-    background-repeat: no-repeat;
-    background-size: 300px;
-    height: 400px;
-    width: 50%;
+  /* background: url("./scrollforstats.png") center; */
+  /* background-repeat: no-repeat; */
+  height: 100%;
+  width: 33%;
 }
-
+  
+.vh-75 {
+  height: 75vh;
+}
+  
+.scroll-container {
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  right: 10%;
+}
+  
+.scroll-container img {
+  max-height: 100%;
+  max-width: 100%;
+  vertical-align: middle
+}
+  
+.model-container {
+  min-height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 10%;
+}
+  
+#stats-text {
+  position: absolute;
+  z-index: 999;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 25%;
+  text-align: center;
+  width: 60%;
+}
+  
 #heromodel {
-    height: 300px;
-    width: 400px;
+  margin-top: 25%;
+  height: 400px;
+  width: 400px;
+  max-height: 100%;
+  max-width: 100%;
 }
-
-#characterstats {
-    padding: 80px;
-    padding-right: 30px;
+  
+#statsbackground {
+  height: 65vh;
+  width: 50vh;
 }
