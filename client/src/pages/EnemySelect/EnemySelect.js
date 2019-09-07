@@ -6,6 +6,7 @@ import API from '../../lib/API';
 import Bat from "../../img/bat1.png"
 import Goblin from "../../img/goblin1.png"
 import Dragon from "../../img/dragon2.png"
+import Scroll from "../../img/stats-scroll.png"
 
 class EnemySelect extends Component {
   static contextType = AuthContext
@@ -60,41 +61,40 @@ class EnemySelect extends Component {
       <div className="EnemySelect" id="enemybackground">
         {this.state.isLoaded ? (
           <div>
-            <h1>Enemy Select</h1>
-            <h2>You chose: {this.state.hero.name}</h2>
-            <div id="game-stage">
-              <div className="row no-gutters">
-                <div className="col-6" id="enemystatsbackground">
-                  <div className="mx-auto" id="enemystats">
-                    {/* Scroll image goes here with
-                  enemy stats displayed */}
-                    <h4>HP: {this.state.enemies[this.state.enemy].maxHp}</h4>
-                    <h4>Attack: {this.state.enemies[this.state.enemy].atk}</h4>
-                    <h4>Defense: {this.state.enemies[this.state.enemy].def}</h4>
-                    <h4>Accuracy: {this.state.enemies[this.state.enemy].acc}</h4>
-                    <h4>Evasion: {this.state.enemies[this.state.enemy].eva}</h4>
-                    <h4>Speed: {this.state.enemies[this.state.enemy].spd}</h4>
+            <div className="display-4">Enemy Select -- You chose: {this.state.hero.name}</div>
+            <div className="row vh-75 no-gutters">
+              <div className="col-6">
+                <div className="scroll-container">
+                  <img src={Scroll} alt="Scroll with stats" />
+                  <div id="stats-text">
+                    <div className="h1">Enemy: <strong>{this.state.enemies[this.state.enemy].name}</strong></div>
+                    <div>HP: {this.state.enemies[this.state.enemy].maxHp}</div>
+                    <div>Attack: {this.state.enemies[this.state.enemy].atk}</div>
+                    <div>Defense: {this.state.enemies[this.state.enemy].def}</div>
+                    <div>Accuracy: {this.state.enemies[this.state.enemy].acc}</div>
+                    <div>Evasion: {this.state.enemies[this.state.enemy].eva}</div>
+                    <div>Speed: {this.state.enemies[this.state.enemy].spd}</div>
                   </div>
                 </div>
-                <div className="col-6">
-                  <h1>Enemy: {this.state.enemies[this.state.enemy].name}</h1>
-                  {/* Enemy model goes here */}
-                  <img src={this.state.images[this.state.enemy]} alt={this.state.enemies[this.state.enemy].name} id="enemymodel"></img>
+              </div>
+              <div className="col-6">
+                <div className="model-container">
+                  <img src={this.state.images[this.state.enemy]} alt={this.state.enemies[this.state.enemy].name} id="heromodel" />
                 </div>
               </div>
-              <div className="row no-gutters w-100" id="bottom-row">
-                <div className="col">
-                  <input onClick={this.changeEnemy} className="btn btn-info mx-3" type="button" value="<" />
-                  <Link className="btn-choice" to={{
-                    pathname: "/battle",
-                    state: {
-                      hero: this.state.hero,
-                      enemy: this.state.enemies[this.state.enemy],
-                      herolv: this.context.user[`${this.state.hero.name.toLowerCase()}Level`]
-                    }
-                  }} ><button className="btn btn-success mx-3" type="button">Choose Enemy</button></Link>
-                  <input onClick={this.changeEnemy} className="btn btn-info mx-3" type="button" value=">" />
-                </div>
+            </div>
+            <div className="row no-gutters w-100" id="bottom-row">
+              <div className="col">
+                <input onClick={this.changeEnemy} className="btn btn-info mx-3" type="button" value="<" />
+                <Link className="btn-choice" to={{
+                  pathname: "/battle",
+                  state: {
+                    hero: this.state.hero,
+                    enemy: this.state.enemies[this.state.enemy],
+                    herolv: this.context.user[`${this.state.hero.name.toLowerCase()}Level`]
+                  }
+                }} ><button className="btn btn-success mx-3" type="button">Choose Enemy</button></Link>
+                <input onClick={this.changeEnemy} className="btn btn-info mx-3" type="button" value=">" />
               </div>
             </div>
           </div>

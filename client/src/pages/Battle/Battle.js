@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from "react-router-dom"
+// import { Redirect } from "react-router-dom"
 
 import "./battle.css"
 import AuthContext from '../../contexts/AuthContext';
@@ -29,19 +29,14 @@ class Battle extends Component {
 
 
   attack = () => {
-    // Return if round is active
     if (this.state.roundActive) return
-    
-    // Reset text counter and set round as active
-    this.setState({ 
+
+    this.setState({
       roundActive: true,
       textCounter: 0
     })
 
-    // Attack logic goes here 
-
-    // Sample response text for typewriter
-    API.Battle.attack().then((res)=>{
+    API.Battle.attack().then((res) => {
       console.log(res.data)
       this.typeWriter(` ${res.data.playerMessage} ${res.data.enemyMessage}`);
       this.setState({
@@ -55,14 +50,14 @@ class Battle extends Component {
       }
     });
   }
-  
+
   typeWriter = newText => {
     let i = this.state.textCounter;
     let speed = 50;
-    
+
     if (i < newText.length) {
       let text = this.state.combatText
-      this.setState({ 
+      this.setState({
         combatText: text + newText.charAt(i),
         textCounter: i + 1,
       })
@@ -83,17 +78,20 @@ class Battle extends Component {
         {/* {this.props.location.state ? ( */}
         <div>
           <h1>Battle Mode!</h1>
-          <h2>{hero.name} vs. {enemy.name}</h2>
           <div className="container" id="game-stage">
             <div className="row h-100">
               <div className="col position-relative">
                 <div className="border border-dark bg-tan rounded" id="hero-stats">
-                  <div className="h4">{hero.name}</div>
-                  <div className="lead">HP: {this.state.heroHp}/{this.state.match.hero.maxHp}</div>
+                  <div className="pt-3">
+                    <div className="h4">{hero.name}</div>
+                    <div className="lead">HP: {this.state.heroHp}/{this.state.match.hero.maxHp}</div>
+                  </div>
                 </div>
                 <div className="border border-dark bg-tan rounded" id="enemy-stats">
-                  <div className="h4">{enemy.name}</div>
-                  <div className="lead">HP: {this.state.enemyHp}/{this.state.match.enemy.maxHp}</div>
+                  <div className="pt-3">
+                    <div className="h4">{enemy.name}</div>
+                    <div className="lead">HP: {this.state.enemyHp}/{this.state.match.enemy.maxHp}</div>
+                  </div>
                 </div>
                 <div className="border border-dark bg-tan rounded" id="action-menu">
                   <div id="action-btns">

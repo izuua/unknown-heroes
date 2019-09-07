@@ -3,7 +3,7 @@ import { Link} from "react-router-dom"
 
 import "./Results.css"
 
-class Results extends React.Component {
+class Results extends Component {
 
     render() {
 
@@ -13,7 +13,7 @@ class Results extends React.Component {
                 <div className="container results-bg">
                     <div className="row">
                         <div className="col-md-4">
-                            <img src="https://via.placeholder.com/150"></img>
+                            <img src="https://via.placeholder.com/150" alt="Hero model"></img>
                             <ul>
                                 <li>some stats</li>
                                 <li>some stats</li>
