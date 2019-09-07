@@ -1,0 +1,25 @@
+#characterbackground {
+    background: url("./scroll.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 100%;
+    font-family: 'Indie Flower', cursive;
+}
+
+#characterstats {
+    background: url("./scrollforstats.png") 40px center;
+    background-repeat: no-repeat;
+    background-size: 300px;
+    height: 400px;
+    width: 50%;
+}
+
+#heromodel {
+    height: 300px;
+    width: 400px;
+}
+
+#characterstats {
+    padding: 80px;
+    padding-right: 30px;
+}

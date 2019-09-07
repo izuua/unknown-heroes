@@ -1,0 +1,25 @@
+#enemybackground {
+    background: url("./scroll.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 100%;
+    font-family: 'Indie Flower', cursive;
+}
+
+#enemystatsbackground {
+    background: url("./scrollforstats.png") center;
+    background-repeat: no-repeat;
+    background-size: 300px;
+    height: 400px;
+    width: 50%;
+}
+
+#enemymodel {
+    max-width: 100%;
+    height: auto;
+}
+
+#enemystats {
+    padding: 80px;
+    padding-right: 50px;
+}

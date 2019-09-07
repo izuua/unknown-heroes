@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from "react-router-dom"
-
+import "./enemymodel.css"
 import AuthContext from '../../contexts/AuthContext';
 import API from '../../lib/API';
+import Bat from "../../img/bat1.png"
+import Goblin from "../../img/goblin1.png"
+import Dragon from "../../img/dragon2.png"
 
 class EnemySelect extends Component {
   static contextType = AuthContext
@@ -12,7 +15,8 @@ class EnemySelect extends Component {
     enemies: [],
     enemy: 0,
     redirectToReferrer: false,
-    isLoaded: false
+    isLoaded: false,
+    images: [Bat, Goblin, Dragon]
   }
 
   componentDidMount() {
@@ -52,27 +56,29 @@ class EnemySelect extends Component {
     if (redirectToReferrer) return <Redirect to="/" />
 
     return (
-      <div className="EnemySelect bg-scroll">
+      <div className="EnemySelect" id="enemybackground">
         {this.state.isLoaded ? (
           <div>
             <h1>Enemy Select</h1>
             <h2>You chose: {this.state.hero.name}</h2>
             <div id="game-stage">
               <div className="row no-gutters">
-                <div className="col-6">
-                  {/* Scroll image goes here with
+                <div className="col-6" id="enemystatsbackground">
+                  <div className="mx-auto" id="enemystats">
+                    {/* Scroll image goes here with
                   enemy stats displayed */}
-                  <h1>HP: {this.state.enemies[this.state.enemy].maxHp}</h1>
-                  <h4>Attack: {this.state.enemies[this.state.enemy].atk}</h4>
-                  <h4>Defense: {this.state.enemies[this.state.enemy].def}</h4>
-                  <h4>Accuracy: {this.state.enemies[this.state.enemy].acc}</h4>
-                  <h4>Evasion: {this.state.enemies[this.state.enemy].eva}</h4>
-                  <h4>Speed: {this.state.enemies[this.state.enemy].spd}</h4>
+                    <h4>HP: {this.state.enemies[this.state.enemy].maxHp}</h4>
+                    <h4>Attack: {this.state.enemies[this.state.enemy].atk}</h4>
+                    <h4>Defense: {this.state.enemies[this.state.enemy].def}</h4>
+                    <h4>Accuracy: {this.state.enemies[this.state.enemy].acc}</h4>
+                    <h4>Evasion: {this.state.enemies[this.state.enemy].eva}</h4>
+                    <h4>Speed: {this.state.enemies[this.state.enemy].spd}</h4>
+                  </div>
                 </div>
                 <div className="col-6">
-                  {/* Enemy model goes here */}
-                  <h1>Enemy Model</h1>
                   <h1>Enemy: {this.state.enemies[this.state.enemy].name}</h1>
+                  {/* Enemy model goes here */}
+                  <img src={this.state.images[this.state.enemy]} alt={this.state.enemies[this.state.enemy].name} id="enemymodel"></img>
                 </div>
               </div>
               <div className="row no-gutters w-100" id="bottom-row">

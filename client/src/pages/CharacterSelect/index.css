@@ -13,25 +13,3 @@
   bottom: 5%;
 }
 
-#characterbackground {
-  background: url("./scroll.jpg");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  height: 100%;
-  font-family: 'Indie Flower', cursive;
-}
-
-#characterstats {
-  background: url("./scrollforstats.png") center;
-  background-repeat: no-repeat;
-}
-
-#heromodel {
-  height: 300px;
-  width: 300px;
-}
-
-#statsbackground {
-  height: 500px;
-  width: 300px;
-}
