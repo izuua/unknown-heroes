@@ -46,3 +46,19 @@
   position: absolute;
   bottom: 0;
 }
+
+#battlebackground {
+  background: url("../../img/dungeonbackground.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100vh;
+  font-family: 'Indie Flower', cursive;
+}
+
+#action-menu {
+  margin-top: 30px;
+}
+
+h1, h2 {
+  color: white;
+}

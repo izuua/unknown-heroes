@@ -79,12 +79,12 @@ class Battle extends Component {
     const { combatText } = this.state
 
     return (
-      <div className="Battle bg-scroll">
+      <div className="Battle" id="battlebackground">
         {/* {this.props.location.state ? ( */}
         <div>
           <h1>Battle Mode!</h1>
           <h2>{hero.name} vs. {enemy.name}</h2>
-          <div className="container bg-dark" id="game-stage">
+          <div className="container" id="game-stage">
             <div className="row h-100">
               <div className="col position-relative">
                 <div className="border border-dark bg-tan rounded" id="hero-stats">
