@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 
 import "./battle.css"
 import AuthContext from '../../contexts/AuthContext';
@@ -26,7 +26,8 @@ class Battle extends Component {
     heroImages: [Knight, Thief, Mage],
     enemyImages: [Bat, Goblin, Dragon],
     heroImage: undefined,
-    enemyImage: undefined
+    enemyImage: undefined,
+    results: {}
   }
 
   componentDidMount() {
@@ -54,8 +55,8 @@ class Battle extends Component {
         enemyImage = this.state.enemyImages[2]
         break;
     }
-    this.setState ({
-      heroImage, 
+    this.setState({
+      heroImage,
       enemyImage
     })
     console.log(this.context.user);
@@ -83,9 +84,30 @@ class Battle extends Component {
         enemyHp: res.data.enemyHp
       })
       if (res.data.gameOver === true) {
-        this.setState({
-          gameOver: true
-        })
+        if (res.data.enemyHp <= 0) {
+          this.setState({
+            results: {
+              heroName: this.state.match.hero.name,
+              roundWon: true,
+              xpGain: this.state.match.enemy.exp,
+              goldGain: this.state.match.enemy.gold
+            }
+          })
+        } else {
+          this.setState({
+            results: {
+              heroName: this.state.match.hero.name,
+              roundWon: false,
+              xpGain: 0,
+              goldGain: 0
+            }
+          })
+        }
+        setTimeout(() => {
+          this.setState({
+            gameOver: true
+          })
+        }, 4000)
       }
     });
   }
@@ -111,6 +133,17 @@ class Battle extends Component {
     // if (!this.context.user) return <Redirect to="/" />
     const { hero, enemy } = this.state.match
     const { combatText } = this.state
+
+    if (this.state.gameOver) {
+      return <Redirect to={{
+        pathname: "/results",
+        state: {
+          results: this.state.results,
+          user: this.context.user
+        }
+      }}
+      />
+    }
 
     return (
       <div className="Battle">

@@ -38,4 +38,45 @@ usersController.post('/login', (req, res) => {
     });
 });
 
+usersController.post("/results", (req, res) => {
+  console.dir(req.body)
+  const { roundWon, xpGain, goldGain } = req.body.results
+  const heroName = req.body.results.heroName.toLowerCase()
+
+  const heroLevel = `${heroName}Level`
+  let currentLevel = req.body.user[heroLevel]
+  let newLevel;
+
+  const heroExp = `${heroName}Exp`
+  let currentExp = req.body.user[heroExp]
+  let xpNeeded = req.body.user[heroLevel] * 200
+  console.log(`Current xp ${currentExp}`)
+  console.log(`User lvl ${req.body.user.knightLevel}`)
+  console.log(`User xp ${req.body.user.knightExp}`)
+  if (currentExp + xpGain >= xpNeeded) {
+    newLevel = currentLevel + 1
+    currentExp = 0
+  } else {
+    newLevel = currentLevel
+    currentExp += xpGain
+  }
+
+  db.Users.findByIdAndUpdate({ _id: req.body.user._id }, {
+    $set: {
+      [heroLevel]: newLevel,
+      [heroExp]: currentExp
+    },
+    options: { 
+      useFindAndModify: false,
+      new: true,
+      select: heroLevel, heroExp
+    }
+  })
+    .then(user => {
+      console.log(user)
+      res.json(user)
+    })
+    .catch(err => console.log(err))
+})
+
 module.exports = usersController;
