@@ -6,7 +6,13 @@ battleController.post("/start", (req, res) => {
     enemy = req.body.enemy;
     plvl = req.body.level;
     console.log(`Level = ${plvl}`)
-    player.hp = player.maxHp;
+    player.hp = player.maxHp + (plvl * player.hpMod);
+    // player.mp = player.maxMp + (plvl * player.mpMod);
+    player.atk = player.atk + (plvl * player.atkMod);
+    player.def = player.def + (plvl * player.defMod);
+    player.acc = player.acc + (plvl * player.accMod);
+    player.eva = player.eva + (plvl * player.evaMod);
+    player.spd = player.spd + (plvl * player.spdMod);
     enemy.hp = enemy.maxHp;
     console.log(player);
     console.log(enemy);
@@ -28,18 +34,18 @@ battleController.get("/attack", (req, res) => {
     if (playerAccCheck) {
         damage = battlefunctions.attack(player, enemy);
         enemy.hp = enemy.hp - damage;
-        playerMessage = `${player.name} hits ${enemy.name} for ${damage} damage.`;
+        playerMessage = `${player.name} hits the ${enemy.name} for ${damage} damage.`;
     } else {
-        playerMessage = `${player.name} misses ${enemy.name}.`;
+        playerMessage = `${player.name} misses the ${enemy.name}.`;
     }
 
     if (enemy.hp > 0) {
         if (enemyAccCheck) {
             damage = battlefunctions.attack(enemy, player);
             player.hp = player.hp - damage;
-            enemyMessage = `${enemy.name} hits ${player.name} for ${damage} damage.`;
+            enemyMessage = `The ${enemy.name} hits ${player.name} for ${damage} damage.`;
         } else {
-            enemyMessage = `${enemy.name} misses ${player.name}.`;
+            enemyMessage = `The ${enemy.name} misses ${player.name}.`;
         }
     } else {
         enemy.hp = 0;
