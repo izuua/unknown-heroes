@@ -5,7 +5,7 @@ import AuthContext from '../../contexts/AuthContext';
 import API from '../../lib/API';
 import Bat from "../../img/bat1.png"
 import Goblin from "../../img/goblin1.png"
-import Dragon from "../../img/dragon2.png"
+import Dragon from "../../img/dragon1.png"
 import Scroll from "../../img/stats-scroll.png"
 
 class EnemySelect extends Component {
