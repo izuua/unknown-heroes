@@ -23,8 +23,6 @@ battlefunctions = {
     }
 }
 
-
-
 module.exports = battlefunctions;
 
 
