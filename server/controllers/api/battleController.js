@@ -34,18 +34,18 @@ battleController.get("/attack", (req, res) => {
     if (playerAccCheck) {
         damage = battlefunctions.attack(player, enemy);
         enemy.hp = enemy.hp - damage;
-        playerMessage = `${player.name} hits the ${enemy.name} for ${damage} damage.`;
+        playerMessage = `The ${player.name} hits the ${enemy.name} for ${damage} damage.`;
     } else {
-        playerMessage = `${player.name} misses the ${enemy.name}.`;
+        playerMessage = `The ${player.name} misses the ${enemy.name}.`;
     }
 
     if (enemy.hp > 0) {
         if (enemyAccCheck) {
             damage = battlefunctions.attack(enemy, player);
             player.hp = player.hp - damage;
-            enemyMessage = `The ${enemy.name} hits ${player.name} for ${damage} damage.`;
+            enemyMessage = `The ${enemy.name} hits the ${player.name} for ${damage} damage.`;
         } else {
-            enemyMessage = `The ${enemy.name} misses ${player.name}.`;
+            enemyMessage = `The ${enemy.name} misses the ${player.name}.`;
         }
     } else {
         enemy.hp = 0;
