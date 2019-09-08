@@ -35,8 +35,7 @@ mongoose.connect(
 //-- Use this one for heroku deployment
 // mongoose.connect(
 //   process.env.MONGODB_URI ||
-//   'mongodb://user:password1@ds157895.mlab.com:57895/heroku_t0p6qtj6' ||
-//   'mongodb://localhost/unknownheroes'
+//   'mongodb://user:password1@ds157895.mlab.com:57895/heroku_t0p6qtj6'
 // )
 
 mongoose.connection.on('error', err => {

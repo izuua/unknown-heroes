@@ -14,6 +14,8 @@ import EnemySelect from '../../pages/EnemySelect/EnemySelect';
 import Battle from '../../pages/Battle/Battle';
 import NotFound from '../../pages/NotFound/NotFound';
 import Results from '../../pages/Results/Results';
+import Gameover from '../../pages/Gameover/Gameover';
+
 
 import './App.css';
 
@@ -67,6 +69,7 @@ class App extends Component {
               <PrivateRoute path='/enemy' component={EnemySelect} />
               <PrivateRoute path='/battle' component={Battle} />
               <PrivateRoute path='/results' component={Results} />
+              <PrivateRoute path='/gameover' component={Gameover} />
               <Route component={NotFound} />
             </Switch>
           </div>
