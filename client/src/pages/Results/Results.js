@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 import "./Results.css"
 
@@ -42,7 +42,7 @@ class Results extends Component {
 
                                         <Link className="btn-choice" to={{
                                             pathname: "/character",
-                                
+
                                         }} ><button className="btn btn-success mx-3" type="button">Play again</button></Link>
 
 
