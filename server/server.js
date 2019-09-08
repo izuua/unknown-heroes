@@ -27,17 +27,17 @@ const app = express();
 
 //-- Mongoose Setup ----------------------------------------------------------
 //-- Use this one for local testing
-// mongoose.connect(
-//   process.env.MONGODB_URI ||
-//   'mongodb://localhost/unknownheroes'
-// )
-
-//-- Use this one for heroku deployment
 mongoose.connect(
   process.env.MONGODB_URI ||
-  'mongodb://user:password1@ds157895.mlab.com:57895/heroku_t0p6qtj6' ||
   'mongodb://localhost/unknownheroes'
 )
+
+//-- Use this one for heroku deployment
+// mongoose.connect(
+//   process.env.MONGODB_URI ||
+//   'mongodb://user:password1@ds157895.mlab.com:57895/heroku_t0p6qtj6' ||
+//   'mongodb://localhost/unknownheroes'
+// )
 
 mongoose.connection.on('error', err => {
   console.log(`Mongoose connection err:\n${err}`)

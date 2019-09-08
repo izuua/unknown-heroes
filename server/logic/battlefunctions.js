@@ -20,7 +20,18 @@ battlefunctions = {
         } else {
             return damage;
         }   
+    },
+
+    defend(attacker) {
+        heal = Math.floor(attacker.hp*0.1)
+        if (heal < 1) {
+            return 1;
+        } else {
+            return heal;
+        }
     }
+
+    
 }
 
 module.exports = battlefunctions;
