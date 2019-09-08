@@ -52,12 +52,14 @@ class Login extends Component {
     }
 
     return (
+
       <div className='Login' id="loginbackground">
         <div className='row no-gutters'>
           <div className='col'>
             <h1 id="logintext">Login</h1>
           </div>
         </div>
+
         {this.state.error &&
           <div className='row no-gutters'>
             <div className='col'>
@@ -73,6 +75,9 @@ class Login extends Component {
           </div>
         </div>
       </div>
+
+
+
     );
   }
 }
