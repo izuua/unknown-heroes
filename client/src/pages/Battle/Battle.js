@@ -4,6 +4,13 @@ import React, { Component } from 'react';
 import "./battle.css"
 import AuthContext from '../../contexts/AuthContext';
 import API from '../../lib/API';
+import Knight from "../../img/knight_idle.png"
+import Mage from "../../img/mage_idle.png"
+import Thief from "../../img/thief_sm.png"
+import Bat from "../../img/bat1.png"
+import Goblin from "../../img/goblin1.png"
+import Dragon from "../../img/dragon1.png"
+import Dungeon from "../../img/dungeonbackground.png"
 
 class Battle extends Component {
   static contextType = AuthContext
@@ -15,10 +22,42 @@ class Battle extends Component {
     textCounter: 0,
     gameOver: false,
     heroHp: 0,
-    enemyHp: 0
+    enemyHp: 0,
+    heroImages: [Knight, Thief, Mage],
+    enemyImages: [Bat, Goblin, Dragon],
+    heroImage: undefined,
+    enemyImage: undefined
   }
 
   componentDidMount() {
+    let heroImage
+    let enemyImage
+    switch (this.state.match.hero.name) {
+      case "Knight":
+        heroImage = this.state.heroImages[0]
+        break;
+      case "Thief":
+        heroImage = this.state.heroImages[1]
+        break;
+      case "Mage":
+        heroImage = this.state.heroImages[2]
+        break;
+    }
+    switch (this.state.match.enemy.name) {
+      case "Bat":
+        enemyImage = this.state.enemyImages[0]
+        break;
+      case "Goblin":
+        enemyImage = this.state.enemyImages[1]
+        break;
+      case "Dragon":
+        enemyImage = this.state.enemyImages[2]
+        break;
+    }
+    this.setState ({
+      heroImage, 
+      enemyImage
+    })
     console.log(this.context.user);
     API.Battle.battleStart(this.state.match.hero, this.state.match.enemy, this.props.location.state.herolv);
     this.setState({
@@ -74,13 +113,16 @@ class Battle extends Component {
     const { combatText } = this.state
 
     return (
-      <div className="Battle" id="battlebackground">
+      <div className="Battle">
+        <img src={Dungeon} id="battlebackground"></img>
         {/* {this.props.location.state ? ( */}
         <div>
           <h1>Battle Mode!</h1>
           <div className="container" id="game-stage">
             <div className="row h-100">
               <div className="col position-relative">
+                <div id="battle-hero"><img src={this.state.heroImage} alt="heromodel"></img></div>
+                <div id="battle-enemy"><img src={this.state.enemyImage} alt="enemymodel"></img></div>
                 <div className="border border-dark bg-tan rounded" id="hero-stats">
                   <div className="pt-3">
                     <div className="h4">{hero.name}</div>

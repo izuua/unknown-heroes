@@ -1,14 +1,16 @@
 #action-menu {
   position: absolute;
+  top: 55%;
   bottom: 3%;
-  left: 3%;
+  right: 35%;
   height: 25%;
   width: 30%;
 }
 #action-text {
   position: absolute;
+  top: 90%;
   bottom: 3%;
-  right: 3%;
+  right: 25%;
   height: 25%;
   width: 50%;
 }
@@ -40,7 +42,7 @@
   height: 100%;
   width: 100%;
   position: relative;
-  overflow-y: scroll
+  overflow-y: scroll;
 }
 #text-box > .container {
   position: absolute;
@@ -48,10 +50,15 @@
 }
 
 #battlebackground {
-  background: url("../../img/dungeonbackground.png");
+  /* background: url("../../img/dungeonbackground.png"); */
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: fixed;
+  z-index: -10;
   font-family: 'Indie Flower', cursive;
 }
 
@@ -61,4 +68,27 @@
 
 h1, h2 {
   color: white;
+}
+
+#battle-enemy {
+  position: absolute;
+  top: 20%;
+  right: 0.01%;
+}
+
+#battle-enemy img {
+  height: 500px;
+  width: 400px;
+  transform: scaleX(-1);
+}
+
+#battle-hero {
+  position: absolute;
+  top: 45%;
+  left: 2%;
+}
+
+#battle-hero img {
+  height: 300px;
+  width: 300px;
 }
