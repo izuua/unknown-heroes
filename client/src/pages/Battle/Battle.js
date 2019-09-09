@@ -160,6 +160,7 @@ class Battle extends Component {
           this.setState({
             results: {
               hero: this.state.match.hero,
+              enemy: this.state.match.enemy,
               roundWon: true,
               xpGain: this.state.match.enemy.exp,
               goldGain: this.state.match.enemy.gold
@@ -169,6 +170,7 @@ class Battle extends Component {
           this.setState({
             results: {
               hero: this.state.match.hero,
+              enemy: this.state.match.enemy,
               roundWon: false,
               xpGain: 0,
               goldGain: 0
