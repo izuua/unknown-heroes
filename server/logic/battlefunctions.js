@@ -5,7 +5,9 @@ battlefunctions = {
 
     accuracy(attacker, defender) {
         let hitRate = 75 + ((attacker.acc - defender.eva)*3);
+        console.log(`hitRate ${hitRate}`)
         let accCheck = battlefunctions.random(1, 100);
+        console.log(`accCheck ${accCheck}`)
         if (accCheck <= hitRate) {
             return true;
         } else {
@@ -14,7 +16,7 @@ battlefunctions = {
     },
 
     attack(attacker, defender) {
-        damage = (battlefunctions.random(1,5) + (attacker.atk - defender.def));
+        let damage = (battlefunctions.random(1,5) + (attacker.atk - defender.def));
         if (damage < 0) {
             return 0;
         } else {
@@ -23,7 +25,7 @@ battlefunctions = {
     },
 
     defend(attacker) {
-        heal = Math.floor(attacker.hp*0.1)
+        let heal = Math.floor(attacker.hp*0.1)
         if (heal < 1) {
             return 1;
         } else {
