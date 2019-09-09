@@ -17,7 +17,7 @@ usersController.get('/me', JWTVerifier, (req, res) => {
 });
 
 usersController.get("/:id", (req, res) => {
-  db.Users.findById(req.params.id, "knightLevel mageLevel thiefLevel")
+  db.Users.findById(req.params.id)
     .then(stats => res.json(stats))
     .catch(err => console.log(err))
 })
@@ -37,5 +37,44 @@ usersController.post('/login', (req, res) => {
       });
     });
 });
+
+usersController.post("/results", (req, res) => {
+  const { roundWon, xpGain, goldGain } = req.body.results
+  const hero = req.body.results.hero
+  const heroName = hero.name.toLowerCase()
+
+  const heroLevel = `${heroName}Level`
+  let currentLevel = hero.level
+  let newLevel;
+
+  const heroExp = `${heroName}Exp`
+  let currentExp = hero.exp
+  let xpNeeded = hero.level * 200
+
+  let levelUp = false
+  if (currentExp + xpGain >= xpNeeded) {
+    newLevel = currentLevel + 1
+    currentExp = 0
+    levelUp = true
+  } else {
+    newLevel = currentLevel
+    currentExp += xpGain
+  }
+
+  db.Users.findByIdAndUpdate({ _id: req.body.id }, {
+    $set: {
+      [heroLevel]: newLevel,
+      [heroExp]: currentExp
+    },
+    options: {
+      useFindAndModify: false,
+      returnOriginal: false
+    }
+  })
+    .then(user => {
+      res.json({ levelUp })
+    })
+    .catch(err => console.log(err))
+})
 
 module.exports = usersController;

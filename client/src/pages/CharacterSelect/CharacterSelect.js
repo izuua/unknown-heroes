@@ -9,6 +9,7 @@ import Mage from "../../img/mage_idle.png"
 // import Thief from "../../img/thief_idle.png"
 import ThiefSm from "../../img/thief_sm.png"
 import Scroll from "../../img/stats-scroll.png"
+import TokenStore from "../../lib/TokenStore"
 
 class CharacterSelect extends Component {
   static contextType = AuthContext
@@ -22,55 +23,64 @@ class CharacterSelect extends Component {
   }
 
   componentDidMount() {
-    let id
     if (!this.context.user) {
       this.setState({ redirectToReferrer: true })
     } else {
-      id = this.context.user._id
+      const authToken = TokenStore.getToken()
+      let id
 
-      API.Users.getHeroes(id)
+      API.Users.getMe(authToken)
         .then(res => {
-          let { knightLevel, thiefLevel, mageLevel } = res.data
-          let userHeroes = []
+          id = res.data._id
 
-          userHeroes[0] = {
-            name: "Knight",
-            level: knightLevel
-          }
-          userHeroes[1] = {
-            name: "Thief",
-            level: thiefLevel
-          }
-          userHeroes[2] = {
-            name: "Mage",
-            level: mageLevel
-          }
-
-          API.Characters.getCharacters()
+          API.Users.getHeroes(id)
             .then(res => {
+              console.log(res.data)
+              let { knightLevel, knightExp, thiefLevel, thiefExp, mageLevel, mageExp } = res.data
+              let userHeroes = []
+
               userHeroes[0] = {
-                ...userHeroes[0],
-                ...res.data[0]
+                name: "Knight",
+                level: knightLevel,
+                exp: knightExp
               }
               userHeroes[1] = {
-                ...userHeroes[1],
-                ...res.data[1]
+                name: "Thief",
+                level: thiefLevel,
+                exp: thiefExp
               }
               userHeroes[2] = {
-                ...userHeroes[2],
-                ...res.data[2]
+                name: "Mage",
+                level: mageLevel,
+                exp: mageExp
               }
 
-              this.setState({
-                heroes: [
-                  userHeroes[0],
-                  userHeroes[1],
-                  userHeroes[2]
-                ]
-              })
+              API.Characters.getCharacters()
+                .then(res => {
+                  userHeroes[0] = {
+                    ...userHeroes[0],
+                    ...res.data[0]
+                  }
+                  userHeroes[1] = {
+                    ...userHeroes[1],
+                    ...res.data[1]
+                  }
+                  userHeroes[2] = {
+                    ...userHeroes[2],
+                    ...res.data[2]
+                  }
+                  console.log(userHeroes)
+                  this.setState({
+                    heroes: [
+                      userHeroes[0],
+                      userHeroes[1],
+                      userHeroes[2]
+                    ]
+                  })
+                })
+                .catch(err => console.log(err))
+                .finally(() => this.setState({ isLoaded: true }))
             })
-            .catch(err => console.log(err))
-            .finally(() => this.setState({ isLoaded: true }))
         })
     }
   }
