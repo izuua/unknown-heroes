@@ -20,18 +20,25 @@
 }
 
 .col-md-12 {
-
-    padding: 40px;
-    width: 20px;
+padding: 40px;
+width: 20px;
 }
 
 .results-bg{
     background: url("../../img/dungeonbackground.png");
     font-family: 'Indie Flower', cursive;
     color: white;
+    background-repeat: no-repeat center center fixed;
+    background-size: cover;
+    height: 90%;
+    width: 100%;
+    overflow: hidden;
+    
 }
 
 h1{
     font-family: 'Indie Flower', cursive;   
     color: rgb(20, 19, 19);
 }
+
+
