@@ -33,7 +33,6 @@ battlefunctions = {
         }
     }
 
-    
 }
 
 module.exports = battlefunctions;
