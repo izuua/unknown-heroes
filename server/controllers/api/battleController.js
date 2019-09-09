@@ -24,7 +24,7 @@ battleController.post("/start", (req, res) => {
     })
 })
 
-battleController.get("/defend", (req, res) => {
+battleController.get("/attack", (req, res) => {
     let gameOver = false;
     playerDead = "";
 
@@ -71,23 +71,28 @@ battleController.get("/defend", (req, res) => {
     })
 })
 
-battleController.get("/attack", (req, res) => {
+battleController.get("/defend", (req, res) => {
     let gameOver = false;
     playerDead = "";
 
-    playerAccCheck = battlefunctions.accuracy(player, enemy);
+    // playerAccCheck = battlefunctions.accuracy(player, enemy);
     enemyAccCheck = battlefunctions.accuracy(player, enemy);
-    if (playerAccCheck) {
-        damage = battlefunctions.attack(player, enemy);
-        enemy.hp = enemy.hp - damage;
-        playerMessage = `The ${player.name} hits the ${enemy.name} for ${damage} damage.`;
-    } else {
-        playerMessage = `The ${player.name} misses the ${enemy.name}.`;
-    }
+    // if (playerAccCheck) {
+    //     damage = battlefunctions.attack(player, enemy);
+    //     enemy.hp = enemy.hp - damage;
+    //     playerMessage = `The ${player.name} hits the ${enemy.name} for ${damage} damage.`;
+    // } else {
+    //     playerMessage = `The ${player.name} misses the ${enemy.name}.`;
+    // }
+
+    healed = defend(player);
+    player.hp = player.hp + healed;
+    playerMessage = 'The ${player.name} braces for the attack.';
+
 
     if (enemy.hp > 0) {
         if (enemyAccCheck) {
-            damage = battlefunctions.attack(enemy, player);
+            damage = Math.floor((battlefunctions.attack(enemy, player))/2);
             player.hp = player.hp - damage;
             enemyMessage = `The ${enemy.name} hits the ${player.name} for ${damage} damage.`;
         } else {
@@ -116,7 +121,6 @@ battleController.get("/attack", (req, res) => {
         gameOver: gameOver,
         received: received
     })
-
 })
 
 

@@ -137,8 +137,8 @@ class Battle extends Component {
                 </div>
                 <div className="border border-dark bg-tan rounded" id="action-menu">
                   <div id="action-btns">
-                    <button onClick={this.attack} className="btn btn-success mr-3" id="attack-btn">Attack</button>
-                    <button className="btn btn-info ml-3" id="attack-btn">Defend</button>
+                    <button title="Attack the enemy" onClick={this.attack} className="btn btn-success mr-3" id="attack-btn">Attack</button>
+                    <button title="Reduce damage taken and heal your hp by 10%" className="btn btn-info ml-3" id="attack-btn">Defend</button>
                   </div>
                 </div>
                 <div className="border border-dark bg-tan rounded" id="action-text">
