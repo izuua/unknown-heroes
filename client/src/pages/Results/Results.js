@@ -28,13 +28,15 @@ class Results extends Component {
             if (levelUp) {
               this.setState({
                 results,
-                hero: this.props.location.state.hero,
+                hero: this.props.location.state.results.hero,
+                enemy: this.props.location.state.results.enemy,
                 levelUp: true
               })
             } else {
               this.setState({ 
                 results,
-                hero: this.props.location.state.hero
+                hero: this.props.location.state.results.hero,
+                enemy: this.props.location.state.results.enemy
               })
             }
           })
