@@ -20,6 +20,17 @@ class HomePage extends Component {
             </div>
           )
         }
+        {/* text fade */}
+        <div className="fade"></div>
+
+        {/* text plus animation */}
+        <section className="starwars-affect">
+          <div className="crawl">
+            <p>Welcome, to Unknown Heroes!!!!</p>
+            <p>You have been choosen to walk down this path as a Hero. Help conquer this Dungeon that is filled with Bats, Goblins, and Dragons.</p>
+            <p>If you accept this challenge press start; but if not, leave and be ashamed you call youself a Hero!!!!</p>
+          </div>
+        </section>
       </div>
     );
   }
