@@ -11,9 +11,18 @@ import Bat from "../../img/bat1.png"
 import Goblin from "../../img/goblin1.png"
 import Dragon from "../../img/dragon1.png"
 import Dungeon from "../../img/dungeonbackground.png"
+// import Slash from '../../../client/public/slash.wav';
+import BattleSound from '../../music/battletheme.mp3';
+import Sound from 'react-sound';
 
 class Battle extends Component {
   static contextType = AuthContext
+
+  constructor(props) {
+    super(props);
+    // this.onPlay = this.onPlay.bind(this);
+    this.sound = new Audio(BattleSound);
+  }
 
   state = {
     match: this.props.location.state,
@@ -32,6 +41,7 @@ class Battle extends Component {
   }
 
   componentDidMount() {
+    this.sound.play();
     let heroImage
     let enemyImage
     switch (this.state.match.hero.name) {
