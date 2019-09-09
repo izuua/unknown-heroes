@@ -26,8 +26,8 @@ export default {
   },
   
   Characters: {
-    getCharacters: function() {
-      return axios.get('/api/character')
+    getCharacters: function(levels) {
+      return axios.post('/api/character', { levels })
     },
     getEnemies: function() {
       return axios.get('/api/character/enemies')
