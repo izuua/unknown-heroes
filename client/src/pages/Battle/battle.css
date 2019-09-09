@@ -5,7 +5,7 @@
   right: 35%;
   height: 25%;
   width: 30%;
-  z-index: -5;
+  z-index: 100;
 }
 #action-text {
   position: absolute;

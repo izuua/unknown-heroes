@@ -1,0 +1,12 @@
+#stats-row {
+  height: 60vh
+}
+
+#stats-row .col-4 {
+  position: relative;
+}
+
+.Stats > canvas {
+  height: 100%;
+  width: 100%;
+}
