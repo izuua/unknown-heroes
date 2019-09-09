@@ -9,7 +9,7 @@ class HomePage extends Component {
   render() {
     return (
       <div id="homepage">
-        <h1 id="gametitle"><strong>Unknown Heros</strong></h1>
+        <h1 id="gametitle"><strong>Unknown Heroes</strong></h1>
 
         {this.context.user ? (
           <Link to="/character"><button id="login">Start Game</button></Link >

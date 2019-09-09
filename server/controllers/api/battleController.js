@@ -26,7 +26,7 @@ battleController.post("/start", (req, res) => {
 
 battleController.get("/attack", (req, res) => {
     let gameOver = false;
-    playerDead = "";
+    playerDead = '';
 
     playerAccCheck = battlefunctions.accuracy(player, enemy);
     enemyAccCheck = battlefunctions.accuracy(player, enemy);
@@ -55,7 +55,7 @@ battleController.get("/attack", (req, res) => {
     if (player.hp <= 0) {
         player.hp = 0;
         gameOver = true;
-        playerDead = `${player.name} is knocked out!`;
+        playerDead = ` ${player.name} is knocked out!`;
     }
 
     received = true;
@@ -73,7 +73,7 @@ battleController.get("/attack", (req, res) => {
 
 battleController.get("/defend", (req, res) => {
     let gameOver = false;
-    playerDead = "";
+    playerDead = '';
 
     // playerAccCheck = battlefunctions.accuracy(player, enemy);
     enemyAccCheck = battlefunctions.accuracy(player, enemy);
@@ -85,9 +85,12 @@ battleController.get("/defend", (req, res) => {
     //     playerMessage = `The ${player.name} misses the ${enemy.name}.`;
     // }
 
-    healed = defend(player);
+    healed = battlefunctions.defend(player);
     player.hp = player.hp + healed;
-    playerMessage = 'The ${player.name} braces for the attack.';
+    if (player.hp > player.maxHp) {
+        player.hp = player.maxHp;
+    }
+    playerMessage = `The ${player.name} restores ${healed}hp. The ${player.name} braces for the attack.`;
 
 
     if (enemy.hp > 0) {
@@ -107,7 +110,7 @@ battleController.get("/defend", (req, res) => {
     if (player.hp <= 0) {
         player.hp = 0;
         gameOver = true;
-        playerDead = `${player.name} is knocked out!`;
+        playerDead = ` ${player.name} is knocked out!`;
     }
 
     received = true;
