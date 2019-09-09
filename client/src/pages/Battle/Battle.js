@@ -59,8 +59,10 @@ class Battle extends Component {
       heroImage,
       enemyImage
     })
-    console.log(this.context.user);
-    API.Battle.battleStart(this.state.match.hero, this.state.match.enemy, this.props.location.state.herolv);
+    API.Battle.battleStart(this.state.match.hero, this.state.match.enemy, this.props.location.state.herolv)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err))
+
     this.setState({
       heroHp: this.state.match.hero.maxHp,
       enemyHp: this.state.match.enemy.maxHp
@@ -87,7 +89,7 @@ class Battle extends Component {
         if (res.data.enemyHp <= 0) {
           this.setState({
             results: {
-              heroName: this.state.match.hero.name,
+              hero: this.state.match.hero,
               roundWon: true,
               xpGain: this.state.match.enemy.exp,
               goldGain: this.state.match.enemy.gold
@@ -96,7 +98,7 @@ class Battle extends Component {
         } else {
           this.setState({
             results: {
-              heroName: this.state.match.hero.name,
+              hero: this.state.match.hero,
               roundWon: false,
               xpGain: 0,
               goldGain: 0
@@ -139,7 +141,7 @@ class Battle extends Component {
         pathname: "/results",
         state: {
           results: this.state.results,
-          user: this.context.user
+          id: this.context.user._id
         }
       }}
       />

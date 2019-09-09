@@ -20,8 +20,8 @@ export default {
     getHeroes: function (id) {
       return axios.get(`/api/users/${id}`)
     },
-    sendResults: function(user, results) {
-      return axios.post('/api/users/results', { user, results })
+    sendResults: function(results, id) {
+      return axios.post('/api/users/results', { results, id })
     }
   },
   
