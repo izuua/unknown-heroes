@@ -13,14 +13,13 @@ import Dragon from "../../img/dragon1.png"
 import Dungeon from "../../img/dungeonbackground.png"
 // import Slash from '../../../client/public/slash.wav';
 import BattleSound from '../../music/battletheme.mp3';
-import Sound from 'react-sound';
+// import Sound from 'react-sound';
 
 class Battle extends Component {
   static contextType = AuthContext
 
   constructor(props) {
     super(props);
-    // this.onPlay = this.onPlay.bind(this);
     this.sound = new Audio(BattleSound);
   }
 
