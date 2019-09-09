@@ -15,6 +15,7 @@ import Battle from '../../pages/Battle/Battle';
 import NotFound from '../../pages/NotFound/NotFound';
 import Results from '../../pages/Results/Results';
 import Gameover from '../../pages/Gameover/Gameover';
+import Stats from '../../pages/Stats/Stats';
 
 
 import './App.css';
@@ -70,6 +71,7 @@ class App extends Component {
               <PrivateRoute path='/battle' component={Battle} />
               <PrivateRoute path='/results' component={Results} />
               <PrivateRoute path='/gameover' component={Gameover} />
+              <PrivateRoute path='/stats' component={Stats} />
               <Route component={NotFound} />
             </Switch>
           </div>
