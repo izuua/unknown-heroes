@@ -82,6 +82,22 @@ class Battle extends Component {
     API.Battle.attack().then((res) => {
       console.log(res.data)
       this.typeWriter(` ${res.data.playerMessage} ${res.data.enemyMessage} ${res.data.playerDead}`);
+      if (res.data.enemyMessage.includes('damage')) {
+        console.log("character was attacked");
+        let ele = document.getElementById("battle-hero");
+        ele.style.opacity = 0;
+        setTimeout(() => {
+          ele.style.opacity = 1;
+        }, 100)
+      }
+      if (res.data.playerMessage.includes('damage')) {
+        console.log("enemy was attacked");
+        let ele = document.getElementById("battle-enemy");
+        ele.style.opacity = 0;
+        setTimeout(() => {
+          ele.style.opacity = 1;
+        }, 100)
+      }
       this.setState({
         heroHp: res.data.playerHp,
         enemyHp: res.data.enemyHp

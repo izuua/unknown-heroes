@@ -29,7 +29,7 @@ battleController.get("/attack", (req, res) => {
     playerDead = '';
 
     playerAccCheck = battlefunctions.accuracy(player, enemy);
-    enemyAccCheck = battlefunctions.accuracy(player, enemy);
+    enemyAccCheck = battlefunctions.accuracy(enemy, player);
     if (playerAccCheck) {
         damage = battlefunctions.attack(player, enemy);
         enemy.hp = enemy.hp - damage;
@@ -76,7 +76,7 @@ battleController.get("/defend", (req, res) => {
     playerDead = '';
 
     // playerAccCheck = battlefunctions.accuracy(player, enemy);
-    enemyAccCheck = battlefunctions.accuracy(player, enemy);
+    enemyAccCheck = battlefunctions.accuracy(enemy, player);
     // if (playerAccCheck) {
     //     damage = battlefunctions.attack(player, enemy);
     //     enemy.hp = enemy.hp - damage;
