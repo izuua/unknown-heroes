@@ -21,6 +21,7 @@ class Battle extends Component {
     combatText: "",
     textCounter: 0,
     gameOver: false,
+    // playerDead: false,
     heroHp: 0,
     enemyHp: 0,
     heroImages: [Knight, Thief, Mage],
@@ -80,7 +81,51 @@ class Battle extends Component {
 
     API.Battle.attack().then((res) => {
       console.log(res.data)
-      this.typeWriter(` ${res.data.playerMessage} ${res.data.enemyMessage}`);
+      this.typeWriter(` ${res.data.playerMessage} ${res.data.enemyMessage} ${res.data.playerDead}`);
+      this.setState({
+        heroHp: res.data.playerHp,
+        enemyHp: res.data.enemyHp
+      })
+      if (res.data.gameOver === true) {
+        if (res.data.enemyHp <= 0) {
+          this.setState({
+            results: {
+              hero: this.state.match.hero,
+              roundWon: true,
+              xpGain: this.state.match.enemy.exp,
+              goldGain: this.state.match.enemy.gold
+            }
+          })
+        } else {
+          this.setState({
+            results: {
+              hero: this.state.match.hero,
+              roundWon: false,
+              xpGain: 0,
+              goldGain: 0
+            }
+          })
+        }
+        setTimeout(() => {
+          this.setState({
+            gameOver: true
+          })
+        }, 4000)
+      }
+    });
+  }
+
+  defend = () => {
+    if (this.state.roundActive) return
+
+    this.setState({
+      roundActive: true,
+      textCounter: 0
+    })
+
+    API.Battle.defend().then((res) => {
+      console.log(res.data)
+      this.typeWriter(` ${res.data.playerMessage} ${res.data.enemyMessage} ${res.data.playerDead}`);
       this.setState({
         heroHp: res.data.playerHp,
         enemyHp: res.data.enemyHp
@@ -136,7 +181,16 @@ class Battle extends Component {
     const { hero, enemy } = this.state.match
     const { combatText } = this.state
 
-    if (this.state.gameOver) {
+    if (this.state.gameOver && this.state.heroHp <= 0) {
+      return <Redirect to={{
+        pathname: "/gameover",
+        // state: {
+        //   results: this.state.results,
+        //   id: this.context.user._id
+        // }
+      }}
+      />
+    } else if (this.state.gameOver && this.state.enemyHp === 0) {
       return <Redirect to={{
         pathname: "/results",
         state: {
@@ -172,8 +226,8 @@ class Battle extends Component {
                 </div>
                 <div className="border border-dark bg-tan rounded" id="action-menu">
                   <div id="action-btns">
-                    <button onClick={this.attack} className="btn btn-success mr-3" id="attack-btn">Attack</button>
-                    <button className="btn btn-info ml-3" id="attack-btn">Defend</button>
+                    <button title="Attack the enemy" onClick={this.attack} className="btn btn-success mr-3" id="attack-btn">Attack</button>
+                    <button title="Reduce damage taken and heal your hp by 10%" onClick={this.defend} className="btn btn-info ml-3" id="defend-btn">Defend</button>
                   </div>
                 </div>
                 <div className="border border-dark bg-tan rounded" id="action-text">

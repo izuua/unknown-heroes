@@ -60,6 +60,9 @@ export default {
     },
     attack: function(){
       return axios.get('/api/battle/attack')
+    },
+    defend: function(){
+      return axios.get('/api/battle/defend')
     }
   }
   
