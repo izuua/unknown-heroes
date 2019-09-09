@@ -82,6 +82,75 @@ class Battle extends Component {
     API.Battle.attack().then((res) => {
       console.log(res.data)
       this.typeWriter(` ${res.data.playerMessage} ${res.data.enemyMessage} ${res.data.playerDead}`);
+
+      //sets the hero to move forward
+      let hele = document.getElementById("battle-hero");
+      hele.style.left = "12%"
+      setTimeout(() => {
+        hele.style.left = "2%";
+      }, 200);
+
+      //sets the enemy to flash if attacked
+      setTimeout(() => {
+        if (res.data.playerMessage.includes('damage')) {
+          // console.log("enemy was attacked");
+          let eele = document.getElementById("battle-enemy");
+          eele.style.opacity = 0;
+          setTimeout(() => {
+            let flash = setInterval(function () {
+              if (eele.style.opacity === "0") {
+                eele.style.opacity = 1;
+                console.log("set to 1");
+              }
+              else {
+                eele.style.opacity = 0;
+                console.log("set to 0");
+              }
+            }, 100)
+            setTimeout(() => {
+              clearInterval(flash)
+              console.log("flash reset")
+            }, 300)
+          }, 100)
+        }
+      }, 300)
+
+      //sets the enemy to move forward
+      setTimeout(() => {
+        let eele = document.getElementById("battle-enemy");
+        eele.style.right = "10%";
+        setTimeout(() => {
+          eele.style.right = "0%";
+        }, 200);
+
+        //sets the hero to flash if attacked
+        setTimeout(() => {
+          if (res.data.enemyMessage.includes('damage')) {
+
+            // console.log("character was attacked");
+            let hele = document.getElementById("battle-hero");
+            hele.style.opacity = 0;
+            setTimeout(() => {
+              let flash = setInterval(function () {
+                if (hele.style.opacity === "0") {
+                  hele.style.opacity = 1;
+                  console.log("set to 1");
+                }
+                else {
+                  hele.style.opacity = 0;
+                  console.log("set to 0");
+                }
+              }, 100)
+              setTimeout(() => {
+                clearInterval(flash)
+                console.log("flash reset")
+              }, 300)
+            }, 100);
+          }
+        }, 300)
+
+      }, (res.data.playerMessage.length * 50))
+
       this.setState({
         heroHp: res.data.playerHp,
         enemyHp: res.data.enemyHp
@@ -126,6 +195,43 @@ class Battle extends Component {
     API.Battle.defend().then((res) => {
       console.log(res.data)
       this.typeWriter(` ${res.data.playerMessage} ${res.data.enemyMessage} ${res.data.playerDead}`);
+
+      //sets the enemy to move forward
+      setTimeout(() => {
+        let eele = document.getElementById("battle-enemy");
+        eele.style.right = "10%";
+        setTimeout(() => {
+          eele.style.right = "0%";
+        }, 200);
+
+        //sets the hero to flash if attacked
+        setTimeout(() => {
+          if (res.data.enemyMessage.includes('damage')) {
+
+            // console.log("character was attacked");
+            let hele = document.getElementById("battle-hero");
+            hele.style.opacity = 0;
+            setTimeout(() => {
+              let flash = setInterval(function () {
+                if (hele.style.opacity === "0") {
+                  hele.style.opacity = 1;
+                  console.log("set to 1");
+                }
+                else {
+                  hele.style.opacity = 0;
+                  console.log("set to 0");
+                }
+              }, 100)
+              setTimeout(() => {
+                clearInterval(flash)
+                console.log("flash reset")
+              }, 300)
+            }, 100);
+          }
+        }, 300)
+
+      }, (res.data.playerMessage.length * 50))
+
       this.setState({
         heroHp: res.data.playerHp,
         enemyHp: res.data.enemyHp
@@ -213,13 +319,13 @@ class Battle extends Component {
                 <div id="battle-hero"><img src={this.state.heroImage} alt="heromodel"></img></div>
                 <div id="battle-enemy"><img src={this.state.enemyImage} alt="enemymodel"></img></div>
                 <div className="border border-dark bg-tan rounded" id="hero-stats">
-                  <div className="pt-3">
+                  <div className="pt-2">
                     <div className="h4">{hero.name}</div>
                     <div className="lead">HP: {this.state.heroHp}/{this.state.match.hero.maxHp}</div>
                   </div>
                 </div>
                 <div className="border border-dark bg-tan rounded" id="enemy-stats">
-                  <div className="pt-3">
+                  <div className="pt-2">
                     <div className="h4">{enemy.name}</div>
                     <div className="lead">HP: {this.state.enemyHp}/{this.state.match.enemy.maxHp}</div>
                   </div>
