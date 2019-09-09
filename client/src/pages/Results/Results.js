@@ -10,6 +10,7 @@ class Results extends Component {
 
   state = {
     results: {},
+    hero: {},
     levelUp: false
   }
 
@@ -27,10 +28,14 @@ class Results extends Component {
             if (levelUp) {
               this.setState({
                 results,
+                hero: this.props.location.state.hero,
                 levelUp: true
               })
             } else {
-              this.setState({ results })
+              this.setState({ 
+                results,
+                hero: this.props.location.state.hero
+              })
             }
           })
           .catch(err => console.log(err))
@@ -39,6 +44,7 @@ class Results extends Component {
   }
 
   render() {
+    console.log(this.state.results)
     return (
       <div className="bg-scroll">
         <h1>Results Details</h1>
@@ -56,7 +62,7 @@ class Results extends Component {
             <div className="col-md-8">
               <div className="row">
                 <div className="col-md-6">
-                  XP
+                  XP: {this.state.results.mageExp}
                             </div>
                 <div className="col-md-6">
                   Gold
