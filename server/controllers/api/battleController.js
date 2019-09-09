@@ -6,13 +6,14 @@ battleController.post("/start", (req, res) => {
     enemy = req.body.enemy;
     plvl = req.body.level;
     console.log(`Level = ${plvl}`)
-    player.hp = player.maxHp + ((plvl - 1) * player.hpMod);
+    player.hp = player.maxHp
+    //  + ((plvl - 1) * player.hpMod);
     // player.mp = player.maxMp + (plvl * player.mpMod);
-    player.atk = player.atk + ((plvl - 1) * player.atkMod);
-    player.def = player.def + ((plvl - 1) * player.defMod);
-    player.acc = player.acc + ((plvl - 1) * player.accMod);
-    player.eva = player.eva + ((plvl - 1) * player.evaMod);
-    player.spd = player.spd + ((plvl - 1) * player.spdMod);
+    // player.atk = player.atk + ((plvl - 1) * player.atkMod);
+    // player.def = player.def + ((plvl - 1) * player.defMod);
+    // player.acc = player.acc + ((plvl - 1) * player.accMod);
+    // player.eva = player.eva + ((plvl - 1) * player.evaMod);
+    // player.spd = player.spd + ((plvl - 1) * player.spdMod);
     enemy.hp = enemy.maxHp;
     console.log(player);
     console.log(enemy);
