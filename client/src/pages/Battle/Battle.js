@@ -268,7 +268,6 @@ class Battle extends Component {
   typeWriter = newText => {
     let i = this.state.textCounter;
     let speed = 50;
-
     if (i < newText.length) {
       let text = this.state.combatText
       this.setState({
@@ -339,7 +338,7 @@ class Battle extends Component {
                 <div className="border border-dark bg-tan rounded" id="action-text">
                   <div id="text-box">
                     <div className="container">
-                      <p className="text-left lead" id="typewriter">{combatText}</p>
+                      <p className="text-left lead" id="typewriter">{combatText.split('.').map(text =><p> {text}</p>)}</p>
                     </div>
                   </div>
                 </div>
