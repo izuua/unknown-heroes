@@ -14,6 +14,7 @@ class Results extends Component {
   }
 
   componentDidMount() {
+    if (!this.props.location.state) return
     API.Users.sendResults(this.props.location.state.results, this.props.location.state.id)
       .then(res => {
         let levelUp = false

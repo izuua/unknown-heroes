@@ -55,27 +55,17 @@ class CharacterSelect extends Component {
                 exp: mageExp
               }
 
-              API.Characters.getCharacters()
+              API.Characters.getCharacters([knightLevel, thiefLevel, mageLevel])
                 .then(res => {
-                  userHeroes[0] = {
-                    ...userHeroes[0],
-                    ...res.data[0]
+                  for (let i = 0; i < userHeroes.length; i++) {
+                    userHeroes[i] = {
+                      ...userHeroes[i],
+                      ...res.data[i]
+                    }
                   }
-                  userHeroes[1] = {
-                    ...userHeroes[1],
-                    ...res.data[1]
-                  }
-                  userHeroes[2] = {
-                    ...userHeroes[2],
-                    ...res.data[2]
-                  }
-                  console.log(userHeroes)
+
                   this.setState({
-                    heroes: [
-                      userHeroes[0],
-                      userHeroes[1],
-                      userHeroes[2]
-                    ]
+                    heroes: userHeroes
                   })
                 })
                 .catch(err => console.log(err))
