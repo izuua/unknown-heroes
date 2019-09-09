@@ -13,7 +13,7 @@ class Gameover extends Component {
                 <div className="container gameover-bg">
                     <div className="row">
                         <div className="col-md">
-                            <h3>You died Game over!</h3>
+                            <h3>You died! Game over!</h3>
                         </div>
                     </div>
                 </div>
