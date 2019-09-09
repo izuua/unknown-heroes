@@ -23,7 +23,6 @@ class CharacterSelect extends Component {
   }
 
   componentDidMount() {
-    console.log(`Knight Exp: ${this.context.user.knightExp}`)
     if (!this.context.user) {
       this.setState({ redirectToReferrer: true })
     } else {
@@ -32,25 +31,28 @@ class CharacterSelect extends Component {
 
       API.Users.getMe(authToken)
         .then(res => {
-          console.log(res)
           id = res.data._id
 
           API.Users.getHeroes(id)
             .then(res => {
-              let { knightLevel, thiefLevel, mageLevel } = res.data
+              console.log(res.data)
+              let { knightLevel, knightExp, thiefLevel, thiefExp, mageLevel, mageExp } = res.data
               let userHeroes = []
 
               userHeroes[0] = {
                 name: "Knight",
-                level: knightLevel
+                level: knightLevel,
+                exp: knightExp
               }
               userHeroes[1] = {
                 name: "Thief",
-                level: thiefLevel
+                level: thiefLevel,
+                exp: thiefExp
               }
               userHeroes[2] = {
                 name: "Mage",
-                level: mageLevel
+                level: mageLevel,
+                exp: mageExp
               }
 
               API.Characters.getCharacters()
@@ -67,7 +69,7 @@ class CharacterSelect extends Component {
                     ...userHeroes[2],
                     ...res.data[2]
                   }
-
+                  console.log(userHeroes)
                   this.setState({
                     heroes: [
                       userHeroes[0],

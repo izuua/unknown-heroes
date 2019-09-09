@@ -9,13 +9,31 @@ class Results extends Component {
   static contextType = AuthContext
 
   state = {
-    results: this.props.location.state.results
+    results: {},
+    levelUp: false
   }
 
   componentDidMount() {
-    console.log(`Knight Exp: ${this.context.user.knightExp}`)
-    API.Users.sendResults(this.props.location.state.user, this.props.location.state.results)
-      .then(res => console.log(res.data))
+    API.Users.sendResults(this.props.location.state.results, this.props.location.state.id)
+      .then(res => {
+        let levelUp = false
+        if (res.data.levelUp) levelUp = true
+
+        API.Users.getHeroes(this.props.location.state.id)
+          .then(stats => {
+            let results = stats.data
+            console.log(results)
+            if (levelUp) {
+              this.setState({
+                results,
+                levelUp: true
+              })
+            } else {
+              this.setState({ results })
+            }
+          })
+          .catch(err => console.log(err))
+      })
       .catch(err => console.log(err))
   }
 
