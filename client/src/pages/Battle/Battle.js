@@ -319,13 +319,13 @@ class Battle extends Component {
                 <div id="battle-hero"><img src={this.state.heroImage} alt="heromodel"></img></div>
                 <div id="battle-enemy"><img src={this.state.enemyImage} alt="enemymodel"></img></div>
                 <div className="border border-dark bg-tan rounded" id="hero-stats">
-                  <div className="pt-3">
+                  <div className="pt-2">
                     <div className="h4">{hero.name}</div>
                     <div className="lead">HP: {this.state.heroHp}/{this.state.match.hero.maxHp}</div>
                   </div>
                 </div>
                 <div className="border border-dark bg-tan rounded" id="enemy-stats">
-                  <div className="pt-3">
+                  <div className="pt-2">
                     <div className="h4">{enemy.name}</div>
                     <div className="lead">HP: {this.state.enemyHp}/{this.state.match.enemy.maxHp}</div>
                   </div>
