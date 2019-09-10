@@ -1,8 +1,8 @@
 
 #homepage {
-  background: url("https://static.gosunoob.com/img/1/2017/10/ac-origins-thick-skin-side-quest.jpg");
+  background: url("./amman-ancient-antique.jpg");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   height: 100%;
   font-family: 'Indie Flower', cursive;
   overflow: hidden;
@@ -30,7 +30,7 @@
   position: relative;
   width: 100%;
   min-height: 60vh;
-  top: -25px;
+  top: -35px;
 }
 
 .starwars-affect {
@@ -60,6 +60,6 @@
   }
   100% {
     top: -6000px;
-    transform: rotateX(25deg) translateZ(-2500px);
+    transform: rotateX(25deg) translateZ(-2300px);
   }
 }

@@ -77,7 +77,7 @@ class EnemySelect extends Component {
                 <div className="scroll-container">
                   <img src={Scroll} alt="Scroll with stats" />
                   <div id="stats-text">
-                    <div className="h1">Enemy: <strong>{this.state.enemies[this.state.enemy].name}</strong></div>
+                    <div className="h2">Enemy: <strong>{this.state.enemies[this.state.enemy].name}</strong></div>
                     <div>HP: {this.state.enemies[this.state.enemy].maxHp}</div>
                     <div>Attack: {this.state.enemies[this.state.enemy].atk}</div>
                     <div>Defense: {this.state.enemies[this.state.enemy].def}</div>
