@@ -4,6 +4,9 @@ import { Link } from "react-router-dom"
 import "./Results.css"
 import AuthContext from "../../contexts/AuthContext"
 import API from '../../lib/API';
+import Knight from "../../img/knight_idle.png"
+import Mage from "../../img/mage_idle.png"
+import Thief from "../../img/thief_sm.png"
 import Victory from '../../music/2017-06-02_-_Happy_Streams_-_David_Fesliyan.mp3'
 
 class Results extends Component {
@@ -17,11 +20,16 @@ class Results extends Component {
   state = {
     results: {},
     hero: {},
-    levelUp: false
+    levelUp: false,
+    heroImages: [Knight, Thief, Mage],
+    heroImage: undefined
   }
 
   componentDidMount() {
     this.sound.play();
+    let heroImage
+    console.log(this.state.hero.name);
+
     if (!this.props.location.state) return
     API.Users.sendResults(this.props.location.state.results, this.props.location.state.id)
       .then(res => {
@@ -46,6 +54,25 @@ class Results extends Component {
                   hero: currentHero
                 })
               })
+              .catch(err => console.log(err))
+              .finally(res => {
+                console.log(this.state.hero.name)
+                switch (this.props.location.state.results.hero.name) {
+                  case "Knight":
+                    heroImage = this.state.heroImages[0]
+                    break;
+                  case "Thief":
+                    heroImage = this.state.heroImages[1]
+                    break;
+                  case "Mage":
+                    heroImage = this.state.heroImages[2]
+                    break;
+                }
+                this.setState({
+                  heroImage
+                })
+              })
+
           })
           .catch(err => console.log(err))
       })
@@ -64,19 +91,19 @@ class Results extends Component {
         <div className="container results-bg">
           <div className="row">
             <div className="col-md-4">
-              <img src="https://via.placeholder.com/150" alt="Hero model"></img>
-              <ul>
+              <div id="battle-hero"><img src={this.state.heroImage} ></img></div>
+              {/* <ul>
                 <li>some stats</li>
                 <li>some stats</li>
                 <li>some stats</li>
                 <li>some stats</li>
-              </ul>
+              </ul> */}
             </div>
             <div className="col-md-8">
               <div className="row">
                 <div className="col-md-6">
-                  XP: {this.state.results.mageExp}
-                </div>
+                  XP:
+                            </div>
                 <div className="col-md-6">
                   Gold
                             </div>
