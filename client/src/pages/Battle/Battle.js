@@ -337,82 +337,87 @@ class Battle extends Component {
   //   if (this.state.gameOver && this.state.heroHp <= 0) {
   //     return <Redirect to={{
   //       pathname: "/gameover",
-  //       // state: {
-  //       //   results: this.state.results,
-  //       //   id: this.context.user._id
-  //       // }
-  //     }}
-  //     />
-  //   } else if (this.state.gameOver && this.state.enemyHp === 0) {
-  //     return <Redirect to={{
-  //       pathname: "/results",
-  //       state: {
-  //         results: this.state.results,
-  //         id: this.context.user._id
-  //       }
-  //     }}
-  //     />
-  //   }
-  // }
+//   state: {
+//     results: this.state.results,
+//   id: this.context.user._id
+// }
+//     }}
+//     />
+//   } else if (this.state.gameOver && this.state.enemyHp === 0) {
+//     return <Redirect to={{
+//       pathname: "/results",
+//       state: {
+//         results: this.state.results,
+//         id: this.context.user._id
+//       }
+//     }}
+//     />
+//   }
+// }
 
-  render() {
-    // if (!this.context.user) return <Redirect to="/" />
-    const { hero, enemy } = this.state.match
-    const { combatText } = this.state
+render() {
+  // if (!this.context.user) return <Redirect to="/" />
+  const { hero, enemy } = this.state.match
+  const { combatText } = this.state
 
 
-    return (
-      <div className="Battle">
-        <img src={Dungeon} id="battlebackground"></img>
-        {/* {this.props.location.state ? ( */}
-        <div>
-          <h1>Battle Mode!</h1>
-          <div className="container" id="game-stage">
-            <div className="row h-100">
-              <div className="col position-relative">
-                <div id="battle-hero"><img src={this.state.heroImage} alt="heromodel"></img></div>
-                <div id="battle-enemy"><img src={this.state.enemyImage} alt="enemymodel"></img></div>
-                <div className="border border-dark bg-tan rounded" id="hero-stats">
-                  <div className="pt-2">
-                    <div className="h4">{hero.name}</div>
-                    <div className="lead">HP: {this.state.heroHp}/{this.state.match.hero.maxHp}</div>
-                  </div>
+  return (
+    <div className="Battle">
+      <img src={Dungeon} id="battlebackground"></img>
+      {/* {this.props.location.state ? ( */}
+      <div>
+        <h1>Battle Mode!</h1>
+        <div className="container" id="game-stage">
+          <div className="row h-100">
+            <div className="col position-relative">
+              <div id="battle-hero"><img src={this.state.heroImage} alt="heromodel"></img></div>
+              <div id="battle-enemy"><img src={this.state.enemyImage} alt="enemymodel"></img></div>
+              <div className="border border-dark bg-tan rounded" id="hero-stats">
+                <div className="pt-2">
+                  <div className="h4">{hero.name}</div>
+                  <div className="lead">HP: {this.state.heroHp}/{this.state.match.hero.maxHp}</div>
                 </div>
-                <div className="border border-dark bg-tan rounded" id="enemy-stats">
-                  <div className="pt-2">
-                    <div className="h4">{enemy.name}</div>
-                    <div className="lead">HP: {this.state.enemyHp}/{this.state.match.enemy.maxHp}</div>
-                  </div>
+              </div>
+              <div className="border border-dark bg-tan rounded" id="enemy-stats">
+                <div className="pt-2">
+                  <div className="h4">{enemy.name}</div>
+                  <div className="lead">HP: {this.state.enemyHp}/{this.state.match.enemy.maxHp}</div>
                 </div>
-                <div className="border border-dark bg-tan rounded" id="action-menu">
-                  {this.state.gameOver ? (
+              </div>
+              <div className="border border-dark bg-tan rounded" id="action-menu">
+                {this.state.gameOver ? (
+                  <div id="action-btns">
+                    <Link to={{
+                      pathname: this.state.resultsLink, state: {
+                        results: this.state.results,
+                        id: this.context.user._id
+                      }
+                    }}><button id="continue" className="btn btn-success mr-3">Continue</button></Link>
+                  </div>
+                ) : (
                     <div id="action-btns">
-                    <Link to={this.state.resultsLink}><button id="continue" className="btn btn-success mr-3">Continue</button></Link>
+                      <button title="Attack the enemy" onClick={this.attack} className="btn btn-success mr-3" id="attack-btn">Attack</button>
+                      <button title="Reduce damage taken and heal your hp by 10%" onClick={this.defend} className="btn btn-info ml-3" id="defend-btn">Defend</button>
                     </div>
-                  ) : (
-                      <div id="action-btns">
-                        <button title="Attack the enemy" onClick={this.attack} className="btn btn-success mr-3" id="attack-btn">Attack</button>
-                        <button title="Reduce damage taken and heal your hp by 10%" onClick={this.defend} className="btn btn-info ml-3" id="defend-btn">Defend</button>
-                      </div>
-                    )}
-                </div>
-                <div className="border border-dark bg-tan rounded" id="action-text">
-                  <div id="text-box">
-                    <div className="container">
-                      <p className="text-left lead" id="typewriter">{combatText.split('.').map(text => <p> {text}</p>)}</p>
-                    </div>
+                  )}
+              </div>
+              <div className="border border-dark bg-tan rounded" id="action-text">
+                <div id="text-box">
+                  <div className="container">
+                    <p className="text-left lead" id="typewriter">{combatText.split('.').map(text => <p> {text}</p>)}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {/* ) : (
+      </div>
+      {/* ) : (
             <Redirect to="/character" />
           )} */}
-      </div>
-    )
-  }
+    </div >
+  )
+}
 }
 
 export default Battle;
