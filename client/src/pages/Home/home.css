@@ -2,7 +2,7 @@
 #homepage {
   background: url("./amman-ancient-antique.jpg");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   height: 100%;
   font-family: 'Indie Flower', cursive;
   overflow: hidden;

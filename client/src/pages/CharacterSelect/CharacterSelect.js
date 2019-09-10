@@ -117,7 +117,7 @@ class CharacterSelect extends Component {
                 <div className="scroll-container">
                   <img src={Scroll} alt="Scroll with stats" />
                   <div id="stats-text">
-                    <div className="h1">Hero Class: <strong>{this.state.heroes[this.state.heroClass].name}</strong></div>
+                    <div className="h2">Hero: <strong>{this.state.heroes[this.state.heroClass].name}</strong></div>
                     <div>HP: {this.state.heroes[this.state.heroClass].maxHp}</div>
                     <div>Attack: {this.state.heroes[this.state.heroClass].atk}</div>
                     <div>Defense: {this.state.heroes[this.state.heroClass].def}</div>
