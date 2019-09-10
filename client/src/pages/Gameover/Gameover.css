@@ -1,11 +1,10 @@
 .col-md {
     padding: 40px;
     width: 40px;
-     background: url("../../img/dungeonbackground.png"); 
+    margin-top: 80px;
+    background: url("../../img/dungeonbackground.png"); 
     font-family: 'Indie Flower', cursive;
     color: white
-    
-  
 }
 
 h1{
