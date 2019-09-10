@@ -59,7 +59,7 @@
   width: 100%;
   left: 0;
   top: 0;
-  position: fixed;
+  position: absolute;
   z-index: -10;
   font-family: 'Indie Flower', cursive;
 }
@@ -79,10 +79,10 @@ h1, h2 {
 }
 
 #battle-enemy img {
-  margin-top: 40%;
-  margin-left: 25%;
+  margin-top: 30%;
+  margin-left: 15%;
   height: 300px;
-  width: 300px;
+  width: 250px;
 }
 
 #battle-hero {
