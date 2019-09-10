@@ -21,53 +21,58 @@ class Results extends Component {
     results: {},
     hero: {},
     levelUp: false,
-    heroImages: [Knight, Thief, Mage]
+    heroImages: [Knight, Thief, Mage],
+    heroImage: undefined
   }
 
   componentDidMount() {
     this.sound.play();
     let heroImage
     console.log(this.state.hero.name);
-    
+
     if (!this.props.location.state) return
     API.Users.sendResults(this.props.location.state.results, this.props.location.state.id)
       .then(res => {
-        let levelUp = false
-        if (res.data.levelUp) levelUp = true
+        let levelUp = res.data.levelUp
+
+        this.setState({ levelUp })
 
         API.Users.getHeroes(this.props.location.state.id)
           .then(stats => {
-            let results = stats.data
-            console.log(results)
-            if (levelUp) {
-              this.setState({
-                results,
-                hero: this.props.location.state.results.hero,
-                enemy: this.props.location.state.results.enemy,
-                levelUp: true
+            const { knightLevel, thiefLevel, mageLevel } = stats.data
+            let levels = [knightLevel, thiefLevel, mageLevel]
+            let userStats = stats.data
+            console.log(userStats)
+
+            API.Characters.getCharacters(levels)
+              .then(res => {
+                let currentHero = res.data.filter(hero => hero.name === this.props.location.state.results.hero.name)
+                console.log(currentHero)
+
+                this.setState({
+                  results: this.props.location.state.results,
+                  hero: currentHero
+                })
               })
-            } else {
-              this.setState({ 
-                results,
-                hero: this.props.location.state.results.hero,
-                enemy: this.props.location.state.results.enemy
+              .catch(err => console.log(err))
+              .finally(res => {
+                console.log(this.state.hero.name)
+                switch (this.props.location.state.results.hero.name) {
+                  case "Knight":
+                    heroImage = this.state.heroImages[0]
+                    break;
+                  case "Thief":
+                    heroImage = this.state.heroImages[1]
+                    break;
+                  case "Mage":
+                    heroImage = this.state.heroImages[2]
+                    break;
+                }
+                this.setState({
+                  heroImage
+                })
               })
-            }
-            console.log(this.state.hero.name)
-            switch (this.state.hero.name) {
-              case "Knight":
-                heroImage = this.state.heroImages[0]
-                break;
-              case "Thief":
-                heroImage = this.state.heroImages[1]
-                break;
-              case "Mage":
-                heroImage = this.state.heroImages[2]
-                break;
-            }
-            this.setState({
-              heroImage
-            })
+
           })
           .catch(err => console.log(err))
       })
@@ -86,7 +91,7 @@ class Results extends Component {
         <div className="container results-bg">
           <div className="row">
             <div className="col-md-4">
-            <div id="battle-hero"><img src={this.state.heroImage} alt="heromodel"></img></div>
+              <div id="battle-hero"><img src={this.state.heroImage} ></img></div>
               {/* <ul>
                 <li>some stats</li>
                 <li>some stats</li>
@@ -97,7 +102,7 @@ class Results extends Component {
             <div className="col-md-8">
               <div className="row">
                 <div className="col-md-6">
-                  XP: 
+                  XP:
                             </div>
                 <div className="col-md-6">
                   Gold
