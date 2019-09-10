@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://localhost:3000/results -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <link rel="shortcut icon" href="http://localhost:3000/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <!--
+    manifest.json provides metadata used when your web app is installed on a
+    user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+  -->
+  <link rel="manifest" href="http://localhost:3000/manifest.json">
+  <!--
+    Notice the use of  in the tags above.
+    It will be replaced with the URL of the `public` folder during the build.
+    Only files inside the `public` folder can be referenced from the HTML.
+
+    Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+    work correctly both with client-side routing and a non-root public URL.
+    Learn how to configure a non-root public URL by running `npm run build`.
+  -->
+  <link rel="stylesheet" href="./Project 3 Client_files/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- boostrapMDB -->
+
+     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/css/mdb.min.css" rel="stylesheet">  -->
+
+    <!-- Google Font -->
+    <link href="./Project 3 Client_files/css" rel="stylesheet">
+  <title>Project 3 Client</title>
+<style>body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+</style><style>
+#homepage {
+  background: url("https://static.gosunoob.com/img/1/2017/10/ac-origins-thick-skin-side-quest.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100%;
+  font-family: 'Indie Flower', cursive;
+  overflow: hidden;
+}
+
+#gametitle {
+  font-size: 100px;
+}
+
+#login {
+  padding: 10px 20px;
+  text-align: center;
+  margin: 15px;
+  border-radius: 25px;
+}
+
+#createaccount {
+  padding: 10px;
+  text-align: center;
+  margin: 15px;
+  border-radius: 25px;
+}
+
+.fade {
+  position: relative;
+  width: 100%;
+  min-height: 60vh;
+  top: -25px;
+}
+
+.starwars-affect {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 800px;
+  font-size: 500%;
+  font-weight: 600;
+  letter-spacing: 6px;
+  line-height: 150%;
+  -webkit-perspective: 400px;
+          perspective: 400px;
+  text-align: center;
+}
+
+.crawl {
+  position: relative;
+  top: 1100px;
+  -webkit-transform-origin: 50% 100%;
+          transform-origin: 50% 100%;
+  -webkit-animation: crawl 60s linear;
+          animation: crawl 60s linear;
+}
+
+@-webkit-keyframes crawl {
+  0% {
+    top: -100px;
+    -webkit-transform: rotateX(20deg) translateZ(0);
+            transform: rotateX(20deg) translateZ(0);
+  }
+  100% {
+    top: -6000px;
+    -webkit-transform: rotateX(25deg) translateZ(-2500px);
+            transform: rotateX(25deg) translateZ(-2500px);
+  }
+}
+
+@keyframes crawl {
+  0% {
+    top: -100px;
+    -webkit-transform: rotateX(20deg) translateZ(0);
+            transform: rotateX(20deg) translateZ(0);
+  }
+  100% {
+    top: -6000px;
+    -webkit-transform: rotateX(25deg) translateZ(-2500px);
+            transform: rotateX(25deg) translateZ(-2500px);
+  }
+}</style><style>#loginbackground {
+    background: url(/static/media/requestboard.b3a74852.png);
+    background-size: 100%;
+    height: 100%;
+    font-family: 'Indie Flower', cursive;
+}
+
+.card-body {
+    background-color:rgb(46, 46, 46);
+}
+
+.LoginForm {
+    margin-right: 50px;
+    margin-left: 50px;
+    padding-top: 20px;
+}
+
+#logintext {
+    font-size: 100px;
+}</style><style>#registerbackground {
+    background: url(/static/media/requestboard.b3a74852.png);
+    background-size: 100%;
+    height: 100%;
+    font-family: 'Indie Flower', cursive;
+    
+}
+
+</style><style>#characterbackground {
+  background: url(/static/media/scroll.6f9bd3cf.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100%;
+  font-family: 'Indie Flower', cursive;
+}
+
+.CharacterSelect {
+  font-size: calc(20px + (30 - 20) * ((100vw - 300px) / (1600 - 300)));
+}
+  
+.btn-choice, .btn-choice:hover {
+  text-decoration: none;
+  color: white;
+}
+  
+#game-stage {
+  position: relative;
+  height: 65vh;
+}
+  
+#bottom-row {
+  position: absolute;
+  bottom: 5%;
+}
+  
+#characterbackground {
+  background: url(/static/media/scroll.6f9bd3cf.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100%;
+}
+  
+.indie-flower {
+  font-family: 'Indie Flower', cursive;
+}
+  
+#characterstats {
+  /* background: url("./scrollforstats.png") center; */
+  /* background-repeat: no-repeat; */
+  height: 100%;
+  width: 33%;
+}
+  
+.vh-75 {
+  height: 75vh;
+}
+  
+.scroll-container {
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  right: 10%;
+}
+  
+.scroll-container img {
+  max-height: 100%;
+  max-width: 100%;
+  vertical-align: middle
+}
+  
+.model-container {
+  min-height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 10%;
+}
+  
+#stats-text {
+  position: absolute;
+  z-index: 999;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 25%;
+  text-align: center;
+  width: 60%;
+}
+  
+#heromodel {
+  margin-top: 10%;
+  height: 400px;
+  width: 400px;
+  max-height: 100%;
+  max-width: 100%;
+}
+  
+#statsbackground {
+  height: 65vh;
+  width: 50vh;
+}</style><style>.btn-choice, .btn-choice:hover {
+  text-decoration: none;
+  color: white;
+}
+
+#game-stage {
+  position: relative;
+  height: 65vh;
+}
+
+#bottom-row {
+  position: absolute;
+  bottom: 5%;
+}
+
+</style><style>#enemybackground {
+    background: url(/static/media/scroll.6f9bd3cf.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 100%;
+    font-family: 'Indie Flower', cursive;
+}
+
+#enemystatsbackground {
+    background: url(/static/media/scrollforstats.e4dfa85d.png) center;
+    background-repeat: no-repeat;
+    background-size: 300px;
+    height: 400px;
+    width: 50%;
+}
+
+#enemymodel {
+    max-width: 100%;
+    height: auto;
+}
+
+#enemystats {
+    padding: 80px;
+    padding-right: 50px;
+}
+
+.EnemySelect {
+    font-size: calc(20px + (30 - 20) * ((100vw - 300px) / (1600 - 300)));
+  }</style><style>#action-menu {
+  position: absolute;
+  top: 55%;
+  bottom: 3%;
+  right: 35%;
+  height: 25%;
+  width: 30%;
+  z-index: 100;
+}
+#action-text {
+  position: absolute;
+  top: 90%;
+  bottom: 3%;
+  right: 25%;
+  height: 25%;
+  width: 50%;
+  z-index: -5;
+}
+#hero-stats {
+  position: absolute;
+  top: 3%;
+  left: 3%;
+  height: 20%;
+  width: 25%;
+}
+#enemy-stats {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  height: 20%;
+  width: 25%;
+}
+
+#action-btns {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+#text-box {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow-y: hidden;
+}
+#text-box > .container {
+  position: absolute;
+  bottom: 0;
+}
+
+#battlebackground {
+  /* background: url("../../img/dungeonbackground.png"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: fixed;
+  z-index: -10;
+  font-family: 'Indie Flower', cursive;
+}
+
+#action-menu {
+  margin-top: 30px;
+}
+
+h1, h2 {
+  color: white;
+}
+
+#battle-enemy {
+  position: absolute;
+  top: 20%;
+  right: 0%;
+}
+
+#battle-enemy img {
+  margin-top: 40%;
+  margin-left: 25%;
+  height: 300px;
+  width: 300px;
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+
+#battle-hero {
+  position: absolute;
+  top: 45%;
+  left: 2%;
+}
+
+#battle-hero img {
+  margin-top: 50%;
+  height: 200px;
+  width: 200px;
+}
+</style><style>.col-md-4 {   
+    padding: 20px;
+    width: 20px;
+}
+
+.col-md-8 {
+    padding: 40px;
+    width: 20px;
+}
+
+.col-md-6 {
+    padding: 60px;
+    width: 40px;
+}
+
+.col-md-12 {
+    padding: 40px;
+    width: 20px;
+}
+
+.results-bg{
+    background: url(/static/media/dungeonbackground.a641e159.png);
+    font-family: 'Indie Flower', cursive;
+    color: white;
+    background-repeat: no-repeat center center fixed;
+    background-size: cover;
+    height: 80%;
+    width: 100%;
+    overflow: hidden;
+
+}
+
+.results{
+    font-family: 'Indie Flower', cursive;
+    font-size: 30px;
+    color: white;
+}
+
+.stats{
+    font-family: 'Indie Flower', cursive;
+    font-size: 25px;
+    color: white;
+    text-align: left;
+}
+
+h1{
+    font-family: 'Indie Flower', cursive;   
+    color: rgb(20, 19, 19);
+}
+
+
+</style><style>.col-md {
+    padding: 40px;
+    width: 40px;
+     background: url(/static/media/dungeonbackground.a641e159.png); 
+    font-family: 'Indie Flower', cursive;
+    color: white
+    
+  
+}
+
+h1{
+    font-family: 'Indie Flower', cursive;   
+    color: rgb(20, 19, 19);
+}</style><style>#stats-row {
+  height: 60vh
+}
+
+#stats-row .col-4 {
+  position: relative;
+}</style><style>.App {
+  text-align: center;
+}
+
+.nav-lg {
+  height: calc(100vh - 60px);
+}
+
+.nav-sm {
+  height: calc(100vh - 56px);
+}
+
+.bg-tan {
+  background-color: #EFDFA9
+}
+
+.bg-scroll {
+  background: url(/static/media/scroll.6f9bd3cf.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100%;
+}
+
+.indie-flower {
+  font-family: 'Indie Flower', cursive;
+}</style></head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"><div class="App"><div class="Navigation"><nav class="navbar navbar-expand-lg navbar-dark bg-dark"><a class="navbar-brand" href="http://localhost:3000/">Unknown Heroes</a><button class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse false" id="navbarSupportedContent"><ul class="navbar-nav mr-auto"><li class="nav-item"><a class="nav-link" href="http://localhost:3000/">Home</a></li><li class="nav-item"><a class="nav-link" href="http://localhost:3000/character">Character</a></li><li class="nav-item"><a class="nav-link" href="http://localhost:3000/results">Results</a></li><li class="nav-item"><a class="nav-link" href="http://localhost:3000/gameover">Gameover</a></li><li class="nav-item"><a class="nav-link" href="http://localhost:3000/stats">Stats</a></li></ul><ul class="navbar-nav"><li class="nav-item dropdown"><button class="btn btn-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img alt="Gravatar for izuuaaf@gmail.com" src="./Project 3 Client_files/beeddbac26cc7a489266a647cee0e6bf" srcset="//www.gravatar.com/avatar/beeddbac26cc7a489266a647cee0e6bf?d=retro&amp;r=g&amp;s=60 2x" height="30" width="30" class="react-gravatar rounded-circle"> izuuaaf@gmail.com</button><div class="dropdown-menu dropdown-menu-right false" aria-labelledby="navbarDropdown"><div class="dropdown-item">Logout</div></div></li></ul></div></nav></div><div class="nav-sm"><div class="bg-scroll"><h1>Results Details</h1><div class="container results-bg"><div class="row"><div class="col-md-4 stats"><ul><li>Name: Knight</li><li>Level: 5</li><li>HP: 40</li><li>Atk: 11</li><li>Def: 15</li><li>Acc: 10</li><li>Eva: 5</li><li>Spd: 5</li></ul><div id="battle-hero"><img src="./Project 3 Client_files/knight_idle.32392856.png"></div></div><div class="col-md-8"><div class="row"><div class="col-md-6 results">XP: 100</div><div class="col-md-6 results">Gold: 100</div></div><div class="row"><div class="col-md-12 results"></div></div><div class="row"><div class="col-md-12"><div class="col"><a class="btn-choice" href="http://localhost:3000/character"><button class="btn btn-success mx-3" type="button">Play again</button></a></div></div></div></div></div></div></div></div></div></div>
+  <!--
+    This HTML file is a template.
+    If you open it directly in the browser, you will see an empty page.
+
+    You can add webfonts, meta tags, or analytics to this file.
+    The build step will place the bundled scripts into the <body> tag.
+
+    To begin the development, run `npm start` or `yarn start`.
+    To create a production bundle, use `npm run build` or `yarn build`.
+  -->
+<script src="./Project 3 Client_files/bundle.js.download"></script><script src="./Project 3 Client_files/0.chunk.js.download"></script><script src="./Project 3 Client_files/main.chunk.js.download"></script><script src="./Project 3 Client_files/main.739532630209c2a9c2af.hot-update.js.download"></script>
+
+</body></html>
