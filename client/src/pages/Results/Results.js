@@ -28,7 +28,7 @@ class Results extends Component {
     this.sound.play();
     let heroImage
     console.log(this.state.hero.name);
-    
+
     if (!this.props.location.state) return
     API.Users.sendResults(this.props.location.state.results, this.props.location.state.id)
       .then(res => {
@@ -47,7 +47,7 @@ class Results extends Component {
                 levelUp: true
               })
             } else {
-              this.setState({ 
+              this.setState({
                 results,
                 hero: this.props.location.state.results.hero,
                 enemy: this.props.location.state.results.enemy
@@ -86,7 +86,7 @@ class Results extends Component {
         <div className="container results-bg">
           <div className="row">
             <div className="col-md-4">
-            <div id="battle-hero"><img src={this.state.heroImage} alt="heromodel"></img></div>
+              <div id="battle-hero"><img src={this.state.heroImage} alt="heromodel"></img></div>
               {/* <ul>
                 <li>some stats</li>
                 <li>some stats</li>
@@ -96,17 +96,17 @@ class Results extends Component {
             </div>
             <div className="col-md-8">
               <div className="row">
-                <div className="col-md-6">
-                  XP: 
+                <div className="col-md-6 results">
+                  XP:
                             </div>
-                <div className="col-md-6">
-                  Gold
+                <div className="col-md-6 results">
+                  Gold: 
                             </div>
               </div>
               <div className="row">
-                <div className="col-md-12">
-                  Levels
-                            </div>
+                <div className="col-md-12 results">
+                  Level: {this.state.results.knightLevel}
+                </div>
               </div>
               <div className="row">
                 <div className="col-md-12">
