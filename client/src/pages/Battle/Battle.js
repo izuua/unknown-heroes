@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 
 import "./battle.css"
 import AuthContext from '../../contexts/AuthContext';
@@ -11,9 +11,22 @@ import Bat from "../../img/bat1.png"
 import Goblin from "../../img/goblin1.png"
 import Dragon from "../../img/dragon1.png"
 import Dungeon from "../../img/dungeonbackground.png"
+import Slash from '../../music/464500__elynch0901__attack-kick-2.wav'
+import Dead from '../../music/483653__spacejoe__falling-object-6.wav'
+import battleMusic from '../../music/2019-01-22_-_Ready_to_Fight_-_David_Fesliyan.mp3'
+
+// import Sound from 'react-sound';
+
 
 class Battle extends Component {
   static contextType = AuthContext
+
+  constructor(props) {
+    super(props);
+    this.sound = new Audio(battleMusic);
+    this.slash = new Audio(Slash);
+    this.dead = new Audio(Dead);
+  }
 
   state = {
     match: this.props.location.state,
@@ -28,10 +41,12 @@ class Battle extends Component {
     enemyImages: [Bat, Goblin, Dragon],
     heroImage: undefined,
     enemyImage: undefined,
-    results: {}
+    results: {},
+    resultsLink: "/results"
   }
 
   componentDidMount() {
+    this.sound.play();
     let heroImage
     let enemyImage
     switch (this.state.match.hero.name) {
@@ -70,6 +85,9 @@ class Battle extends Component {
     })
   }
 
+  componentWillUnmount() {
+    this.sound.pause();
+  }
 
   attack = () => {
     if (this.state.roundActive) return
@@ -80,7 +98,7 @@ class Battle extends Component {
     })
 
     API.Battle.attack().then((res) => {
-      console.log(res.data)
+      // console.log(res.data)
       this.typeWriter(` ${res.data.playerMessage} ${res.data.enemyMessage} ${res.data.playerDead}`);
 
       //sets the hero to move forward
@@ -94,62 +112,72 @@ class Battle extends Component {
       setTimeout(() => {
         if (res.data.playerMessage.includes('damage')) {
           // console.log("enemy was attacked");
+          this.slash.play();
           let eele = document.getElementById("battle-enemy");
           eele.style.opacity = 0;
           setTimeout(() => {
             let flash = setInterval(function () {
               if (eele.style.opacity === "0") {
                 eele.style.opacity = 1;
-                console.log("set to 1");
+                // console.log("set to 1");
               }
               else {
                 eele.style.opacity = 0;
-                console.log("set to 0");
+                // console.log("set to 0");
               }
             }, 100)
             setTimeout(() => {
               clearInterval(flash)
-              console.log("flash reset")
+              // console.log("flash reset")
             }, 300)
           }, 100)
         }
       }, 300)
 
+
       //sets the enemy to move forward
       setTimeout(() => {
         let eele = document.getElementById("battle-enemy");
-        eele.style.right = "10%";
-        setTimeout(() => {
-          eele.style.right = "0%";
-        }, 200);
+        if (this.state.enemyHp > 0) {
+          eele.style.opacity = 1;
+          eele.style.right = "10%";
+          setTimeout(() => {
+            eele.style.right = "0%";
+          }, 300);
+        } else { //if enemy is dead, play this animation instead
+          this.dead.play();
+          eele.style.opacity = 0;
+        }
+
 
         //sets the hero to flash if attacked
         setTimeout(() => {
           if (res.data.enemyMessage.includes('damage')) {
-
             // console.log("character was attacked");
+            this.slash.play();
             let hele = document.getElementById("battle-hero");
             hele.style.opacity = 0;
             setTimeout(() => {
               let flash = setInterval(function () {
                 if (hele.style.opacity === "0") {
                   hele.style.opacity = 1;
-                  console.log("set to 1");
+                  // console.log("set to 1");
                 }
                 else {
                   hele.style.opacity = 0;
-                  console.log("set to 0");
+                  // console.log("set to 0");
                 }
               }, 100)
               setTimeout(() => {
                 clearInterval(flash)
-                console.log("flash reset")
+                // console.log("flash reset")
               }, 300)
             }, 100);
           }
-        }, 300)
+        }, 400)
 
       }, (res.data.playerMessage.length * 50))
+
 
       this.setState({
         heroHp: res.data.playerHp,
@@ -160,21 +188,22 @@ class Battle extends Component {
           this.setState({
             results: {
               hero: this.state.match.hero,
-              enemy: this.state.match.enemy,
               roundWon: true,
               xpGain: this.state.match.enemy.exp,
               goldGain: this.state.match.enemy.gold
-            }
+            },
+            resultsLink: "/results"
           })
         } else {
+          // console.log("Gameover!")
           this.setState({
             results: {
               hero: this.state.match.hero,
-              enemy: this.state.match.enemy,
               roundWon: false,
               xpGain: 0,
               goldGain: 0
-            }
+            },
+            resultsLink: "/gameover"
           })
         }
         setTimeout(() => {
@@ -184,6 +213,12 @@ class Battle extends Component {
         }, 4000)
       }
     });
+
+    //sets the hero back to visible if the flash messes up
+    setTimeout(() => {
+      let hele = document.getElementById("battle-hero");
+      hele.style.opacity = 1;
+    }, 1000)
   }
 
   defend = () => {
@@ -201,16 +236,22 @@ class Battle extends Component {
       //sets the enemy to move forward
       setTimeout(() => {
         let eele = document.getElementById("battle-enemy");
-        eele.style.right = "10%";
-        setTimeout(() => {
-          eele.style.right = "0%";
-        }, 200);
+        if (this.state.enemyHp > 0) {
+          eele.style.opacity = 1;
+          eele.style.right = "10%";
+          setTimeout(() => {
+            eele.style.right = "0%";
+          }, 300);
+        } else {
+          eele.style.opacity = 0;
+        }
+
 
         //sets the hero to flash if attacked
         setTimeout(() => {
           if (res.data.enemyMessage.includes('damage')) {
-
             // console.log("character was attacked");
+            this.slash.play();
             let hele = document.getElementById("battle-hero");
             hele.style.opacity = 0;
             setTimeout(() => {
@@ -246,16 +287,19 @@ class Battle extends Component {
               roundWon: true,
               xpGain: this.state.match.enemy.exp,
               goldGain: this.state.match.enemy.gold
-            }
+            },
+            resultsLink: "/results"
           })
         } else {
+          // console.log("Gameover!")
           this.setState({
             results: {
               hero: this.state.match.hero,
               roundWon: false,
               xpGain: 0,
               goldGain: 0
-            }
+            },
+            resultsLink: "/gameover"
           })
         }
         setTimeout(() => {
@@ -265,6 +309,11 @@ class Battle extends Component {
         }, 4000)
       }
     });
+    //sets the hero back to visible if the flash messes up
+    setTimeout(() => {
+      let hele = document.getElementById("battle-hero");
+      hele.style.opacity = 1;
+    }, 1000)
   }
 
   typeWriter = newText => {
@@ -283,30 +332,34 @@ class Battle extends Component {
 
   }
 
+  // toResults = () => {
+  //   console.log("button clicked");
+  //   if (this.state.gameOver && this.state.heroHp <= 0) {
+  //     return <Redirect to={{
+  //       pathname: "/gameover",
+  //       // state: {
+  //       //   results: this.state.results,
+  //       //   id: this.context.user._id
+  //       // }
+  //     }}
+  //     />
+  //   } else if (this.state.gameOver && this.state.enemyHp === 0) {
+  //     return <Redirect to={{
+  //       pathname: "/results",
+  //       state: {
+  //         results: this.state.results,
+  //         id: this.context.user._id
+  //       }
+  //     }}
+  //     />
+  //   }
+  // }
+
   render() {
     // if (!this.context.user) return <Redirect to="/" />
     const { hero, enemy } = this.state.match
     const { combatText } = this.state
 
-    if (this.state.gameOver && this.state.heroHp <= 0) {
-      return <Redirect to={{
-        pathname: "/gameover",
-        // state: {
-        //   results: this.state.results,
-        //   id: this.context.user._id
-        // }
-      }}
-      />
-    } else if (this.state.gameOver && this.state.enemyHp === 0) {
-      return <Redirect to={{
-        pathname: "/results",
-        state: {
-          results: this.state.results,
-          id: this.context.user._id
-        }
-      }}
-      />
-    }
 
     return (
       <div className="Battle">
@@ -332,15 +385,21 @@ class Battle extends Component {
                   </div>
                 </div>
                 <div className="border border-dark bg-tan rounded" id="action-menu">
-                  <div id="action-btns">
-                    <button title="Attack the enemy" onClick={this.attack} className="btn btn-success mr-3" id="attack-btn">Attack</button>
-                    <button title="Reduce damage taken and heal your hp by 10%" onClick={this.defend} className="btn btn-info ml-3" id="defend-btn">Defend</button>
-                  </div>
+                  {this.state.gameOver ? (
+                    <div id="action-btns">
+                    <Link to={this.state.resultsLink}><button id="continue" className="btn btn-success mr-3">Continue</button></Link>
+                    </div>
+                  ) : (
+                      <div id="action-btns">
+                        <button title="Attack the enemy" onClick={this.attack} className="btn btn-success mr-3" id="attack-btn">Attack</button>
+                        <button title="Reduce damage taken and heal your hp by 10%" onClick={this.defend} className="btn btn-info ml-3" id="defend-btn">Defend</button>
+                      </div>
+                    )}
                 </div>
                 <div className="border border-dark bg-tan rounded" id="action-text">
                   <div id="text-box">
                     <div className="container">
-                      <p className="text-left lead" id="typewriter">{combatText.split('.').map(text =><p> {text}</p>)}</p>
+                      <p className="text-left lead" id="typewriter">{combatText.split('.').map(text => <p> {text}</p>)}</p>
                     </div>
                   </div>
                 </div>

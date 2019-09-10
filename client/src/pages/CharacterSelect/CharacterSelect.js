@@ -10,9 +10,15 @@ import Mage from "../../img/mage_idle.png"
 import ThiefSm from "../../img/thief_sm.png"
 import Scroll from "../../img/stats-scroll.png"
 import TokenStore from "../../lib/TokenStore"
+import CharacterMusic from '../../music/2012-10-09_Preparation_-_David_Feslyan.mp3'
 
 class CharacterSelect extends Component {
   static contextType = AuthContext
+
+  constructor(props) {
+    super(props);
+    this.sound = new Audio(CharacterMusic);
+  }
 
   state = {
     heroes: [],
@@ -23,6 +29,7 @@ class CharacterSelect extends Component {
   }
 
   componentDidMount() {
+    this.sound.play();
     if (!this.context.user) {
       this.setState({ redirectToReferrer: true })
     } else {
@@ -73,6 +80,10 @@ class CharacterSelect extends Component {
             })
         })
     }
+  }
+
+  componentWillUnmount() {
+    this.sound.pause();
   }
 
   changeCharacter = event => {

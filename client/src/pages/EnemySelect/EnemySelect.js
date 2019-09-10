@@ -7,9 +7,14 @@ import Bat from "../../img/bat1.png"
 import Goblin from "../../img/goblin1.png"
 import Dragon from "../../img/dragon1.png"
 import Scroll from "../../img/stats-scroll.png"
+import CharacterMusic from '../../music/2012-10-09_Preparation_-_David_Feslyan.mp3'
 
 class EnemySelect extends Component {
   static contextType = AuthContext
+  constructor(props) {
+    super(props);
+    this.sound = new Audio(CharacterMusic);
+  }
 
   state = {
     hero: this.props.location.state,
@@ -22,6 +27,7 @@ class EnemySelect extends Component {
 
 
   componentDidMount() {
+    this.sound.play();
     if (!this.context.user || !this.props.location.state) {
       this.setState({ redirectToReferrer: true })
     } else {
@@ -37,6 +43,10 @@ class EnemySelect extends Component {
         .catch(err => console.log(err))
         .finally(() => this.setState({ isLoaded: true }))
     }
+  }
+
+  componentWillUnmount() {
+    this.sound.pause();
   }
 
   changeEnemy = event => {
