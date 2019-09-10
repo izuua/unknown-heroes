@@ -23,11 +23,10 @@ class Gameover extends Component {
 
         return (
             <div className="bg-scroll">
-                <h1>End of The Game</h1>
                 <div className="container gameover-bg">
                     <div className="row">
                         <div className="col-md">
-                            <h3>You died! Game over!</h3>
+                            <h1>You died! Game over!</h1>
                         </div>
                     </div>
                 </div>
