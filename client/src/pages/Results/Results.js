@@ -25,27 +25,27 @@ class Results extends Component {
     if (!this.props.location.state) return
     API.Users.sendResults(this.props.location.state.results, this.props.location.state.id)
       .then(res => {
-        let levelUp = false
-        if (res.data.levelUp) levelUp = true
+        let levelUp = res.data.levelUp
+
+        this.setState({ levelUp })
 
         API.Users.getHeroes(this.props.location.state.id)
           .then(stats => {
-            let results = stats.data
-            console.log(results)
-            if (levelUp) {
-              this.setState({
-                results,
-                hero: this.props.location.state.results.hero,
-                enemy: this.props.location.state.results.enemy,
-                levelUp: true
+            const { knightLevel, thiefLevel, mageLevel } = stats.data
+            let levels = [knightLevel, thiefLevel, mageLevel]
+            let userStats = stats.data
+            console.log(userStats)
+
+            API.Characters.getCharacters(levels)
+              .then(res => {
+                let currentHero = res.data.filter(hero => hero.name === this.props.location.state.results.hero.name)
+                console.log(currentHero)
+
+                this.setState({
+                  results: this.props.location.state.results,
+                  hero: currentHero
+                })
               })
-            } else {
-              this.setState({ 
-                results,
-                hero: this.props.location.state.results.hero,
-                enemy: this.props.location.state.results.enemy
-              })
-            }
           })
           .catch(err => console.log(err))
       })
@@ -76,7 +76,7 @@ class Results extends Component {
               <div className="row">
                 <div className="col-md-6">
                   XP: {this.state.results.mageExp}
-                            </div>
+                </div>
                 <div className="col-md-6">
                   Gold
                             </div>
