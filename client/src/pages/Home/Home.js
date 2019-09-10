@@ -2,9 +2,23 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import "./home.css";
 import AuthContext from '../../contexts/AuthContext';
+import StartSound from '../../music/2013-03-31_Reborn_-_David_Fesliyan.mp3'
 
 class HomePage extends Component {
   static contextType = AuthContext
+
+  constructor(props) {
+    super(props);
+    this.sound = new Audio(StartSound);
+  }
+
+  componentDidMount() {
+    this.sound.play();
+  }
+
+  componentWillUnmount() {
+    this.sound.pause();
+  }
 
   render() {
     return (

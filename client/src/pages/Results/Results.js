@@ -4,9 +4,15 @@ import { Link } from "react-router-dom"
 import "./Results.css"
 import AuthContext from "../../contexts/AuthContext"
 import API from '../../lib/API';
+import Victory from '../../music/2017-06-02_-_Happy_Streams_-_David_Fesliyan.mp3'
 
 class Results extends Component {
   static contextType = AuthContext
+
+  constructor(props) {
+    super(props);
+    this.sound = new Audio(Victory);
+  }
 
   state = {
     results: {},
@@ -15,6 +21,7 @@ class Results extends Component {
   }
 
   componentDidMount() {
+    this.sound.play();
     if (!this.props.location.state) return
     API.Users.sendResults(this.props.location.state.results, this.props.location.state.id)
       .then(res => {
@@ -43,6 +50,10 @@ class Results extends Component {
           .catch(err => console.log(err))
       })
       .catch(err => console.log(err))
+  }
+
+  componentWillUnmount() {
+    this.sound.pause();
   }
 
   render() {
