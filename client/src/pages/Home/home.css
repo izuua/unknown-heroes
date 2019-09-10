@@ -30,7 +30,7 @@
   position: relative;
   width: 100%;
   min-height: 60vh;
-  top: -25px;
+  top: -35px;
 }
 
 .starwars-affect {
@@ -60,6 +60,6 @@
   }
   100% {
     top: -6000px;
-    transform: rotateX(25deg) translateZ(-2500px);
+    transform: rotateX(25deg) translateZ(-2300px);
   }
 }
