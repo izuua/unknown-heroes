@@ -98,7 +98,7 @@ class Results extends Component {
               <div className="row">
                 <div className="col-md-6 results">
                   XP:
-                            </div>
+                </div>
                 <div className="col-md-6 results">
                   Gold: 
                             </div>
