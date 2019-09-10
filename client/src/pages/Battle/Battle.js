@@ -190,19 +190,20 @@ class Battle extends Component {
               hero: this.state.match.hero,
               roundWon: true,
               xpGain: this.state.match.enemy.exp,
-              goldGain: this.state.match.enemy.gold,
-              resultsLink: "/results"
-            }
+              goldGain: this.state.match.enemy.gold
+            },
+            resultsLink: "/results"
           })
         } else {
+          // console.log("Gameover!")
           this.setState({
             results: {
               hero: this.state.match.hero,
               roundWon: false,
               xpGain: 0,
-              goldGain: 0,
-              resultsLink: "/gameover"
-            }
+              goldGain: 0
+            },
+            resultsLink: "/gameover"
           })
         }
         setTimeout(() => {
@@ -285,19 +286,20 @@ class Battle extends Component {
               hero: this.state.match.hero,
               roundWon: true,
               xpGain: this.state.match.enemy.exp,
-              goldGain: this.state.match.enemy.gold,
-              resultsLink: "/results"
-            }
+              goldGain: this.state.match.enemy.gold
+            },
+            resultsLink: "/results"
           })
         } else {
+          // console.log("Gameover!")
           this.setState({
             results: {
               hero: this.state.match.hero,
               roundWon: false,
               xpGain: 0,
-              goldGain: 0,
-              resultsLink: "/gameover"
-            }
+              goldGain: 0
+            },
+            resultsLink: "/gameover"
           })
         }
         setTimeout(() => {
@@ -330,28 +332,28 @@ class Battle extends Component {
 
   }
 
-  toResults = () => {
-    console.log("button clicked");
-    if (this.state.gameOver && this.state.heroHp <= 0) {
-      return <Redirect to={{
-        pathname: "/gameover",
-        // state: {
-        //   results: this.state.results,
-        //   id: this.context.user._id
-        // }
-      }}
-      />
-    } else if (this.state.gameOver && this.state.enemyHp === 0) {
-      return <Redirect to={{
-        pathname: "/results",
-        state: {
-          results: this.state.results,
-          id: this.context.user._id
-        }
-      }}
-      />
-    }
-  }
+  // toResults = () => {
+  //   console.log("button clicked");
+  //   if (this.state.gameOver && this.state.heroHp <= 0) {
+  //     return <Redirect to={{
+  //       pathname: "/gameover",
+  //       // state: {
+  //       //   results: this.state.results,
+  //       //   id: this.context.user._id
+  //       // }
+  //     }}
+  //     />
+  //   } else if (this.state.gameOver && this.state.enemyHp === 0) {
+  //     return <Redirect to={{
+  //       pathname: "/results",
+  //       state: {
+  //         results: this.state.results,
+  //         id: this.context.user._id
+  //       }
+  //     }}
+  //     />
+  //   }
+  // }
 
   render() {
     // if (!this.context.user) return <Redirect to="/" />
