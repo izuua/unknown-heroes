@@ -111,7 +111,7 @@ class Results extends Component {
                 <li>Eva: {this.state.hero[0].eva}</li>
                 <li>Spd: {this.state.hero[0].spd}</li>
               </ul>
-              <div id="battle-hero"><img src={this.state.heroImage}></img></div>
+              <div id="results-hero"><img src={this.state.heroImage}></img></div>
             </div>
             <div className="col-md-8">
               <div className="row">
