@@ -9,29 +9,29 @@ class Gameover extends Component {
     constructor(props) {
         super(props);
         this.sound = new Audio(Lost);
-      }
-    
-      componentDidMount() {
+    }
+
+    componentDidMount() {
         this.sound.play();
-      }
-    
-      componentWillUnmount() {
+    }
+
+    componentWillUnmount() {
         this.sound.pause();
-      }
+    }
 
     render() {
 
         return (
             <div className="bg-scroll">
+                {/* <h1>End of The Game</h1> */}
                 <div className="container gameover-bg">
                     <div className="row">
                         <div className="col-md">
-                            <h1>You died! Game over!</h1>
+                            <h3>You died! Game over!</h3>
                         </div>
                     </div>
                 </div>
             </div>
-
         );
     }
 }

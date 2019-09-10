@@ -7,7 +7,8 @@ import API from '../../lib/API';
 import Knight from "../../img/knight_idle.png"
 import Mage from "../../img/mage_idle.png"
 import Thief from "../../img/thief_sm.png"
-import Victory from '../../music/2017-06-02_-_Happy_Streams_-_David_Fesliyan.mp3'
+import Victory from '../../music/2018-06-06_-_Dreams_of_a_Child_-_David_Fesliyan.mp3'
+import Loading from '../../img/loading.gif'
 
 class Results extends Component {
   static contextType = AuthContext
@@ -22,7 +23,10 @@ class Results extends Component {
     hero: {},
     levelUp: false,
     heroImages: [Knight, Thief, Mage],
-    heroImage: undefined
+    heroImage: undefined,
+    KnightLv: 0,
+    ThiefLv: 0,
+    MageLv: 0
   }
 
   componentDidMount() {
@@ -42,6 +46,11 @@ class Results extends Component {
             const { knightLevel, thiefLevel, mageLevel } = stats.data
             let levels = [knightLevel, thiefLevel, mageLevel]
             let userStats = stats.data
+            this.setState({
+              KnightLv: levels[0],
+              ThiefLv: levels[1],
+              MageLv: levels[2]
+            })
             console.log(userStats)
 
             API.Characters.getCharacters(levels)
@@ -84,35 +93,40 @@ class Results extends Component {
   }
 
   render() {
-    console.log(this.state.results)
-    return (
+   
+    return this.state.results.hero ? (
+      
       <div className="bg-scroll">
         <h1>Results Details</h1>
         <div className="container results-bg">
           <div className="row">
-            <div className="col-md-4">
-              <div id="battle-hero"><img src={this.state.heroImage} ></img></div>
-              {/* <ul>
-                <li>some stats</li>
-                <li>some stats</li>
-                <li>some stats</li>
-                <li>some stats</li>
-              </ul> */}
+            <div className="col-md-4 stats">
+              <ul>
+                <li>Name: {this.state.hero[0].name}</li>
+                <li>Level: {this.state[`${this.state.hero[0].name}Lv`]}</li>
+                <li>HP: {this.state.hero[0].maxHp}</li>
+                <li>Atk: {this.state.hero[0].atk}</li>
+                <li>Def: {this.state.hero[0].def}</li>
+                <li>Acc: {this.state.hero[0].acc}</li>
+                <li>Eva: {this.state.hero[0].eva}</li>
+                <li>Spd: {this.state.hero[0].spd}</li>
+              </ul>
+              <div id="battle-hero"><img src={this.state.heroImage}></img></div>
             </div>
             <div className="col-md-8">
               <div className="row">
-                <div className="col-md-6">
-                  XP:
+                <div className="col-md-6 results">
+                  XP: {this.state.results.xpGain}
                             </div>
-                <div className="col-md-6">
-                  Gold
-                            </div>
-              </div>
-              <div className="row">
-                <div className="col-md-12">
-                  Levels
+                <div className="col-md-6 results">
+                  Gold: {this.state.results.goldGain}
                             </div>
               </div>
+              {this.state.levelUp && <div className="row">
+                <div className="col-md-12 results">
+                  Level up!
+                </div>
+              </div>}
               <div className="row">
                 <div className="col-md-12">
 
@@ -133,7 +147,7 @@ class Results extends Component {
           </div>
         </div>
       </div>
-    );
+    ) : ( <div id="loading"><img src={Loading}></img></div>)
   }
 }
 

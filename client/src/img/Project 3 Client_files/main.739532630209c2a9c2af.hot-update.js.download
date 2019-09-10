@@ -1,0 +1,365 @@
+webpackHotUpdate("main",{
+
+/***/ "./src/pages/Results/Results.js":
+/*!**************************************!*\
+  !*** ./src/pages/Results/Results.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var C_Users_izuua_BootCamp_unknown_heroes_client_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/classCallCheck */ "./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var C_Users_izuua_BootCamp_unknown_heroes_client_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/createClass */ "./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/createClass.js");
+/* harmony import */ var C_Users_izuua_BootCamp_unknown_heroes_client_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn */ "./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var C_Users_izuua_BootCamp_unknown_heroes_client_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/getPrototypeOf */ "./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var C_Users_izuua_BootCamp_unknown_heroes_client_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/inherits */ "./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _Results_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Results.css */ "./src/pages/Results/Results.css");
+/* harmony import */ var _Results_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_Results_css__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _contexts_AuthContext__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../contexts/AuthContext */ "./src/contexts/AuthContext.js");
+/* harmony import */ var _lib_API__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../lib/API */ "./src/lib/API.js");
+/* harmony import */ var _img_knight_idle_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../img/knight_idle.png */ "./src/img/knight_idle.png");
+/* harmony import */ var _img_knight_idle_png__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_img_knight_idle_png__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _img_mage_idle_png__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../img/mage_idle.png */ "./src/img/mage_idle.png");
+/* harmony import */ var _img_mage_idle_png__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_img_mage_idle_png__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _img_thief_sm_png__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../img/thief_sm.png */ "./src/img/thief_sm.png");
+/* harmony import */ var _img_thief_sm_png__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_img_thief_sm_png__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _music_2018_06_06_Dreams_of_a_Child_David_Fesliyan_mp3__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../music/2018-06-06_-_Dreams_of_a_Child_-_David_Fesliyan.mp3 */ "./src/music/2018-06-06_-_Dreams_of_a_Child_-_David_Fesliyan.mp3");
+/* harmony import */ var _music_2018_06_06_Dreams_of_a_Child_David_Fesliyan_mp3__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_music_2018_06_06_Dreams_of_a_Child_David_Fesliyan_mp3__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _img_loading_gif__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../img/loading.gif */ "./src/img/loading.gif");
+/* harmony import */ var _img_loading_gif__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_img_loading_gif__WEBPACK_IMPORTED_MODULE_14__);
+
+
+
+
+
+var _jsxFileName = "C:\\Users\\izuua\\BootCamp\\unknown-heroes\\client\\src\\pages\\Results\\Results.js";
+
+
+
+
+
+
+
+
+
+
+
+var Results =
+/*#__PURE__*/
+function (_Component) {
+  Object(C_Users_izuua_BootCamp_unknown_heroes_client_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(Results, _Component);
+
+  function Results(props) {
+    var _this;
+
+    Object(C_Users_izuua_BootCamp_unknown_heroes_client_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Results);
+
+    _this = Object(C_Users_izuua_BootCamp_unknown_heroes_client_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(C_Users_izuua_BootCamp_unknown_heroes_client_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(Results).call(this, props));
+    _this.state = {
+      results: {},
+      hero: {},
+      levelUp: false,
+      heroImages: [_img_knight_idle_png__WEBPACK_IMPORTED_MODULE_10___default.a, _img_thief_sm_png__WEBPACK_IMPORTED_MODULE_12___default.a, _img_mage_idle_png__WEBPACK_IMPORTED_MODULE_11___default.a],
+      heroImage: undefined,
+      KnightLv: 0,
+      ThiefLv: 0,
+      MageLv: 0
+    };
+    _this.sound = new Audio(_music_2018_06_06_Dreams_of_a_Child_David_Fesliyan_mp3__WEBPACK_IMPORTED_MODULE_13___default.a);
+    return _this;
+  }
+
+  Object(C_Users_izuua_BootCamp_unknown_heroes_client_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Results, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.sound.play();
+      var heroImage;
+      console.log(this.state.hero.name);
+      if (!this.props.location.state) return;
+      _lib_API__WEBPACK_IMPORTED_MODULE_9__["default"].Users.sendResults(this.props.location.state.results, this.props.location.state.id).then(function (res) {
+        var levelUp = res.data.levelUp;
+
+        _this2.setState({
+          levelUp: levelUp
+        });
+
+        _lib_API__WEBPACK_IMPORTED_MODULE_9__["default"].Users.getHeroes(_this2.props.location.state.id).then(function (stats) {
+          var _stats$data = stats.data,
+              knightLevel = _stats$data.knightLevel,
+              thiefLevel = _stats$data.thiefLevel,
+              mageLevel = _stats$data.mageLevel;
+          var levels = [knightLevel, thiefLevel, mageLevel];
+          var userStats = stats.data;
+
+          _this2.setState({
+            KnightLv: levels[0],
+            ThiefLv: levels[1],
+            MageLv: levels[2]
+          });
+
+          console.log(userStats);
+          _lib_API__WEBPACK_IMPORTED_MODULE_9__["default"].Characters.getCharacters(levels).then(function (res) {
+            var currentHero = res.data.filter(function (hero) {
+              return hero.name === _this2.props.location.state.results.hero.name;
+            });
+            console.log(currentHero);
+
+            _this2.setState({
+              results: _this2.props.location.state.results,
+              hero: currentHero
+            });
+          }).catch(function (err) {
+            return console.log(err);
+          }).finally(function (res) {
+            console.log(_this2.state.hero.name);
+
+            switch (_this2.props.location.state.results.hero.name) {
+              case "Knight":
+                heroImage = _this2.state.heroImages[0];
+                break;
+
+              case "Thief":
+                heroImage = _this2.state.heroImages[1];
+                break;
+
+              case "Mage":
+                heroImage = _this2.state.heroImages[2];
+                break;
+            }
+
+            _this2.setState({
+              heroImage: heroImage
+            });
+          });
+        }).catch(function (err) {
+          return console.log(err);
+        });
+      }).catch(function (err) {
+        return console.log(err);
+      });
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.sound.pause();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return this.state.results.hero ? react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "bg-scroll",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 99
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h1", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 100
+        },
+        __self: this
+      }, "Results Details"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "container results-bg",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 101
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "row",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 102
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-md-4 stats",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 103
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("ul", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 104
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("li", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 105
+        },
+        __self: this
+      }, "Name: ", this.state.hero[0].name), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("li", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 106
+        },
+        __self: this
+      }, "Level: ", this.state["".concat(this.state.hero[0].name, "Lv")]), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("li", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 107
+        },
+        __self: this
+      }, "HP: ", this.state.hero[0].maxHp), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("li", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 108
+        },
+        __self: this
+      }, "Atk: ", this.state.hero[0].atk), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("li", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 109
+        },
+        __self: this
+      }, "Def: ", this.state.hero[0].def), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("li", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 110
+        },
+        __self: this
+      }, "Acc: ", this.state.hero[0].acc), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("li", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 111
+        },
+        __self: this
+      }, "Eva: ", this.state.hero[0].eva), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("li", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 112
+        },
+        __self: this
+      }, "Spd: ", this.state.hero[0].spd)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "battle-hero",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 114
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+        src: this.state.heroImage,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 114
+        },
+        __self: this
+      }))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-md-8",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 116
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "row",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 117
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-md-6 results",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 118
+        },
+        __self: this
+      }, "XP: ", this.state.results.xpGain), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-md-6 results",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 121
+        },
+        __self: this
+      }, "Gold: ", this.state.results.goldGain)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "row",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 125
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-md-12 results",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 126
+        },
+        __self: this
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "row",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 130
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-md-12",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 131
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 133
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+        className: "btn-choice",
+        to: {
+          pathname: "/character"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 135
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+        className: "btn btn-success mx-3",
+        type: "button",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 138
+        },
+        __self: this
+      }, "Play again"))))))))) : react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "loading",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 150
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+        src: _img_loading_gif__WEBPACK_IMPORTED_MODULE_14___default.a,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 150
+        },
+        __self: this
+      }));
+    }
+  }]);
+
+  return Results;
+}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
+
+Results.contextType = _contexts_AuthContext__WEBPACK_IMPORTED_MODULE_8__["default"];
+/* harmony default export */ __webpack_exports__["default"] = (Results);
+
+/***/ })
+
+})
+//# sourceMappingURL=main.739532630209c2a9c2af.hot-update.js.map
