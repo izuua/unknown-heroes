@@ -2,8 +2,22 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom"
 
 import "./Gameover.css"
+import Lost from '../../music/serge-narcissoff-dark-knight.mp3'
 
 class Gameover extends Component {
+
+    constructor(props) {
+        super(props);
+        this.sound = new Audio(Lost);
+      }
+    
+      componentDidMount() {
+        this.sound.play();
+      }
+    
+      componentWillUnmount() {
+        this.sound.pause();
+      }
 
     render() {
 
