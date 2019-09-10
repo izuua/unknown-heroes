@@ -28,6 +28,11 @@ class Gameover extends Component {
                     <div className="row">
                         <div className="col-md">
                             <h3>You died! Game over!</h3>
+                            <div className="col">
+                        <Link className="btn-choice" to={{
+                            pathname: "/character",
+                        }} ><button className="btn btn-success mx-3 gameover-btn" type="button">Play again</button></Link>
+                    </div>
                         </div>
                     </div>
                 </div>
