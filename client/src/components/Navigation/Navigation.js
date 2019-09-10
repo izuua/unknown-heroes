@@ -94,6 +94,11 @@ class Navigation extends Component {
                   <Link className='nav-link' to='/gameover' onClick={this.toggleCollapse}>Gameover</Link>
                 </li>}
 
+                {user &&
+                <li className='nav-item'>
+                  <Link className='nav-link' to='/stats' onClick={this.toggleCollapse}>Stats</Link>
+                </li>}
+
             </ul>
             <ul className='navbar-nav'>
               {user
