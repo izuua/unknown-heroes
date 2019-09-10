@@ -49,14 +49,14 @@ battleController.get("/attack", (req, res) => {
         }
     } else {
         enemy.hp = 0;
-        enemyMessage = `${enemy.name} is knocked out!`;
+        enemyMessage = `The ${enemy.name} is knocked out!`;
         gameOver = true;
     }
 
     if (player.hp <= 0) {
         player.hp = 0;
         gameOver = true;
-        playerDead = ` ${player.name} is knocked out!`;
+        playerDead = `The ${player.name} is knocked out!`;
     }
 
     received = true;
