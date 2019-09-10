@@ -11,7 +11,7 @@ import Bat from "../../img/bat1.png"
 import Goblin from "../../img/goblin1.png"
 import Dragon from "../../img/dragon1.png"
 import Dungeon from "../../img/dungeonbackground.png"
-// import Slash from '../../../client/public/slash.wav';
+import Slash from '../../music/slash.wav';
 import BattleSound from '../../music/battletheme.mp3';
 // import Sound from 'react-sound';
 
@@ -21,6 +21,7 @@ class Battle extends Component {
   constructor(props) {
     super(props);
     this.sound = new Audio(BattleSound);
+    this.slash = new Audio(Slash);
   }
 
   state = {
@@ -29,7 +30,7 @@ class Battle extends Component {
     combatText: "",
     textCounter: 0,
     gameOver: false,
-    // playerDead: false,
+    playerDead: false,
     heroHp: 0,
     enemyHp: 0,
     heroImages: [Knight, Thief, Mage],
@@ -79,6 +80,9 @@ class Battle extends Component {
     })
   }
 
+  componentWillUnmount() {
+    this.sound.pause();
+  }
 
   attack = () => {
     if (this.state.roundActive) return
@@ -103,6 +107,7 @@ class Battle extends Component {
       setTimeout(() => {
         if (res.data.playerMessage.includes('damage')) {
           // console.log("enemy was attacked");
+          this.slash.play();
           let eele = document.getElementById("battle-enemy");
           eele.style.opacity = 0;
           setTimeout(() => {
@@ -135,8 +140,8 @@ class Battle extends Component {
         //sets the hero to flash if attacked
         setTimeout(() => {
           if (res.data.enemyMessage.includes('damage')) {
-
             // console.log("character was attacked");
+            this.slash.play();
             let hele = document.getElementById("battle-hero");
             hele.style.opacity = 0;
             setTimeout(() => {
@@ -216,8 +221,8 @@ class Battle extends Component {
         //sets the hero to flash if attacked
         setTimeout(() => {
           if (res.data.enemyMessage.includes('damage')) {
-
             // console.log("character was attacked");
+            this.slash.play();
             let hele = document.getElementById("battle-hero");
             hele.style.opacity = 0;
             setTimeout(() => {
