@@ -174,6 +174,7 @@ class Battle extends Component {
           this.setState({
             results: {
               hero: this.state.match.hero,
+              enemy: this.state.match.enemy,
               roundWon: true,
               xpGain: this.state.match.enemy.exp,
               goldGain: this.state.match.enemy.gold
@@ -183,6 +184,7 @@ class Battle extends Component {
           this.setState({
             results: {
               hero: this.state.match.hero,
+              enemy: this.state.match.enemy,
               roundWon: false,
               xpGain: 0,
               goldGain: 0
@@ -282,7 +284,6 @@ class Battle extends Component {
   typeWriter = newText => {
     let i = this.state.textCounter;
     let speed = 50;
-
     if (i < newText.length) {
       let text = this.state.combatText
       this.setState({
@@ -353,7 +354,7 @@ class Battle extends Component {
                 <div className="border border-dark bg-tan rounded" id="action-text">
                   <div id="text-box">
                     <div className="container">
-                      <p className="text-left lead" id="typewriter">{combatText}</p>
+                      <p className="text-left lead" id="typewriter">{combatText.split('.').map(text =><p> {text}</p>)}</p>
                     </div>
                   </div>
                 </div>
