@@ -129,18 +129,11 @@ class Results extends Component {
               </div>}
               <div className="row">
                 <div className="col-md-12">
-
                   <div className="col">
-
                     <Link className="btn-choice" to={{
                       pathname: "/character",
-
                     }} ><button className="btn btn-success mx-3" type="button">Play again</button></Link>
-
-
                   </div>
-
-
                 </div>
               </div>
             </div>
