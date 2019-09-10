@@ -41,7 +41,7 @@ class HomePage extends Component {
         <section className="starwars-affect">
           <div className="crawl">
             <p>Welcome, to Unknown Heroes!!!!</p>
-            <p>You have been chosen to walk down this path as a Hero. The Guild you are in has told us that you are the right Hero for this job. Please help us!!!! We need your help to conquer this Dungeon that that the Dragon King has takenover. If we don't end him quick then he is going to take over this city!!!</p>
+            <p>You have been chosen to walk down this path as a Hero. The Guild you are in has told us that you are the right Hero for this job. Please help us!!!! We need your help to conquer this Dungeon that the Dragon King has taken over. If we don't end him quickly then he is going to take over this city!!!</p>
             <p>If you accept this challenge press start; but if not, leave and be ashamed you call youself a Hero!!!!</p>
           </div>
         </section>
