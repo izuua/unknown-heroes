@@ -71,7 +71,7 @@ class EnemySelect extends Component {
       <div className="EnemySelect" id="enemybackground">
         {this.state.isLoaded ? (
           <div>
-            <div className="display-4">Enemy Select -- You chose: {this.state.hero.name}</div>
+            <div className="display-4">Enemy Select - You chose: {this.state.hero.name}</div>
             <div className="row vh-75 no-gutters">
               <div className="col-6">
                 <div className="scroll-container">
