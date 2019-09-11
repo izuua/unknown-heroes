@@ -11,13 +11,7 @@ class Stats extends Component {
 
   constructor(props) {
     super(props)
-    let colors = [[], [], []]
-
-    for (let i = 0; i < colors.length; i++) {
-      for (let j = 0; j < 5; j++) {
-        colors[i].push(`rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`)
-      }
-    }
+    let colors = ["rgb(170, 12, 12)", "rgb(18, 168, 31)", "rgb(31, 18, 168)"]
 
     this.state = {
       colors: colors,
@@ -71,9 +65,9 @@ class Stats extends Component {
                     labels: ["Attack", "Defense", "Accuracy", "Evasion", "Speed"],
                     datasets: [
                       {
-                        label: "Stats",
+                        label: heroes[i].name,
                         data: [heroes[i].atk, heroes[i].def, heroes[i].acc, heroes[i].eva, heroes[i].spd],
-                        backgroundColor: this.state.colors[i],
+                        backgroundColor: this.state.colors[i]
                       }
                     ]
                   }
@@ -96,6 +90,29 @@ class Stats extends Component {
   }
 
   render() {
+    const options = {
+      maintainAspectRatio: false,
+      responsive: false,
+      legend: {
+        labels: {
+          fontColor: "white"
+        }
+      },
+      scales: {
+        xAxes: [{
+          ticks: {
+            fontColor: "white",
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            fontColor: "white",
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+
     return (
       <div className="Stats bg-scroll indie-flower" >
         {this.state.isLoading ? (
@@ -105,7 +122,7 @@ class Stats extends Component {
         ) : (
             <div className="container">
               <div className="display-4">Character Stats</div>
-              <div className="row bg-tan" id="stats-row">
+              <div className="row" id="stats-row">
                 <div className="col-4">
                   <div className="h2">Knight</div>
                   <div className="h5">Level: {this.state.heroes[0].level}</div>
@@ -113,17 +130,7 @@ class Stats extends Component {
                     data={this.state.chartData[0]}
                     width={200}
                     height={300}
-                    options={{
-                      maintainAspectRatio: false,
-                      responsive: false,
-                      scales: {
-                        yAxes: [{
-                          ticks: {
-                            beginAtZero: true
-                          }
-                        }]
-                      }
-                    }}
+                    options={options}
                   />
                 </div>
                 <div className="col-4">
@@ -133,17 +140,7 @@ class Stats extends Component {
                     data={this.state.chartData[1]}
                     width={200}
                     height={300}
-                    options={{
-                      maintainAspectRatio: false,
-                      responsive: false,
-                      scales: {
-                        yAxes: [{
-                          ticks: {
-                            beginAtZero: true
-                          }
-                        }]
-                      }
-                    }}
+                    options={options}
                   />
                 </div>
                 <div className="col-4">
@@ -153,17 +150,7 @@ class Stats extends Component {
                     data={this.state.chartData[2]}
                     width={200}
                     height={300}
-                    options={{
-                      maintainAspectRatio: false,
-                      responsive: false,
-                      scales: {
-                        yAxes: [{
-                          ticks: {
-                            beginAtZero: true
-                          }
-                        }]
-                      }
-                    }}
+                    options={options}
                   />
                 </div>
               </div>
