@@ -1,0 +1,65 @@
+
+#homepage {
+  background: url("./amman-ancient-antique.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  font-family: 'Indie Flower', cursive;
+  overflow: hidden;
+}
+
+#gametitle {
+  font-size: 100px;
+}
+
+#login {
+  padding: 10px 20px;
+  text-align: center;
+  margin: 15px;
+  border-radius: 25px;
+}
+
+#createaccount {
+  padding: 10px;
+  text-align: center;
+  margin: 15px;
+  border-radius: 25px;
+}
+
+.fade {
+  position: relative;
+  width: 100%;
+  min-height: 60vh;
+  top: -35px;
+}
+
+.starwars-affect {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 800px;
+  font-size: 500%;
+  font-weight: 600;
+  letter-spacing: 6px;
+  line-height: 150%;
+  perspective: 400px;
+  text-align: center;
+}
+
+.crawl {
+  position: relative;
+  top: 1100px;
+  transform-origin: 50% 100%;
+  animation: crawl 60s linear;
+}
+
+@keyframes crawl {
+  0% {
+    top: -100px;
+    transform: rotateX(20deg) translateZ(0);
+  }
+  100% {
+    top: -6000px;
+    transform: rotateX(25deg) translateZ(-2300px);
+  }
+}

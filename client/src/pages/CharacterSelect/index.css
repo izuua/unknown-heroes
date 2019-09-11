@@ -1,0 +1,15 @@
+.btn-choice, .btn-choice:hover {
+  text-decoration: none;
+  color: white;
+}
+
+#game-stage {
+  position: relative;
+  height: 65vh;
+}
+
+#bottom-row {
+  position: absolute;
+  bottom: 5%;
+}
+

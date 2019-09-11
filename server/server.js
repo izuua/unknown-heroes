@@ -26,17 +26,25 @@ const LOG_MODE = process.env.NODE_ENV === 'production' ? 'common' : 'dev';
 const app = express();
 
 //-- Mongoose Setup ----------------------------------------------------------
+//-- Use this one for local testing
 mongoose.connect(
   process.env.MONGODB_URI ||
-  'mongodb://localhost/ProjectThree'
+  'mongodb://localhost/unknownheroes'
 )
+
+//-- Use this one for heroku deployment
+// mongoose.connect(
+//   process.env.MONGODB_URI ||
+//   'mongodb://user:password1@ds157895.mlab.com:57895/heroku_t0p6qtj6'
+// )
+
 mongoose.connection.on('error', err => {
   console.log(`Mongoose connection err:\n${err}`)
 })
 
 //-- Middleware --------------------------------------------------------------
 app.use(logger(LOG_MODE));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(passport.initialize());
 

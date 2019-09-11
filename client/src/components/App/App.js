@@ -9,8 +9,14 @@ import PrivateRoute from '../../components/PrivateRoute/PrivateRoute';
 import Home from '../../pages/Home/Home';
 import Login from '../../pages/Login/Login';
 import Register from '../../pages/Register/Register';
-import Secret from '../../pages/Secret/Secret';
+import CharacterSelect from '../../pages/CharacterSelect/CharacterSelect';
+import EnemySelect from '../../pages/EnemySelect/EnemySelect';
+import Battle from '../../pages/Battle/Battle';
 import NotFound from '../../pages/NotFound/NotFound';
+import Results from '../../pages/Results/Results';
+import Gameover from '../../pages/Gameover/Gameover';
+import Stats from '../../pages/Stats/Stats';
+
 
 import './App.css';
 
@@ -49,16 +55,23 @@ class App extends Component {
   }
 
   render() {
+    const navSize = (this.state.auth.user && window.innerWidth > 992)  ? "nav-lg" : "nav-sm"
+    console.log(navSize)
     return (
       <AuthContext.Provider value={this.state.auth}>
         <div className='App'>
           <Navigation />
-          <div className='container'>
+          <div className={navSize}>
             <Switch>
               <Route exact path='/' component={Home} />
               <Route path='/login' component={Login} />
               <Route path='/register' component={Register} />
-              <PrivateRoute path='/secret' component={Secret} />
+              <PrivateRoute path='/character' component={CharacterSelect} />
+              <PrivateRoute path='/enemy' component={EnemySelect} />
+              <PrivateRoute path='/battle' component={Battle} />
+              <PrivateRoute path='/results' component={Results} />
+              <PrivateRoute path='/gameover' component={Gameover} />
+              <PrivateRoute path='/stats' component={Stats} />
               <Route component={NotFound} />
             </Switch>
           </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import "./login.css";
 
 import API from '../../lib/API';
 import AuthContext from '../../contexts/AuthContext';
@@ -23,15 +24,19 @@ class Login extends Component {
       .catch(err => {
         let message;
 
-        switch (err.response.status) {
-          case 401:
-            message = 'Sorry, that email/password combination is not valid. Please try again.';
-            break;
-          case 500:
-            message = 'Server error. Please try again later.';
-            break;
-          default:
-            message = 'Unknown error.';
+        if (err.response) {
+          switch (err.response.status) {
+            case 401:
+              message = 'Sorry, that email/password combination is not valid. Please try again.';
+              break;
+            case 500:
+              message = 'Server error. Please try again later.';
+              break;
+            default:
+              message = 'Unknown error.';
+          }
+        } else {
+          console.log(err)
         }
 
         this.setState({ error: message });
@@ -39,7 +44,7 @@ class Login extends Component {
   }
 
   render() {
-    const { from } = this.props.location.state || { from: { pathname: "/secret" } };
+    const { from } = this.props.location.state || { from: { pathname: "/character" } };
     const { redirectToReferrer } = this.state;
 
     if (redirectToReferrer) {
@@ -47,27 +52,32 @@ class Login extends Component {
     }
 
     return (
-      <div className='Login'>
-        <div className='row'>
+
+      <div className='Login' id="loginbackground">
+        <div className='row no-gutters'>
           <div className='col'>
-            <h1>Login</h1>
+            <h1 id="logintext">Login</h1>
           </div>
         </div>
+
         {this.state.error &&
-          <div className='row'>
+          <div className='row no-gutters'>
             <div className='col'>
               <div className='alert alert-danger mb-3' role='alert'>
                 {this.state.error}
               </div>
             </div>
           </div>}
-        <div className='row'>
+        <div className='row no-gutters'>
           <div className='col'>
             <LoginForm onSubmit={this.handleSubmit} />
             <div className='mt-3'>Don't have an account? <Link to='/register'>Click here to register.</Link></div>
           </div>
         </div>
       </div>
+
+
+
     );
   }
 }

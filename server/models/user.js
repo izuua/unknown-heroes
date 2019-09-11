@@ -5,7 +5,8 @@ const UserSchema = new Schema({
   email: {
     type: String,
     trim: true,
-    required: 'Email address is required'
+    required: 'Email address is required',
+    // unique: true
   },
   password: {
     type: String,
@@ -18,6 +19,30 @@ const UserSchema = new Schema({
       'Password should be four characters or longer'
     ]
   },
+  knightLevel: {
+    type: Number,
+    default: 1
+  },
+  mageLevel: {
+    type: Number,
+    default: 1
+  },
+  thiefLevel: {
+    type: Number,
+    default: 1
+  },
+  knightExp: {
+    type: Number,
+    default: 0
+  },
+  mageExp: {
+    type: Number,
+    default: 0
+  },
+  thiefExp: {
+    type: Number,
+    default: 0
+  }
 })
 
 class newUser {

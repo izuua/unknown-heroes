@@ -1,0 +1,61 @@
+.col-md-4 {   
+    padding: 20px;
+    width: 20px;
+}
+
+.col-md-8 {
+    padding: 40px;
+    width: 20px;
+}
+
+.col-md-6 {
+    padding: 40px;
+    width: 40px;
+}
+
+.col-md-12 {
+    padding: 20px;
+    width: 20px;
+}
+
+#results-hero img{
+    height: 250px;
+    /* width: 200px; */
+}
+
+#results-hero {
+    position: absolute;
+    top: 40%;
+    left: 70%;
+}
+
+.results-bg{
+    background: url("../../img/dungeonbackground.png");
+    font-family: 'Indie Flower', cursive;
+    color: white;
+    background-repeat: no-repeat center center fixed;
+    background-size: cover;
+    height: 80%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.results{
+    font-family: 'Indie Flower', cursive;
+    font-size: 30px;
+    color: white;
+}
+
+.stats{
+    font-family: 'Indie Flower', cursive;
+    font-size: 25px;
+    color: white;
+    text-align: left;
+}
+
+h1{
+    font-family: 'Indie Flower', cursive;   
+    color: rgb(20, 19, 19);
+}
+
+

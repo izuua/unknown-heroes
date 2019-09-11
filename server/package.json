@@ -13,6 +13,7 @@
     "passport-jwt": "^4.0.0"
   },
   "scripts": {
+    "seed": "node scripts/seedDB.js",
     "start": "node server",
     "start:dev": "nodemon"
   }
