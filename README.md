@@ -9,9 +9,15 @@ Choose from 3 different character classes:
 
 # Instructions
 
-1. Create an account or login to your current account
-2. Choose your player character
-3. Choose your enemy
-4. Attack the enemy until it does or until you die
-5. See the results of your battle
+1. Create an account or login to your current account.
+2. Choose your player character.
+3. Choose your enemy.
+4. Attack the enemy until it does or until you die.
+5. See the results of your battle.
 6. Repeat!
+
+# Combat
+
+Choose between two actions:  
+1. Attack: Attack the enemy's HP directly.
+2. Defend: Reduce damage taken for 1 turn by half AND restore 10% of your own HP.
