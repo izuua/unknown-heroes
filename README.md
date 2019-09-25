@@ -1,4 +1,4 @@
-# unknown-heroes
+# Unknown Heroes
 A simple RPG game where you fight monsters using unknown heroes in turn based combat!
 
 Choose from 3 different character classes:
