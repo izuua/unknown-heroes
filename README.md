@@ -12,6 +12,6 @@ Choose from 3 different character classes:
 1. Create an account or login to your current account
 2. Choose your player character
 3. Choose your enemy
-4. Attack the enemy until it does or until you die.
+4. Attack the enemy until it does or until you die
 5. See the results of your battle
 6. Repeat!
