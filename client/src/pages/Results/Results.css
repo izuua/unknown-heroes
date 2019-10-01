@@ -35,9 +35,9 @@
     color: white;
     background-repeat: no-repeat center center fixed;
     background-size: cover;
-    height: 80%;
+    height: 50%;
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .results{
