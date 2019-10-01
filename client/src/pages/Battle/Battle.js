@@ -152,6 +152,7 @@ class Battle extends Component {
 
         //sets the hero to flash if attacked
         setTimeout(() => {
+          let heroHp = this.state.heroHp;
           if (res.data.enemyMessage.includes('damage')) {
             // console.log("character was attacked");
             this.slash.play();
@@ -162,10 +163,16 @@ class Battle extends Component {
                 if (hele.style.opacity === "0") {
                   hele.style.opacity = 1;
                   // console.log("set to 1");
+                  // console.log(this.state.heroHp);
                 }
                 else {
                   hele.style.opacity = 0;
                   // console.log("set to 0");
+                  if (heroHp <= 0) {
+                    // this.dead.play();
+                    clearInterval(flash);
+                    return null;
+                  }
                 }
               }, 100)
               setTimeout(() => {
@@ -249,6 +256,7 @@ class Battle extends Component {
 
         //sets the hero to flash if attacked
         setTimeout(() => {
+          let heroHp = this.state.heroHp;
           if (res.data.enemyMessage.includes('damage')) {
             // console.log("character was attacked");
             this.slash.play();
@@ -262,7 +270,12 @@ class Battle extends Component {
                 }
                 else {
                   hele.style.opacity = 0;
-                  console.log("set to 0");
+                  // console.log("set to 0");
+                  if (heroHp <= 0) {
+                    // this.dead.play();
+                    clearInterval(flash);
+                    return null;
+                  }
                 }
               }, 100)
               setTimeout(() => {
